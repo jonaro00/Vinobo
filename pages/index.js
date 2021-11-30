@@ -2,11 +2,11 @@ import Head from "next/head";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import TestPresenter from "../presenters/testPresenter";
-import Model from "../js/model";
+import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
+import TranscriptPresenter from "../presenters/transcriptPresenter";
 
-const myModel = new Model();
-
-export default function Home() {
+export default function Home(props) {
+  props.model.setCurrentVideo("-rmlJzh_K6o");
   return (
     <>
       <Script src="https://www.youtube.com/iframe_api"></Script>
@@ -17,8 +17,9 @@ export default function Home() {
           <p>Test bla bla bla</p>
         </header>
         <div>Content</div>
-        <TestPresenter number={myModel.number} />
-        <div id="player"></div>
+        <TestPresenter id={props.model.currentVideo} />
+        <VideoPlayerPresenter model={props.model} />
+        <TranscriptPresenter model={props.model} />
       </div>
     </>
   );
