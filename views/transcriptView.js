@@ -12,9 +12,9 @@ export default function TranscriptView(props) {
         {props.transcript
           ? [...props.transcript].map((row) => (
               <div
-                className="transcript-line"
+                className={"transcript-line" + (row.highlighted ? " bold" : "")}
                 onClick={(e) => {
-                  console.log(formatTimestamp(row.offset));
+                  props.selectTimestamp(row.offset);
                 }}
                 key={row.offset}
               >

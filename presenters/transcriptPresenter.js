@@ -6,6 +6,7 @@ import usePromise from "../js/usePromise";
 
 export default function TranscriptPresenter(props) {
   const id = useModelProperty(props.model, "currentVideo");
+  const videoTime = useModelProperty(props.vidCon, "currentTime");
 
   const [promise, setPromise] = React.useState(null);
   React.useEffect(() => setPromise(getTranscript(id)), [id]);
@@ -14,11 +15,21 @@ export default function TranscriptPresenter(props) {
   const [query, setQuery] = React.useState("");
 
   return (
-    <TranscriptView transcript={filterTranscript(data, query)} onText={(text) => setQuery(text)} />
+    <TranscriptView
+      transcript={transcriptTransform(data, query, videoTime)}
+      onText={(text) => setQuery(text)}
+      selectTimestamp={(offset) => props.vidCon.seek(offset / 1000)}
+    />
   );
 }
 
-function filterTranscript(data, query) {
+function transcriptTransform(data, query, highlightTime) {
   if (!data) return data;
-  return data.filter((row) => row.text.includes(query));
+  var highlightTimeMs = highlightTime * 1000;
+  return data
+    .filter((row) => row.text.includes(query))
+    .map((row) => ({
+      ...row,
+      highlighted: highlightTimeMs >= row.offset && highlightTimeMs <= row.offset + row.duration,
+    }));
 }
