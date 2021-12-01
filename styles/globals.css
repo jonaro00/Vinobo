@@ -11,18 +11,12 @@ a {
   text-decoration: none;
 }
 
-.transcript-view {
-  background: rgb(252, 252, 252);
-}
-
-.transcript-line {
-  margin-top: 5px;
-}
-
 .bold {
   font-weight: bold;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }

@@ -11,10 +11,9 @@ import useModelProperty from "../js/useModelProperty";
 const vidCon = new VideoController();
 
 export default function Home(props) {
-  // React.useEffect(() => {
-  // window.vidCon = vidCon;
+  React.useEffect(() => (window.vidCon = vidCon));
+
   const obs = () => {
-    console.log("got notified");
     vidCon.setVideoID(props.model.currentVideo);
   };
   props.model.addObserver(obs);
@@ -36,9 +35,7 @@ export default function Home(props) {
 
         <TestPresenter id={props.model.currentVideo} vidCon={vidCon} />
         <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
-        <div className="transcript-view">
-          <TranscriptPresenter model={props.model} vidCon={vidCon} />
-        </div>
+        <TranscriptPresenter model={props.model} vidCon={vidCon} />
       </div>
     </>
   );

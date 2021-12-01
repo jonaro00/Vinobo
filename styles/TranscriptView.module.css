@@ -1,0 +1,11 @@
+.container {
+  background: rgb(252, 252, 252);
+  height: 700px;
+  width: 400px;
+  overflow-y: auto;
+  border: 1px solid black;
+}
+
+.transcripts > div {
+  margin-top: 5px;
+}

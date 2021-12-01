@@ -10,7 +10,7 @@ export default class VideoController extends Observable {
   }
 
   /**
-   * Initializes this instance by recieving a player to control. Starts timer to poll video time.
+   * Initializes this instance by receiving a player to control. Starts timer to poll video time.
    * @param {YT.Player} player A YouTube video player object.
    */
   initialize(player) {
@@ -80,8 +80,6 @@ export default class VideoController extends Observable {
    */
   getTitle() {
     if (!this.player) return;
-    console.log(this.player.getVideoData().title);
-    Promise();
     return this.player.getVideoData().title;
   }
 

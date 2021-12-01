@@ -1,18 +1,19 @@
 import { formatTimestamp } from "../js/transcript";
+import styles from "../styles/TranscriptView.module.css";
 
 export default function TranscriptView(props) {
   return (
-    <div>
+    <div className={styles.container}>
       <input
         type="search"
         onInput={(e) => props.onText(e.target.value)}
         placeholder="search..."
       ></input>
-      <div id="transcript-box">
+      <div className={styles.transcripts}>
         {props.transcript
           ? [...props.transcript].map((row) => (
               <div
-                className={"transcript-line" + (row.highlighted ? " bold" : "")}
+                className={row.highlighted ? "bold" : ""}
                 onClick={(e) => {
                   props.selectTimestamp(row.offset);
                 }}
