@@ -4,7 +4,7 @@ import Model from "../js/model";
 const model = new Model(); // user login, users' notes for every video?
 
 function MyApp({ Component, pageProps }) {
-  window.model = model;
+  //window.model = model;
   return <Component {...pageProps} model={model} />;
 }
 

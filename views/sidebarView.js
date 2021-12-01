@@ -6,10 +6,12 @@ export default function SidebarView(props) {
       <div>Sidebar</div>
       <div>
         <table>
-          {...props.videos.map((video) => {
-            <tr key={video.id}>
-              <td>{video.name}</td>
-            </tr>;
+          {[...props.videos].map((video) => {
+            return (
+              <tr key={video.id}>
+                <td>{video.name}</td>
+              </tr>
+            );
           })}
         </table>
       </div>
