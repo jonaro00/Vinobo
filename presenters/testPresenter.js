@@ -1,7 +1,9 @@
 import TestView from "../views/testView";
+import useModelProperty from "../js/useModelProperty";
 
 function TestPresenter(props) {
-  return <TestView id={props.id} />;
+  const videoTime = useModelProperty(props.vidCon, "currentTime");
+  return <TestView {...props} time={videoTime} title={null /*props.vidCon.getTitle()*/} />;
 }
 
 export default TestPresenter;
