@@ -1,12 +1,29 @@
 import Head from "next/head";
+import React from "react";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import TestPresenter from "../presenters/testPresenter";
 import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
 import TranscriptPresenter from "../presenters/transcriptPresenter";
+import VideoController from "../js/videoController";
+import useModelProperty from "../js/useModelProperty";
+
+const vidCon = new VideoController();
 
 export default function Home(props) {
+  // React.useEffect(() => {
+  // window.vidCon = vidCon;
+  const obs = () => {
+    console.log("got notified");
+    vidCon.setVideoID(props.model.currentVideo);
+  };
+  props.model.addObserver(obs);
+  // return () => props.model.removeObserver(obs);
+  // }, []);
+
+  // TEST VIDEO LOAD
   props.model.setCurrentVideo("-rmlJzh_K6o");
+
   return (
     <>
       <Script src="https://www.youtube.com/iframe_api"></Script>
@@ -16,10 +33,11 @@ export default function Home(props) {
           <p>Test bla bla bla</p>
         </header>
         <div>Content</div>
-        <TestPresenter id={props.model.currentVideo} />
-        <VideoPlayerPresenter model={props.model} />
+
+        <TestPresenter id={props.model.currentVideo} vidCon={vidCon} />
+        <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
         <div className="transcript-view">
-          <TranscriptPresenter model={props.model} />
+          <TranscriptPresenter model={props.model} vidCon={vidCon} />
         </div>
       </div>
     </>
