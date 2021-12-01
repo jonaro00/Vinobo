@@ -18,7 +18,9 @@ export default function Home(props) {
         <div>Content</div>
         <TestPresenter id={props.model.currentVideo} />
         <VideoPlayerPresenter model={props.model} />
-        <TranscriptPresenter model={props.model} />
+        <div className="transcript-view">
+          <TranscriptPresenter model={props.model} />
+        </div>
       </div>
     </>
   );

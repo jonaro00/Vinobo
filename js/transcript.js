@@ -20,5 +20,28 @@ function extractID(URL_or_ID) {
 function getTranscript(id) {
   return fetch(`/api/get_transcript?id=${id}`).then((res) => res.json());
 }
+/**
+ * Format timestamp of milliseconds to HRS:MIN:SEC
+ * @param {*} ms
+ * @returns Formatted timestamp
+ */
+function formatTimestamp(ms) {
+  var sec = Math.floor(ms / 1000);
+  var hrs = Math.floor(sec / 3600);
+  sec -= hrs * 3600;
+  var min = Math.floor(sec / 60);
+  sec -= min * 60;
 
-export { ytRegex, extractID, getTranscript };
+  sec = "" + sec;
+  sec = ("00" + sec).substring(sec.length);
+
+  if (hrs > 0) {
+    min = "" + min;
+    min = ("00" + min).substring(min.length);
+    return hrs + ":" + min + ":" + sec;
+  } else {
+    return min + ":" + sec;
+  }
+}
+
+export { ytRegex, extractID, getTranscript, formatTimestamp };

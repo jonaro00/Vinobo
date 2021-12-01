@@ -11,5 +11,14 @@ export default function TranscriptPresenter(props) {
   React.useEffect(() => setPromise(getTranscript(id)), [id]);
   const [data, error] = usePromise(promise);
 
-  return <TranscriptView transcript={data} />;
+  const [query, setQuery] = React.useState("");
+
+  return (
+    <TranscriptView transcript={filterTranscript(data, query)} onText={(text) => setQuery(text)} />
+  );
+}
+
+function filterTranscript(data, query) {
+  if (!data) return data;
+  return data.filter((row) => row.text.includes(query));
 }
