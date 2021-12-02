@@ -1,0 +1,18 @@
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 50%;
+}
+
+.transcriptView {
+  flex: 0.5;
+}
+
+.controlView {
+  flex: 0.5;
+}
+
+.videoContent {
+  width: 50%;
+}

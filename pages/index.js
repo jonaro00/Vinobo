@@ -37,9 +37,17 @@ export default function Home(props) {
 
         <TestPresenter id={props.model.currentVideo} vidCon={vidCon} />
         <SidebarPresenter model={props.model} />
-        <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
-        <TranscriptPresenter model={props.model} vidCon={vidCon} />
-        <ControlPresenter model={props.model} vidCon={vidCon} />
+        <div className={styles.videoContent}>
+          <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
+          <div className={styles.flexbox}>
+            <div className={styles.transcriptView}>
+              <TranscriptPresenter model={props.model} vidCon={vidCon} />
+            </div>
+            <div className={styles.controlView}>
+              <ControlPresenter model={props.model} vidCon={vidCon} />
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

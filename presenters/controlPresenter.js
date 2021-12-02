@@ -1,6 +1,7 @@
 import React from "react";
 import ControlView from "../views/controlView";
 import useModelProperty from "../js/useModelProperty";
+import { formatTimestamp } from "../js/transcript";
 
 export default function ControlPresenter(props) {
   const videoTime = toHHMMSS(useModelProperty(props.vidCon, "currentTime"));
