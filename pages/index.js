@@ -7,6 +7,7 @@ import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
 import TranscriptPresenter from "../presenters/transcriptPresenter";
 import SidebarPresenter from "../presenters/sidebarPresenter";
 import VideoController from "../js/videoController";
+import ControlPresenter from "../presenters/controlPresenter";
 import useModelProperty from "../js/useModelProperty";
 
 const vidCon = new VideoController();
@@ -38,6 +39,7 @@ export default function Home(props) {
         <SidebarPresenter model={props.model} />
         <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
         <TranscriptPresenter model={props.model} vidCon={vidCon} />
+        <ControlPresenter model={props.model} vidCon={vidCon} />
       </div>
     </>
   );
