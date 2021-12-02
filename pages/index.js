@@ -25,6 +25,7 @@ export default function Home(props) {
 
   return (
     <>
+      <Script src="https://www.youtube.com/iframe_api"></Script>
       <div className="app">
         <header className="app-header">
           <h1>Vinobo</h1>
