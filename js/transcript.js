@@ -18,7 +18,12 @@ function extractID(URL_or_ID) {
  * @returns A promise yielding the JSON response.
  */
 function getTranscript(id) {
-  return fetch(`/api/get_transcript?id=${id}`).then((res) => res.json());
+  return fetch(`/api/get_transcript?id=${id}`)
+    .then((res) => {
+      if (!res.ok) throw new Error(res.statusText);
+      return res;
+    })
+    .then((res) => res.json());
 }
 /**
  * Format timestamp of milliseconds to HRS:MIN:SEC

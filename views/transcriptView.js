@@ -10,7 +10,9 @@ export default function TranscriptView(props) {
         placeholder="search..."
       ></input>
       <div className={styles.transcripts}>
-        {props.transcript
+        {props.transcriptError
+          ? "Failed to get transcript"
+          : props.transcript
           ? [...props.transcript].map((row) => (
               <div
                 className={row.highlighted ? "bold" : ""}

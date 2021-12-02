@@ -16,7 +16,8 @@ export default function TranscriptPresenter(props) {
 
   return (
     <TranscriptView
-      transcript={transcriptTransform(data, query, videoTime)}
+      transcriptError={error}
+      transcript={error || transcriptTransform(data, query, videoTime)}
       onText={(text) => setQuery(text)}
       selectTimestamp={(offset) => props.vidCon.seek(offset / 1000)}
     />
