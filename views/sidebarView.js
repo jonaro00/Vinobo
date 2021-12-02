@@ -10,7 +10,17 @@ export default function SidebarView(props) {
           {[...props.videos].map((video) => {
             return (
               <tr key={video.id}>
-                <td>{video.name}</td>
+                <td>
+                  <a
+                    href=""
+                    onClick={(event) => {
+                      event.preventDefault();
+                      props.videoChoice(video.id);
+                    }}
+                  >
+                    {video.title}
+                  </a>
+                </td>
                 <td>
                   <button onClick={() => props.removeVideo(video.id)}>x</button>
                 </td>
@@ -18,7 +28,7 @@ export default function SidebarView(props) {
             );
           })}
           <tr>
-            <td>
+            <td colSpan={2}>
               <TextForm
                 onSubmit={(ref) => props.addVideo(ref)}
                 placeholder="Add video by URL or video ID"

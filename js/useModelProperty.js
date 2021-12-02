@@ -5,7 +5,10 @@ export default function useModelProperty(model, propertyName) {
   const [value, setValue] = React.useState(model[propertyName]);
   React.useEffect(
     function () {
-      const obs = () => setValue(model[propertyName]);
+      const obs = () => {
+        setValue(model[propertyName]);
+        console.log("observer called");
+      };
       model.addObserver(obs);
       return () => model.removeObserver(obs);
     },

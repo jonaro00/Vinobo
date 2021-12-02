@@ -1,23 +1,19 @@
 import React from "react";
-import SidebarView from "../views/sidebarView";
+import useModelProperty from "../js/useModelProperty.js";
+import SidebarView from "../views/sidebarView.js";
 import extractID from "../js/transcript.js";
 
 export default function SidebarPresenter(props) {
-  const [videoArr, setVideos] = React.useState([
-    {
-      id: 13579,
-      name: "Star Wars",
-    },
-    {
-      id: 24680,
-      name: "Casablanca",
-    },
-  ]);
+  const videos = useModelProperty(props.model, "videos");
   return (
     <SidebarView
-      videos={videoArr}
-      addVideo={(ref) => console.log("User wants to add video with URL/ID", ref)}
-      removeVideo={(id) => setVideos(videoArr.filter((v) => v.id != id))}
+      videos={videos}
+      videoChoice={(id) => props.model.setCurrentVideo(id)}
+      addVideo={(ref) => {
+        console.log("Adding video with reference ", ref);
+        props.model.addVideo(ref);
+      }}
+      removeVideo={(id) => props.model.removeVideo(id)}
     ></SidebarView>
   );
 }
