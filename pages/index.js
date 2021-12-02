@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import TestPresenter from "../presenters/testPresenter";
 import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
 import TranscriptPresenter from "../presenters/transcriptPresenter";
+import SidebarPresenter from "../presenters/sidebarPresenter";
 import VideoController from "../js/videoController";
 import useModelProperty from "../js/useModelProperty";
 
@@ -34,6 +35,7 @@ export default function Home(props) {
         <div>Content</div>
 
         <TestPresenter id={props.model.currentVideo} vidCon={vidCon} />
+        <SidebarPresenter model={props.model} />
         <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
         <TranscriptPresenter model={props.model} vidCon={vidCon} />
       </div>
