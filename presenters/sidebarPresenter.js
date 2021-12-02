@@ -10,14 +10,16 @@ export default function SidebarPresenter(props) {
   return (
     <SidebarView
       videos={videos}
-      videoChoice={(id) => props.model.setCurrentVideo(id)}
-      addVideo={(ref) => {
+      videoChoice={(ref) => {
         if (extractID(ref)) {
-          props.model.addVideo(extractID(ref));
+          console.log("User wants to set video to ID ", extractID(ref));
+          props.model.setCurrentVideo(extractID(ref));
         }
         setError("Not referring to a valid ID/URL");
       }}
+      addCurrentVideo={() => props.model.addVideo(props.model.currentVideo)}
       removeVideo={(id) => props.model.removeVideo(id)}
+      error={error}
     ></SidebarView>
   );
 }

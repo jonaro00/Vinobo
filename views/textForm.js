@@ -20,7 +20,7 @@ export default class TextForm extends React.Component {
           onChange={(event) => this.setState({ value: event.target.value })}
           placeholder={this.props.placeholder}
         />
-        <input type="submit" value="Submit" />
+        <input type="submit" value={this.props.submitValue} />
       </form>
     );
   }

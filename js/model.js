@@ -12,6 +12,8 @@ export default class Model extends Observable {
     this.notifyObservers();
   }
   addVideo(id) {
+    // Only add if video is not already in list
+    if (this.videos.map((obj) => obj.id).includes(id)) return;
     this.videos = [
       ...this.videos,
       {
