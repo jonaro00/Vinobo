@@ -25,28 +25,25 @@ function getTranscript(id) {
     })
     .then((res) => res.json());
 }
+
 /**
- * Format timestamp of milliseconds to HRS:MIN:SEC
- * @param {*} ms
- * @returns Formatted timestamp
+ * Format timestamp of milliseconds to [hh:]mm:ss. Rounds down to nearest whole second.
+ * @param {Number} ms Number of milliseconds.
+ * @returns {string} Formatted timestamp.
  */
 function formatTimestamp(ms) {
-  var sec = Math.floor(ms / 1000);
-  var hrs = Math.floor(sec / 3600);
-  sec -= hrs * 3600;
-  var min = Math.floor(sec / 60);
-  sec -= min * 60;
+  let sec = Math.floor(ms / 1000);
+  let hrs = Math.floor(sec / 3600);
+  sec %= 3600;
+  let min = Math.floor(sec / 60);
+  sec %= 60;
+  sec = `00${sec}`.substring(String(sec).length);
 
-  sec = "" + sec;
-  sec = ("00" + sec).substring(sec.length);
-
-  if (hrs > 0) {
-    min = "" + min;
-    min = ("00" + min).substring(min.length);
-    return hrs + ":" + min + ":" + sec;
-  } else {
-    return min + ":" + sec;
+  if (hrs) {
+    min = `00${min}`.substring(String(min).length);
+    return `${hrs}:${min}:${sec}`;
   }
+  return `${min}:${sec}`;
 }
 
 export { ytRegex, extractID, getTranscript, formatTimestamp };

@@ -30,6 +30,7 @@ export default function VideoPlayerPresenter(props) {
       //   props.vidCon.setPlayer(player);
       // });
     };
+    return () => player.destroy();
   }, []);
 
   // React.useEffect(() => {
