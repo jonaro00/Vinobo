@@ -3,7 +3,6 @@ export default class Observable {
     this.observers = [];
   }
   addObserver(callback) {
-    console.log("Adding observer to model");
     this.observers = [...this.observers, callback];
   }
   removeObserver(callback) {
@@ -12,11 +11,9 @@ export default class Observable {
   notifyObservers() {
     this.observers.forEach((cb) => {
       try {
-        console.log("Calling all observer callbacks");
         cb();
       } catch (error) {
         // prevent one observer error from stopping the other callbacks to happen
-        console.error("Failed to notify observer", error);
       }
     });
   }
