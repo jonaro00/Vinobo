@@ -22,6 +22,7 @@ export default function Home(props) {
   // }, []);
 
   // TEST VIDEO LOAD
+  props.model.addVideo("-rmlJzh_K6o");
   props.model.setCurrentVideo("-rmlJzh_K6o");
 
   return (
