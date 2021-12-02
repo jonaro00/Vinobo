@@ -35,7 +35,7 @@ export default function Home(props) {
         </header>
         <div>Content</div>
 
-        <TestPresenter id={props.model.currentVideo} vidCon={vidCon} />
+        <TestPresenter model={props.model} vidCon={vidCon} />
         <SidebarPresenter model={props.model} />
         <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
         <TranscriptPresenter model={props.model} vidCon={vidCon} />

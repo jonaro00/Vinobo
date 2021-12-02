@@ -8,6 +8,7 @@ export default class Model extends Observable {
     this.videos = [];
   }
   setCurrentVideo(id) {
+    if (this.currentVideo === id) return;
     this.currentVideo = id;
     this.notifyObservers();
   }

@@ -21,16 +21,15 @@ export default function VideoPlayerPresenter(props) {
         },
         events: {
           onReady: (event) => props.vidCon.onPlayerReady(event),
-          onStateChange: props.vidCon.onPlayerStateChange,
+          onStateChange: (event) => props.vidCon.onPlayerStateChange(event),
         },
       });
       window.player = player;
-      // props.vidCon.addInitializer(() => {
-      //   console.log("got called");
-      //   props.vidCon.setPlayer(player);
-      // });
     };
-    return () => player.destroy();
+    return () => {
+      // console.log("DESTROYING PLAYER ⚠");
+      // props.vidCon.destroy(); // 2021-12-02 Why is this being called when `id` updates? (ask coach) /J
+    };
   }, []);
 
   // React.useEffect(() => {
