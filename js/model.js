@@ -8,12 +8,10 @@ export default class Model extends Observable {
     this.videos = [];
   }
   setCurrentVideo(id) {
-    console.log("The currently selected video is ", id);
     this.currentVideo = id;
     this.notifyObservers();
   }
   addVideo(id) {
-    console.log("Adding video ID ", id);
     this.videos = [
       ...this.videos,
       {

@@ -10,7 +10,6 @@ export default function SidebarPresenter(props) {
       videos={videos}
       videoChoice={(id) => props.model.setCurrentVideo(id)}
       addVideo={(ref) => {
-        console.log("Adding video with reference ", ref);
         props.model.addVideo(ref);
       }}
       removeVideo={(id) => props.model.removeVideo(id)}

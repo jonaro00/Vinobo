@@ -9,7 +9,6 @@ export default class TextForm extends React.Component {
     return (
       <form
         onSubmit={(event) => {
-          console.log("Submitting field value: ", this.state.value);
           event.preventDefault();
           this.setState({ value: "" });
           this.props.onSubmit(this.state.value);
