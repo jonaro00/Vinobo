@@ -24,6 +24,13 @@ export default function TranscriptPresenter(props) {
   );
 }
 
+/**
+ * Filters and modifies the data from transcript API to what the View wants.
+ * @param {Array} data The data from transcript API.
+ * @param {string} query Search query to filter transcript rows by.
+ * @param {number} highlightTime The time in seconds where to highlight rows
+ * @returns {Array} Transformed version of `data`.
+ */
 function transcriptTransform(data, query, highlightTime) {
   if (!data) return data;
   var highlightTimeMs = highlightTime * 1000;
