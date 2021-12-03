@@ -1,11 +1,28 @@
 .container {
-  background: rgb(252, 252, 252);
+  background: rgb(255, 255, 255);
+  height: 700px;
+  width: 400px;
+}
+
+.transcripts {
+  background: rgb(255, 255, 255);
   height: 700px;
   width: 400px;
   overflow-y: auto;
+  font-size: 15px;
   border: 1px solid black;
 }
 
 .transcripts > div {
-  margin-top: 5px;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+.search {
+  padding-bottom: 5px;
+}
+
+.search input {
+  width: 400px;
+  margin-top: 10px;
 }

@@ -4,11 +4,13 @@ import styles from "../styles/TranscriptView.module.css";
 export default function TranscriptView(props) {
   return (
     <div className={styles.container}>
-      <input
-        type="search"
-        onInput={(e) => props.onText(e.target.value)}
-        placeholder="search..."
-      ></input>
+      <div className={styles.search}>
+        <input
+          type="search"
+          onInput={(e) => props.onText(e.target.value)}
+          placeholder="search in transcript..."
+        ></input>
+      </div>
       <div className={styles.transcripts}>
         {props.transcriptError
           ? "Failed to get transcript"
