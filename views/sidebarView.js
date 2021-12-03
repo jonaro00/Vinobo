@@ -1,4 +1,3 @@
-import styles from "./sidebarView.module.css";
 import TextForm from "./textForm.js";
 
 export default function SidebarView(props) {
