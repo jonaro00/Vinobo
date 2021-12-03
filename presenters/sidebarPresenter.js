@@ -8,11 +8,7 @@ import { extractID } from "../js/transcript.js";
 export default function SidebarPresenter(props) {
   const [error, setError] = React.useState(null);
   const videos = useModelProperty(props.model, "videos");
-  const id = useModelProperty(props.model, "currentVideo");
-
-  const [promise, setPromise] = React.useState(null);
-  React.useEffect(() => setPromise(props.vidCon.getTitle()), [id]);
-  const [titleData, titleError] = usePromise(promise);
+  const id = useModelProperty(props.model, "currentVideo"); // TODO: highlight the active video
 
   const activeView = true;
 
@@ -21,21 +17,25 @@ export default function SidebarPresenter(props) {
       <SidebarActiveView
         videos={videos}
         videoChoice={(ref) => {
-          if (extractID(ref)) {
+          const id = extractID(ref);
+          if (id) {
             console.log("User wants to set video to ID ", extractID(ref));
-            props.model.setCurrentVideo(extractID(ref));
+            props.model.setCurrentVideo(id);
           } else {
             setError("Not referring to a valid ID/URL");
           }
         }}
         addVideo={(ref) => {
-          if (extractID(ref)) {
-            console.log("User wants to set video to ID ", extractID(ref));
-            props.model.setCurrentVideo(extractID(ref));
-            props.model.addVideo({
-              id: extractID(ref),
-              title: titleData,
-            });
+          const id = extractID(ref);
+          if (id) {
+            console.log("User wants to set video to ID ", id);
+            props.model.setCurrentVideo(id);
+            props.vidCon.getTitle().then((title) =>
+              props.model.addVideo({
+                id: id,
+                title: title,
+              })
+            );
           } else {
             setError("Not referring to a valid ID/URL");
           }
@@ -49,18 +49,21 @@ export default function SidebarPresenter(props) {
       <SidebarView
         videos={videos}
         videoChoice={(ref) => {
-          if (extractID(ref)) {
-            console.log("User wants to set video to ID ", extractID(ref));
-            props.model.setCurrentVideo(extractID(ref));
+          const id = extractID(ref);
+          if (id) {
+            console.log("User wants to set video to ID ", id);
+            props.model.setCurrentVideo(id);
           } else {
             setError("Not referring to a valid ID/URL");
           }
         }}
         addCurrentVideo={() => {
-          props.model.addVideo({
-            id: props.model.currentVideo,
-            title: titleData,
-          });
+          props.vidCon.getTitle().then((title) =>
+            props.model.addVideo({
+              id: extractID(ref),
+              title: title,
+            })
+          );
         }}
         removeVideo={(id) => props.model.removeVideo(id)}
         error={error}
