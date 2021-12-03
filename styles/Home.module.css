@@ -1,16 +1,20 @@
-.flexbox {
+.pageContent,
+.mainContent,
+.transcriptAndControls {
   display: flex;
   flex-direction: row;
-  height: 100%;
-  width: 50%;
 }
 
-.transcriptView {
-  flex: 0.5;
-}
-
+.mainContent,
+.videoAndControlsContainer,
+.notesContainer,
+.transcriptView,
 .controlView {
-  flex: 0.5;
+  flex: 1 0;
+}
+
+.sidebar {
+  flex: 0 0 260px;
 }
 
 .videoContent {

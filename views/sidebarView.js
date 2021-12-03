@@ -14,26 +14,24 @@ export default function SidebarView(props) {
         <div>My videos</div>
         <table>
           <tbody>
-            {[...props.videos].map((video) => {
-              return (
-                <tr key={video.id}>
-                  <td>
-                    <a
-                      href=""
-                      onClick={(event) => {
-                        event.preventDefault();
-                        props.videoChoice(video.id);
-                      }}
-                    >
-                      {video.title}
-                    </a>
-                  </td>
-                  <td>
-                    <button onClick={() => props.removeVideo(video.id)}>x</button>
-                  </td>
-                </tr>
-              );
-            })}
+            {[...props.videos].map((video) => (
+              <tr key={video.id}>
+                <td>
+                  <a
+                    href=""
+                    onClick={(event) => {
+                      event.preventDefault();
+                      props.videoChoice(video.id);
+                    }}
+                  >
+                    {video.title}
+                  </a>
+                </td>
+                <td>
+                  <button onClick={() => props.removeVideo(video.id)}>x</button>
+                </td>
+              </tr>
+            ))}
             <tr>
               <td colSpan={2}></td>
             </tr>

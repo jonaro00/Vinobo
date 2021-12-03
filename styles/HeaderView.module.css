@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  max-height: 50px;
+  background-color: #7ec762;
+}
+
+.container > div {
+  display: flex;
+  align-items: center;
+}
+
+.container > div > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 15px;
+  padding: 0 6px;
+}
+.container > div:last-child > * {
+  margin-right: 0;
+  margin-left: 15px;
+}
+
+.siteNameContainer {
+  margin-left: 10px;
+}
+.siteName {
+  font-size: 1.5em;
+}
+.siteSubTitle {
+  font-size: 0.7em;
+  font-style: italic;
+  color: #444;
+}

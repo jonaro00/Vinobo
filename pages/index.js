@@ -3,6 +3,7 @@ import React from "react";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import TestPresenter from "../presenters/testPresenter";
+import HeaderPresenter from "../presenters/headerPresenter";
 import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
 import TranscriptPresenter from "../presenters/transcriptPresenter";
 import SidebarPresenter from "../presenters/sidebarPresenter";
@@ -29,22 +30,28 @@ export default function Home(props) {
     <>
       <Script src="https://www.youtube.com/iframe_api"></Script>
       <div className="app">
-        <header className="app-header">
-          <h1>Vinobo</h1>
-          <p>Test bla bla bla</p>
-        </header>
-        <div>Content</div>
-
-        <TestPresenter model={props.model} vidCon={vidCon} />
-        <SidebarPresenter model={props.model} />
-        <div className={styles.videoContent}>
-          <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
-          <div className={styles.flexbox}>
-            <div className={styles.transcriptView}>
-              <TranscriptPresenter model={props.model} vidCon={vidCon} />
+        <HeaderPresenter />
+        <div className={styles.pageContent}>
+          <div className={styles.sidebar}>
+            <SidebarPresenter model={props.model} />
+          </div>
+          <div className={styles.mainContent}>
+            <div className={styles.videoAndControlsContainer}>
+              <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
+              <div className={styles.transcriptAndControls}>
+                <div className={styles.transcriptView}>
+                  <TranscriptPresenter model={props.model} vidCon={vidCon} />
+                </div>
+                <div className={styles.controlView}>
+                  <ControlPresenter model={props.model} vidCon={vidCon} />
+                </div>
+              </div>
             </div>
-            <div className={styles.controlView}>
-              <ControlPresenter model={props.model} vidCon={vidCon} />
+            <div className={styles.notesContainer}>
+              <div>Note1</div>
+              <div>Note2</div>
+              <div>Note3</div>
+              <TestPresenter model={props.model} vidCon={vidCon} />
             </div>
           </div>
         </div>
