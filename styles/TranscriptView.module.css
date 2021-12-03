@@ -1,13 +1,14 @@
 .container {
+  position: relative;
   background: rgb(255, 255, 255);
-  height: 700px;
-  width: 400px;
+  height: 500px;
+  width: 100%;
 }
 
 .transcripts {
   background: rgb(255, 255, 255);
-  height: 700px;
-  width: 400px;
+  height: 100%;
+  width: 100%;
   overflow-y: auto;
   font-size: 15px;
   border: 1px solid black;
@@ -19,10 +20,10 @@
 }
 
 .search {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 .search input {
-  width: 400px;
+  width: 100%;
   margin-top: 10px;
 }

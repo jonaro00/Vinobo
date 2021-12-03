@@ -38,6 +38,7 @@ function transcriptTransform(data, query, highlightTime) {
     .filter((row) => row.text.includes(query))
     .map((row) => ({
       ...row,
-      highlighted: highlightTimeMs >= row.offset && highlightTimeMs <= row.offset + row.duration,
+      highlighted:
+        highlightTimeMs >= row.offset && highlightTimeMs <= row.offset + row.duration * 0.5,
     }));
 }

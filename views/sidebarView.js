@@ -1,8 +1,9 @@
 import TextForm from "./textForm.js";
+import styles from "../styles/sidebarView.module.css";
 
 export default function SidebarView(props) {
   return (
-    <div>
+    <div className={styles.container}>
       <div>Open video</div>
       <TextForm
         onSubmit={(ref) => props.videoChoice(ref)}

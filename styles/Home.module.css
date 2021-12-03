@@ -6,15 +6,24 @@
 }
 
 .mainContent,
-.videoAndControlsContainer,
-.notesContainer,
 .transcriptView,
 .controlView {
   flex: 1 0;
 }
 
+.videoAndControlsContainer {
+  flex: 5 0;
+}
+.notesContainer {
+  flex: 3 0;
+  border: 1px solid;
+  margin-left: 10px;
+}
+
 .sidebar {
   flex: 0 0 260px;
+  border: 1px solid;
+  margin-right: 10px;
 }
 
 .videoContent {
