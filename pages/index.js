@@ -14,17 +14,15 @@ import useModelProperty from "../js/useModelProperty";
 const vidCon = new VideoController();
 
 export default function Home(props) {
-  React.useEffect(() => (window.vidCon = vidCon));
-
-  const obs = () => {
-    vidCon.setVideoID(props.model.currentVideo);
-  };
-  props.model.addObserver(obs);
-  // return () => props.model.removeObserver(obs);
-  // }, []);
-
-  // TEST VIDEO LOAD
-  props.model.setCurrentVideo("-rmlJzh_K6o");
+  React.useEffect(() => {
+    window.vidCon = vidCon;
+    const obs = () => {
+      vidCon.setVideoID(props.model.currentVideo);
+    };
+    props.model.addObserver(obs);
+    // TEST VIDEO LOAD
+    props.model.setCurrentVideo("-rmlJzh_K6o");
+  });
 
   return (
     <>

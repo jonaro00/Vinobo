@@ -11,12 +11,12 @@ a {
   text-decoration: none;
 }
 
-.bold {
-  font-weight: bold;
-}
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.bold {
+  font-weight: bold;
 }
