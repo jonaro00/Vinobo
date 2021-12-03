@@ -11,13 +11,10 @@ export default function VideoPlayerPresenter(props) {
     // This function creates an <iframe> (and YouTube player) after the API code downloads.
     window.onYouTubeIframeAPIReady = function () {
       player = new window.YT.Player("player", {
-        height: "450",
-        width: "740",
-        videoId: "",
         playerVars: {
           playsinline: 1,
-          modestbranding: 1,
-          rel: 0,
+          modestbranding: 1, // hide YT logo in bottom right
+          rel: 0, // show less random suggested videos
         },
         events: {
           onReady: (event) => props.vidCon.onPlayerReady(event),
