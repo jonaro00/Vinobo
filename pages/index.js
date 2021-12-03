@@ -7,6 +7,7 @@ import HeaderPresenter from "../presenters/headerPresenter";
 import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
 import TranscriptPresenter from "../presenters/transcriptPresenter";
 import SidebarPresenter from "../presenters/sidebarPresenter";
+import NotesPresenter from "../presenters/notesPresenter";
 import VideoController from "../js/videoController";
 import ControlPresenter from "../presenters/controlPresenter";
 import useModelProperty from "../js/useModelProperty";
@@ -25,6 +26,12 @@ export default function Home(props) {
 
   // TEST VIDEO LOAD
   props.model.setCurrentVideo("-rmlJzh_K6o");
+  props.model.addNote({
+    offset: "01:00",
+    title: "JSX",
+    content:
+      "Scripts with the attribute text/jsx will not be executed by the browser. The attribute is a signal for Babel to take over and translate the JSX snippets to JavaScript. Babel will then add a SCRIPT to the DOM, which is in JavaScript and will be executed by the browser.",
+  });
 
   return (
     <>
@@ -48,10 +55,8 @@ export default function Home(props) {
               </div>
             </div>
             <div className={styles.notesContainer}>
-              <div>Note1</div>
-              <div>Note2</div>
-              <div>Note3</div>
               <TestPresenter model={props.model} vidCon={vidCon} />
+              <NotesPresenter model={props.model} />
             </div>
           </div>
         </div>

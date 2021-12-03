@@ -3,9 +3,12 @@ import Observable from "./observable";
 export default class Model extends Observable {
   constructor() {
     super();
-    this.notes = {};
+    this.notes = [];
     this.currentVideo = null;
     this.videos = [];
+  }
+  addNote(noteObj) {
+    this.notes = [...this.notes, noteObj];
   }
   setCurrentVideo(id) {
     if (this.currentVideo === id) return;
