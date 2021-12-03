@@ -9,6 +9,7 @@ export default class Model extends Observable {
   }
   addNote(noteObj) {
     this.notes = [...this.notes, noteObj];
+    this.notifyObservers();
   }
   setCurrentVideo(id) {
     if (this.currentVideo === id) return;
