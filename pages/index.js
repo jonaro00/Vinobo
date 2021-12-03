@@ -31,7 +31,7 @@ export default function Home(props) {
         <HeaderPresenter />
         <div className={styles.pageContent}>
           <div className={styles.sidebar}>
-            <SidebarPresenter model={props.model} />
+            <SidebarPresenter model={props.model} vidCon={vidCon} />
           </div>
           <div className={styles.mainContent}>
             <div className={styles.videoAndControlsContainer}>
