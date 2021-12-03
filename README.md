@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vinobo
 
-## Getting Started
+Video Notebook for students.
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+The application will allow the user to watch a Youtube video and search for keywords in the video's transcript
+to find relevant parts in the video.
+The user will also be able to annotate the video with personal notes, placed at specific times in the video.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What we have done
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- A custom API endpoint for getting Youtube transcripts.
+- Pasting Youtube link and view the video.
+- Searching in the transcript.
+- Adding/deleting a video to the model.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## What we plan to add
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Adding/deleting notes.
+- Logo.
+- Persistence (keeping user data saved if they log in, and perhaps also saving to localStorage if not logged in).
+- Auto-scrolling of transcript and notes while the video is playing.
+- Edit notes after they've been saved.
+- Organize/order your saved videos with tags/folders/...
+- Searching in notes.
 
-## Learn More
+## What we might add
 
-To learn more about Next.js, take a look at the following resources:
+- Sharing your notes on a video (collaboratively or read-only) with a link.
+- Dictionary function (look up word definitions with a 2nd API).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## File structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `js/`
+  - Javascript files for Model, video controller and other helper functions.
+- `pages/`
+  - `api/`
+    - `get_transcript`: Custom API enpoint for delivering the data our app needs.
+  - The page endpoints, currently only the index page.
+- `presenters/`
+  - Presenters for the different views.
+- `public/`
+  - Static files.
+- `styles/`
+  - CSS modules that render per component.
+- `views/`
+  - Views and helper functions.
