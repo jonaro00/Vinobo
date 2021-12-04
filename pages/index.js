@@ -16,7 +16,7 @@ const vidCon = new VideoController();
 
 export default function Home(props) {
   React.useEffect(() => {
-    window.vidCon = vidCon;
+    window.vidCon = vidCon; // for debugging video
     const obs = () => {
       vidCon.setVideoID(props.model.currentVideo);
     };
@@ -35,28 +35,27 @@ export default function Home(props) {
   return (
     <>
       <Script src="https://www.youtube.com/iframe_api"></Script>
-      <div className="app">
-        <HeaderPresenter />
-        <div className={styles.pageContent}>
-          <div className={styles.sidebar}>
-            <SidebarPresenter model={props.model} vidCon={vidCon} />
-          </div>
-          <div className={styles.mainContent}>
-            <div className={styles.videoAndControlsContainer}>
-              <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
-              <div className={styles.transcriptAndControls}>
-                <div className={styles.transcriptView}>
-                  <TranscriptPresenter model={props.model} vidCon={vidCon} />
-                </div>
-                <div className={styles.controlView}>
-                  <ControlPresenter model={props.model} vidCon={vidCon} />
-                </div>
+
+      <HeaderPresenter />
+      <div className={styles.pageContent}>
+        <div className={styles.sidebar}>
+          <SidebarPresenter model={props.model} vidCon={vidCon} />
+        </div>
+        <div className={styles.mainContent}>
+          <div className={styles.videoAndControlsContainer}>
+            <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
+            <div className={styles.transcriptAndControls}>
+              <div className={styles.transcriptView}>
+                <TranscriptPresenter model={props.model} vidCon={vidCon} />
+              </div>
+              <div className={styles.controlView}>
+                <ControlPresenter model={props.model} vidCon={vidCon} />
               </div>
             </div>
-            <div className={styles.notesContainer}>
-              <TestPresenter model={props.model} vidCon={vidCon} />
-              <NotesPresenter model={props.model} />
-            </div>
+          </div>
+          <div className={styles.notesContainer}>
+            <TestPresenter model={props.model} vidCon={vidCon} />
+            <NotesPresenter model={props.model} />
           </div>
         </div>
       </div>

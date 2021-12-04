@@ -21,7 +21,7 @@ export default function VideoPlayerPresenter(props) {
           onStateChange: (event) => props.vidCon.onPlayerStateChange(event),
         },
       });
-      window.player = player;
+      window.player = player; // for debugging video
     };
     return () => {
       // console.log("DESTROYING PLAYER ⚠");

@@ -54,7 +54,6 @@ export default class VideoController extends Observable {
    */
   onPlayerReady(event) {
     this.initialize(event.target);
-    // this.onPlayerStateChange({ data: -1337 });
     if (!this.partiallyInitialized) {
       this.partiallyInitialized = true;
       for (let cb of this.prioQueue) {
@@ -87,6 +86,7 @@ export default class VideoController extends Observable {
    */
   setVideoID(id) {
     this.executePrio(() => {
+      if (this.fullyInitialized && this.player.getVideoData().video_id === id) return;
       this.player.cueVideoById(id);
       this.fullyInitialized = false;
     });
@@ -122,15 +122,13 @@ export default class VideoController extends Observable {
   }
 
   /**
-   * Gets the title of the current video.
-   * @returns {string} The video title.
+   * Gets the data of the current video. Contains id, title, author, length, and more.
+   * @returns {Object} The video data.
    */
-  getTitle() {
-    // if (!this.player) return;
-    // return this.player.getVideoData().title;
+  getVideoInfo() {
     return new Promise((resolve, reject) => {
       this.execute(() => {
-        resolve(this.player.getVideoData().title);
+        resolve({ ...this.player.getVideoData(), length: this.player.getDuration() });
       });
     });
   }

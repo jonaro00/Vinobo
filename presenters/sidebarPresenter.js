@@ -1,6 +1,5 @@
 import React from "react";
 import useModelProperty from "../js/useModelProperty.js";
-import usePromise from "../js/usePromise";
 import SidebarView from "../views/sidebarView.js";
 import SidebarActiveView from "../views/sidebarActiveView.js";
 import { extractID } from "../js/transcript.js";
@@ -8,12 +7,10 @@ import { extractID } from "../js/transcript.js";
 export default function SidebarPresenter(props) {
   const [error, setError] = React.useState(null);
   const videos = useModelProperty(props.model, "videos");
-  const id = useModelProperty(props.model, "currentVideo"); // TODO: highlight the active video
+  const model_id = useModelProperty(props.model, "currentVideo"); // TODO: highlight the active video
 
-  const activeView = true;
-
-  if (activeView) {
-    return (
+  return (
+    <>
       <SidebarActiveView
         videos={videos}
         videoChoice={(ref) => {
@@ -30,10 +27,12 @@ export default function SidebarPresenter(props) {
           if (id) {
             console.log("User wants to set video to ID ", id);
             props.model.setCurrentVideo(id);
-            props.vidCon.getTitle().then((title) =>
+            props.vidCon.getVideoInfo().then((info) =>
               props.model.addVideo({
                 id: id,
-                title: title,
+                title: info.title,
+                author: info.author,
+                length: info.length,
               })
             );
           } else {
@@ -43,9 +42,12 @@ export default function SidebarPresenter(props) {
         removeVideo={(id) => props.model.removeVideo(id)}
         error={error}
       />
-    );
-  } else {
-    return (
+      <div style={{ padding: "50px 0" }}>
+        {/* delete this later */}
+        SidebarActiveView &uarr;
+        <br />
+        SidebarView &darr;
+      </div>{" "}
       <SidebarView
         videos={videos}
         videoChoice={(ref) => {
@@ -58,16 +60,18 @@ export default function SidebarPresenter(props) {
           }
         }}
         addCurrentVideo={() => {
-          props.vidCon.getTitle().then((title) =>
+          props.vidCon.getVideoInfo().then((info) =>
             props.model.addVideo({
-              id: extractID(ref),
-              title: title,
+              id: model_id,
+              title: info.title,
+              author: info.author,
+              length: info.length,
             })
           );
         }}
         removeVideo={(id) => props.model.removeVideo(id)}
         error={error}
       />
-    );
-  }
+    </>
+  );
 }

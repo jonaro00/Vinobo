@@ -1,0 +1,38 @@
+.container {
+  background: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+}
+
+.videoCard,
+.videoDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.videoCard {
+  background-color: #ecf7f7;
+  padding: 4px;
+  border-radius: 4px;
+  margin: 0 4px 4px 4px;
+}
+
+.videoCard.highlighted {
+  /* TODO */
+}
+
+.videoInfo {
+  padding-right: 0.4em;
+  width: 100%;
+}
+
+.videoDetails {
+  padding-left: 1em;
+  font-size: 0.8em;
+  width: 100%;
+}
+
+.videoCard button {
+  /* TODO */
+}

@@ -8,10 +8,16 @@ function TestPresenter(props) {
   const videoTime = useModelProperty(props.vidCon, "currentTime");
 
   const [promise, setPromise] = React.useState(null);
-  React.useEffect(() => setPromise(props.vidCon.getTitle()), [id]);
+  React.useEffect(() => setPromise(props.vidCon.getVideoInfo()), [id]);
   const [data, error] = usePromise(promise);
 
-  return <TestView id={id} time={videoTime} title={error ? "ERROR!" : data || "loading..."} />;
+  return (
+    <TestView
+      id={id}
+      time={videoTime}
+      title={error ? "ERROR!" : data ? data.title : "loading..."}
+    />
+  );
 }
 
 export default TestPresenter;

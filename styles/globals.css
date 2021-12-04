@@ -17,6 +17,11 @@ a {
   box-sizing: border-box;
 }
 
+.app {
+  margin: auto;
+  max-width: 2100px;
+}
+
 .bold {
   font-weight: bold;
 }
