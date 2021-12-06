@@ -25,7 +25,7 @@ export default function Home(props) {
     props.model.setCurrentVideo("-rmlJzh_K6o");
     // TEST NOTE
     props.model.addNote({
-      offset: "01:00",
+      offset: 83,
       title: "JSX",
       content:
         "Scripts with the attribute text/jsx will not be executed by the browser. The attribute is a signal for Babel to take over and translate the JSX snippets to JavaScript. Babel will then add a SCRIPT to the DOM, which is in JavaScript and will be executed by the browser.",
