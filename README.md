@@ -14,11 +14,12 @@ The user will also be able to annotate the video with personal notes, placed at 
 - Pasting Youtube link and view the video.
 - Searching in the transcript.
 - Adding/deleting a video to the model.
+- Adding notes.
+- Logo.
 
 ## What we plan to add
 
-- Adding/deleting notes.
-- Logo.
+- Deleting notes.
 - Persistence (keeping user data saved if they log in, and perhaps also saving to localStorage if not logged in).
 - Auto-scrolling of transcript and notes while the video is playing.
 - Edit notes after they've been saved.
