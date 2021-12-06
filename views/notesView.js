@@ -8,7 +8,7 @@ export default function NotesView(props) {
       {[...props.notes].map((note) => (
         <div key={note.title}>
           <div>
-            <span>{formatTimestamp(note.offset)}</span> <span>{note.title}</span>
+            <span>{formatTimestamp(note.offset * 1000)}</span> <span>{note.title}</span>
           </div>
           <p>{note.content}</p>
         </div>
