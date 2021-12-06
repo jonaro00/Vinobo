@@ -10,15 +10,21 @@ export default function ControlPresenter(props) {
     <ControlView
       currentTime={videoTime}
       addNote={(ref) => {
+        ref.preventDefault();
+        console.log(newNote);
         props.model.addNote(newNote);
+        console.log(props.model.notes);
       }}
       setTitle={(ref) => {
+        ref.preventDefault();
         newNote.title = ref.target.value;
       }}
       setTime={(ref) => {
+        ref.preventDefault();
         newNote.offset = ref.target.value;
       }}
       setNote={(ref) => {
+        ref.preventDefault();
         newNote.content = ref.target.value;
       }}
     />
