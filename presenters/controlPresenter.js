@@ -16,6 +16,8 @@ export default function ControlPresenter(props) {
           console.log("No title");
         } else if (!newNote.content) {
           console.log("No content");
+        } else if (!newNote.offset) {
+          newNote.offset = videoTime;
         } else {
           props.model.addNote(newNote);
           console.log(props.model.notes);
