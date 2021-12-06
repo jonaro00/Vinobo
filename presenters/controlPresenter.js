@@ -12,8 +12,14 @@ export default function ControlPresenter(props) {
       addNote={(ref) => {
         ref.preventDefault();
         console.log(newNote);
-        props.model.addNote(newNote);
-        console.log(props.model.notes);
+        if (!newNote.title) {
+          console.log("No title");
+        } else if (!newNote.content) {
+          console.log("No content");
+        } else {
+          props.model.addNote(newNote);
+          console.log(props.model.notes);
+        }
       }}
       setTitle={(ref) => {
         ref.preventDefault();
