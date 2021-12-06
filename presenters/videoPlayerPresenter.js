@@ -24,8 +24,8 @@ export default function VideoPlayerPresenter(props) {
       window.player = player; // for debugging video
     };
     return () => {
-      // console.log("DESTROYING PLAYER ⚠");
-      // props.vidCon.destroy(); // 2021-12-02 Why is this being called when `id` updates? (ask coach) /J
+      console.log("DESTROYING PLAYER ⚠");
+      props.vidCon.destroy(); // 2021-12-02 Why is this being called when `id` updates? (ask coach) /J
     };
   }, []);
 
