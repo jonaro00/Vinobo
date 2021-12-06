@@ -15,7 +15,10 @@ export default function ControlView(props) {
             <input className={styles.controlAddNote} type="submit" value="Add Note" />
           </div>
           <div>
-            <textarea className={styles.controlBodyElement} type="textarea" defaultValue="Note" />
+            <input className={styles.controlTitleElement} type="input" defaultValue="Title" />
+          </div>
+          <div>
+            <textarea className={styles.controlNoteElement} type="textarea" defaultValue="Note" />
           </div>
         </div>
       </form>

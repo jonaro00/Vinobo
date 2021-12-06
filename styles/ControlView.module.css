@@ -14,8 +14,13 @@
   float: right;
 }
 
-.controlBodyElement {
+.controlNoteElement {
   margin: 5px;
   width: 100%;
   height: 200px;
+}
+
+.controlTitleElement {
+  margin: 5px;
+  width: 100%;
 }
