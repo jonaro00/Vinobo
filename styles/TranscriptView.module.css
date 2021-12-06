@@ -1,14 +1,23 @@
 .container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   background: rgb(255, 255, 255);
-  height: 500px;
+  width: 100%;
+  height: 100%;
+}
+
+.search {
+  flex: 0 0;
+  padding-bottom: 10px;
+}
+
+.search input {
   width: 100%;
 }
 
 .transcripts {
+  flex: 1 0;
   background: rgb(255, 255, 255);
-  height: 100%;
-  width: 100%;
   overflow-y: auto;
   font-size: 15px;
   border: 1px solid black;
@@ -17,13 +26,4 @@
 .transcripts > div {
   margin-top: 6px;
   margin-left: 10px;
-}
-
-.search {
-  padding-bottom: 10px;
-}
-
-.search input {
-  width: 100%;
-  margin-top: 10px;
 }
