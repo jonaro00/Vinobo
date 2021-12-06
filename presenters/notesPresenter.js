@@ -4,6 +4,6 @@ import useModelProperty from "../js/useModelProperty.js";
 
 export default function NotesPresenter(props) {
   const id = useModelProperty(props.model, "currentVideo");
-  const videos = useModelProperty(props.model, "videos");
-  return <NotesView notes={props.model.notes} currentVideo={id} />;
+  const notes = useModelProperty(props.model, "notes");
+  return <NotesView notes={notes} currentVideo={id} />;
 }

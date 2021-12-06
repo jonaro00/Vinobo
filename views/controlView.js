@@ -1,10 +1,14 @@
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 import styles from "../styles/ControlView.module.css";
 
 export default function ControlView(props) {
   return (
     <div>
-      <form onSubmit={(ref) => props.addNote(ref)}>
+      <form
+        onSubmit={(ref) => {
+          props.addNote(ref);
+          ref.target.reset();
+        }}
+      >
         <div className={styles.controlView}>
           <div>
             <input
@@ -12,7 +16,7 @@ export default function ControlView(props) {
               onChange={(ref) => props.setTimestamp(ref)}
               name="timestamp"
               type="appt-time"
-              defaultValue={props.currentTime}
+              placeholder={props.currentTime}
             />
             <input className={styles.controlAddNote} type="submit" value="Add Note" />
           </div>
