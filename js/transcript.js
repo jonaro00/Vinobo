@@ -1,5 +1,5 @@
 const ytRegex =
-  /^((https?:\/\/)?(youtu\.be\/|www\.youtube\.com\/watch\?.*v=))?([A-Za-z0-9-_]{11}).*$/;
+  /^((https?:\/\/)?(youtu\.be\/|www\.youtube\.com\/watch\?.*v=))?(?<id>[A-Za-z0-9-_]{11}).*$/;
 // /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
 
 /**
@@ -9,7 +9,7 @@ const ytRegex =
  */
 function extractID(URL_or_ID) {
   const match = URL_or_ID.match(ytRegex);
-  return match ? match[4] : null;
+  return match ? match.groups.id : null;
 }
 
 /**
@@ -46,4 +46,19 @@ function formatTimestamp(ms) {
   return `${min}:${sec}`;
 }
 
-export { ytRegex, extractID, getTranscript, formatTimestamp };
+const timestampRegex =
+  /^((?<hours>[0-9]*)[:\.])?(?<minutes>[0-5]?[0-9])[:\.](?<seconds>[0-5]?[0-9])$/;
+/**
+ * Takes a timestamp in the form [hh:]mm:ss and returns the number of seconds that the timestamp represents.
+ * If the timestamp is invalid, returns `null`.
+ * @param {String} timestamp The timestamp to parse.
+ * @returns The number of seconds represented, or `null`.
+ */
+function parseTimestamp(timestamp) {
+  const match = timestamp.match(timestampRegex);
+  if (!match) return null;
+  const { hours, minutes, seconds } = match.groups;
+  return Number((hours * 3600 || 0) + minutes * 60 + seconds);
+}
+
+export { ytRegex, extractID, getTranscript, formatTimestamp, timestampRegex, parseTimestamp };
