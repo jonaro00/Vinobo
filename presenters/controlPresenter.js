@@ -5,8 +5,24 @@ import { formatTimestamp } from "../js/transcript";
 
 export default function ControlPresenter(props) {
   const videoTime = toHHMMSS(useModelProperty(props.vidCon, "currentTime"));
-
-  return <ControlView currentTime={videoTime} />;
+  const newNote = { title: "", offset: "", content: "" };
+  return (
+    <ControlView
+      currentTime={videoTime}
+      addNote={(ref) => {
+        props.model.addNote(newNote);
+      }}
+      setTitle={(ref) => {
+        newNote.title = ref.target.value;
+      }}
+      setTime={(ref) => {
+        newNote.offset = ref.target.value;
+      }}
+      setNote={(ref) => {
+        newNote.content = ref.target.value;
+      }}
+    />
+  );
 }
 
 function toHHMMSS(sec) {
