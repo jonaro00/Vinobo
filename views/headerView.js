@@ -8,7 +8,9 @@ export default function HeaderView(props) {
       <div>
         <Link href="/">
           <a>
-            <Image src={"/logo.png"} width={50} height={50} alt="Logo" />
+            <div className={styles.logo}>
+              <Image src={"/logo2.png"} width={42} height={42} alt="Logo" />
+            </div>
             <div className={styles.siteNameContainer}>
               <div className={styles.siteName}>Vinobo</div>
               <div className={styles.siteSubTitle}>Video Notebook</div>
