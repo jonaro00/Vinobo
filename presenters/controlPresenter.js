@@ -27,11 +27,11 @@ export default function ControlPresenter(props) {
         ref.preventDefault();
         newNote.title = ref.target.value;
       }}
-      setTime={(ref) => {
+      setTimestamp={(ref) => {
         ref.preventDefault();
         newNote.offset = ref.target.value;
       }}
-      setNote={(ref) => {
+      setContent={(ref) => {
         ref.preventDefault();
         newNote.content = ref.target.value;
       }}

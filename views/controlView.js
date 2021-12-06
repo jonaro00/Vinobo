@@ -9,7 +9,7 @@ export default function ControlView(props) {
           <div>
             <input
               className={styles.controlTimeStamp}
-              onChange={(ref) => props.setTime(ref)}
+              onChange={(ref) => props.setTimestamp(ref)}
               name="timestamp"
               type="appt-time"
               defaultValue={props.currentTime}
@@ -22,16 +22,18 @@ export default function ControlView(props) {
               onChange={(ref) => props.setTitle(ref)}
               name="title"
               type="input"
-              defaultValue="Title"
+              placeholder="Title"
+              required
             />
           </div>
           <div>
             <textarea
               className={styles.controlNoteElement}
-              onChange={(ref) => props.setNote(ref)}
+              onChange={(ref) => props.setContent(ref)}
               name="note"
               type="textarea"
-              defaultValue="Note"
+              placeholder="Note"
+              required
             />
           </div>
         </div>
