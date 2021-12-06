@@ -10,40 +10,40 @@ export default function SidebarPresenter(props) {
   const model_id = useModelProperty(props.model, "currentVideo"); // TODO: highlight the active video
 
   return (
-    <>
-      <SidebarActiveView
-        videos={videos}
-        videoChoice={(ref) => {
-          const id = extractID(ref);
-          if (id) {
-            console.log("User wants to set video to ID ", extractID(ref));
-            props.model.setCurrentVideo(id);
-          } else {
-            setError("Not referring to a valid ID/URL");
-          }
-        }}
-        addVideo={(ref) => {
-          const id = extractID(ref);
-          if (id) {
-            console.log("User wants to set video to ID ", id);
-            props.model.setCurrentVideo(id);
-            props.vidCon.getVideoInfo().then((info) =>
-              props.model.addVideo({
-                id: id,
-                title: info.title,
-                author: info.author,
-                length: info.length,
-              })
-            );
-          } else {
-            setError("Not referring to a valid ID/URL");
-          }
-        }}
-        removeVideo={(id) => props.model.removeVideo(id)}
-        error={error}
-      />
+    //<>
+    <SidebarActiveView
+      videos={videos}
+      videoChoice={(ref) => {
+        const id = extractID(ref);
+        if (id) {
+          console.log("User wants to set video to ID ", extractID(ref));
+          props.model.setCurrentVideo(id);
+        } else {
+          setError("Not referring to a valid ID/URL");
+        }
+      }}
+      addVideo={(ref) => {
+        const id = extractID(ref);
+        if (id) {
+          console.log("User wants to set video to ID ", id);
+          props.model.setCurrentVideo(id);
+          props.vidCon.getVideoInfo().then((info) =>
+            props.model.addVideo({
+              id: id,
+              title: info.title,
+              author: info.author,
+              length: info.length,
+            })
+          );
+        } else {
+          setError("Not referring to a valid ID/URL");
+        }
+      }}
+      removeVideo={(id) => props.model.removeVideo(id)}
+      error={error}
+    />
+    /*
       <div style={{ padding: "50px 0" }}>
-        {/* delete this later */}
         SidebarActiveView &uarr;
         <br />
         SidebarView &darr;
@@ -72,6 +72,7 @@ export default function SidebarPresenter(props) {
         removeVideo={(id) => props.model.removeVideo(id)}
         error={error}
       />
-    </>
+      */
+    //</>
   );
 }
