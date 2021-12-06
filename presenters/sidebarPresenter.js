@@ -8,10 +8,12 @@ export default function SidebarPresenter(props) {
   const [error, setError] = React.useState(null);
   const videos = useModelProperty(props.model, "videos");
   const model_id = useModelProperty(props.model, "currentVideo"); // TODO: highlight the active video
+  const [loading, setLoading] = React.useState(false);
 
   return (
     //<>
     <SidebarActiveView
+      loadingVideos={loading}
       videos={videos}
       videoChoice={(ref) => {
         const id = extractID(ref);
@@ -27,14 +29,18 @@ export default function SidebarPresenter(props) {
         if (id) {
           console.log("User wants to set video to ID ", id);
           props.model.setCurrentVideo(id);
-          props.vidCon.getVideoInfo().then((info) =>
-            props.model.addVideo({
-              id: id,
-              title: info.title,
-              author: info.author,
-              length: info.length,
-            })
-          );
+          setLoading(true);
+          props.vidCon
+            .getVideoInfo()
+            .then((info) =>
+              props.model.addVideo({
+                id: id,
+                title: info.title,
+                author: info.author,
+                length: info.length,
+              })
+            )
+            .finally(() => setLoading(false));
         } else {
           setError("Not referring to a valid ID/URL");
         }
