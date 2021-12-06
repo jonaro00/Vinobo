@@ -1,4 +1,3 @@
-import Head from "next/head";
 import React from "react";
 import Script from "next/script";
 import styles from "../styles/Home.module.css";
@@ -10,7 +9,6 @@ import SidebarPresenter from "../presenters/sidebarPresenter";
 import NotesPresenter from "../presenters/notesPresenter";
 import VideoController from "../js/videoController";
 import ControlPresenter from "../presenters/controlPresenter";
-import useModelProperty from "../js/useModelProperty";
 
 const vidCon = new VideoController();
 
