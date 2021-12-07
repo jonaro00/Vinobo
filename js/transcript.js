@@ -58,7 +58,7 @@ function parseTimestamp(timestamp) {
   const match = timestamp.match(timestampRegex);
   if (!match) return null;
   const { hours, minutes, seconds } = match.groups;
-  return Number((hours * 3600 || 0) + minutes * 60 + seconds);
+  return Number((hours * 3600 || 0) + minutes * 60 + seconds * 1);
 }
 
 export { ytRegex, extractID, getTranscript, formatTimestamp, timestampRegex, parseTimestamp };

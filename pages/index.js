@@ -7,6 +7,7 @@ import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
 import TranscriptPresenter from "../presenters/transcriptPresenter";
 import SidebarPresenter from "../presenters/sidebarPresenter";
 import NotesPresenter from "../presenters/notesPresenter";
+import LoginPresenter from "../presenters/loginPresenter";
 import VideoController from "../js/videoController";
 import ControlPresenter from "../presenters/controlPresenter";
 
@@ -38,6 +39,7 @@ export default function Home(props) {
       <div className={styles.pageContent}>
         <div className={styles.sidebar}>
           <SidebarPresenter model={props.model} vidCon={vidCon} />
+          <LoginPresenter vidCon={vidCon} />
         </div>
         <div className={styles.mainContent}>
           <div className={styles.videoAndControlsContainer}>
