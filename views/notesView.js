@@ -5,25 +5,22 @@ export default function NotesView(props) {
   return (
     <div className={styles.container}>
       <h3>Video: {props.currentVideo}</h3>
-      <h4>My notes</h4>
+      <h4>My Cards</h4>
       {[...props.notes].map((note) => (
-        <div className={styles.noteCard}>
-          <div key={note.title}>
-            <div className={styles.noteInfo}>
-              <div>{note.title}</div>
-              <div>{formatTimestamp(note.offset * 1000)}</div>
-            </div>
-            <div className={styles.notes}>
-              <p>{note.content}</p>
-            </div>
-            <div className={styles.noteControl}>
-              <button>Edit</button>
-              <button>Delete</button>
-            </div>
+        <div className={styles.noteCard} key={note.title}>
+          <div className={styles.noteInfo}>
+            <div>{note.title}</div>
+            <div>{formatTimestamp(note.offset * 1000)}</div>
+          </div>
+          <div className={styles.notes}>
+            <p>{note.content}</p>
+          </div>
+          <div className={styles.noteControl}>
+            <button>Edit</button>
+            <button>Delete</button>
           </div>
         </div>
       ))}
-      <p></p>
     </div>
   );
 }
