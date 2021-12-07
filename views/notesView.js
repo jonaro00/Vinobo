@@ -3,7 +3,6 @@ import { formatTimestamp } from "../js/transcript";
 export default function NotesView(props) {
   return (
     <div>
-      <h3>Video: {props.currentVideo}</h3>
       <h4>My notes</h4>
       {props.notes &&
         [...props.notes].map((note) => (

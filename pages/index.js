@@ -1,5 +1,4 @@
 import React from "react";
-import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import TestPresenter from "../presenters/testPresenter";
 import HeaderPresenter from "../presenters/headerPresenter";
@@ -35,8 +34,6 @@ export default function Home(props) {
 
   return (
     <>
-      <Script src="https://www.youtube.com/iframe_api"></Script>
-
       <HeaderPresenter />
       <div className={styles.pageContent}>
         <div className={styles.sidebar}>
@@ -56,11 +53,11 @@ export default function Home(props) {
             </div>
           </div>
           <div className={styles.notesContainer}>
-            <TestPresenter model={props.model} vidCon={vidCon} />
             <NotesPresenter model={props.model} />
           </div>
         </div>
       </div>
+      <TestPresenter model={props.model} vidCon={vidCon} />
     </>
   );
 }

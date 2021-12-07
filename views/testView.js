@@ -1,10 +1,12 @@
-function TestView(props) {
+import React from "react";
+
+function TestView({ id, time, title }) {
   return (
     <p>
-      This is TestView. Current video ID is {props.id}. Current time is {props.time}s. Video title
-      is <b>{props.title}</b>.
+      This is TestView. Current video ID is {id}. Current time is {time}s. Video title is{" "}
+      <b>{title}</b>.
     </p>
   );
 }
 
-export default TestView;
+export default React.memo(TestView);
