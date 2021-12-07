@@ -22,7 +22,7 @@ export default function LoginPresenter(props) {
       onPassword={(pw) => setLoginPassword(pw)}
       login={() => setLoginPromise(signInWithEmailAndPassword(auth, loginEmail, loginPassword))}
       error={loginError}
-      currentUser={user.email}
+      currentUser={user ? user.email : ""}
     />
   );
 }
