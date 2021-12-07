@@ -41,9 +41,10 @@ export default function TranscriptPresenter(props) {
  */
 function transcriptTransform(data, query, highlightTime) {
   if (!data) return data;
-  var highlightTimeMs = highlightTime * 1000;
+  const highlightTimeMs = highlightTime * 1000;
+  const words = [query, ...query.split(/\s/)];
   return data
-    .filter((row) => row.searchText.includes(query))
+    .filter((row) => words.find((word) => row.searchText.includes(word)))
     .map((row) => ({
       ...row,
       highlighted:
