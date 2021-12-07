@@ -1,16 +1,12 @@
 import React from "react";
+import Script from "next/script";
 import VideoPlayerView from "../views/videoPlayerView";
-import useModelProperty from "../js/useModelProperty";
 
 export default function VideoPlayerPresenter(props) {
-  // const id = useModelProperty(props.model, "currentVideo");
-
   React.useEffect(() => {
-    let player;
-
     // This function creates an <iframe> (and YouTube player) after the API code downloads.
     window.onYouTubeIframeAPIReady = function () {
-      player = new window.YT.Player("player", {
+      const player = new window.YT.Player("player", {
         playerVars: {
           playsinline: 1,
           modestbranding: 1, // hide YT logo in bottom right
@@ -28,10 +24,10 @@ export default function VideoPlayerPresenter(props) {
       props.vidCon.destroy(); // 2021-12-02 Why is this being called when `id` updates? (ask coach) /J
     };
   }, []);
-
-  // React.useEffect(() => {
-  //   props.vidCon.setVideoID(id);
-  // }, [id]);
-
-  return <VideoPlayerView />;
+  return (
+    <>
+      <Script src="https://www.youtube.com/iframe_api"></Script>
+      <VideoPlayerView />
+    </>
+  );
 }

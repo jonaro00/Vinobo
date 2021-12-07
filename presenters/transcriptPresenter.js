@@ -10,14 +10,22 @@ export default function TranscriptPresenter(props) {
 
   const [promise, setPromise] = React.useState(null);
   React.useEffect(() => setPromise(getTranscript(id)), [id]);
-  const [data, error] = usePromise(promise);
+  const [sourceData, error] = usePromise(promise);
+
+  const [data, setProcessedData] = React.useState(null);
+  React.useEffect(() => {
+    setProcessedData(
+      sourceData &&
+        sourceData.map((row) => ({ ...row, searchText: makeStringSearchable(row.text) }))
+    );
+  }, [sourceData]);
 
   const [query, setQuery] = React.useState("");
 
   return (
     <TranscriptView
       transcriptError={error}
-      transcript={error || transcriptTransform(data, query, videoTime)}
+      transcript={error || transcriptTransform(data, makeStringSearchable(query), videoTime)}
       onText={(text) => setQuery(text)}
       selectTimestamp={(offset) => props.vidCon.seek(offset / 1000)}
     />
@@ -33,12 +41,29 @@ export default function TranscriptPresenter(props) {
  */
 function transcriptTransform(data, query, highlightTime) {
   if (!data) return data;
-  var highlightTimeMs = highlightTime * 1000;
+  const highlightTimeMs = highlightTime * 1000;
+  const words = [query, ...query.split(/\s/)];
   return data
-    .filter((row) => row.text.includes(query))
+    .filter((row) => words.find((word) => row.searchText.includes(word)))
     .map((row) => ({
       ...row,
       highlighted:
         highlightTimeMs >= row.offset && highlightTimeMs <= row.offset + row.duration * 0.5,
     }));
+}
+
+const punctuationRegex = /[^\w\s]/g;
+const secondRegex = /[\s-]+/g;
+/**
+ * Removes punctuation and more.
+ * @param {String} str The string to clean.
+ * @returns New string.
+ */
+function makeStringSearchable(str) {
+  return str
+    .trim()
+    .replaceAll(punctuationRegex, "")
+    .replaceAll(secondRegex, " ")
+    .normalize()
+    .toLocaleLowerCase();
 }

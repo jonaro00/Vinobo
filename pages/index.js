@@ -1,5 +1,4 @@
 import React from "react";
-import Script from "next/script";
 import styles from "../styles/Home.module.css";
 import TestPresenter from "../presenters/testPresenter";
 import HeaderPresenter from "../presenters/headerPresenter";
@@ -9,6 +8,7 @@ import SidebarPresenter from "../presenters/sidebarPresenter";
 import NotesPresenter from "../presenters/notesPresenter";
 import LoginPresenter from "../presenters/loginPresenter";
 import VideoController from "../js/videoController";
+import { Note } from "../js/model";
 import ControlPresenter from "../presenters/controlPresenter";
 
 const vidCon = new VideoController();
@@ -23,18 +23,17 @@ export default function Home(props) {
     // TEST VIDEO LOAD
     props.model.setCurrentVideo("-rmlJzh_K6o");
     // TEST NOTE
-    props.model.addNote({
-      offset: 3663,
-      title: "JSX",
-      content:
-        "Scripts with the attribute text/jsx will not be executed by the browser. The attribute is a signal for Babel to take over and translate the JSX snippets to JavaScript. Babel will then add a SCRIPT to the DOM, which is in JavaScript and will be executed by the browser.",
-    });
+    props.model.addNote(
+      new Note(
+        3663,
+        "JSX",
+        "Scripts with the attribute text/jsx will not be executed by the browser. The attribute is a signal for Babel to take over and translate the JSX snippets to JavaScript. Babel will then add a SCRIPT to the DOM, which is in JavaScript and will be executed by the browser."
+      )
+    );
   });
 
   return (
     <>
-      <Script src="https://www.youtube.com/iframe_api"></Script>
-
       <HeaderPresenter />
       <div className={styles.pageContent}>
         <div className={styles.sidebar}>
@@ -54,11 +53,11 @@ export default function Home(props) {
             </div>
           </div>
           <div className={styles.notesContainer}>
-            <TestPresenter model={props.model} vidCon={vidCon} />
             <NotesPresenter model={props.model} />
           </div>
         </div>
       </div>
+      <TestPresenter model={props.model} vidCon={vidCon} />
     </>
   );
 }
