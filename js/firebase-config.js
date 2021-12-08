@@ -1,10 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDP8zuSYJaL5YfjeZ76S0dL8YeISMjNcz0",
   // TODO: Replace with environment variables
   authDomain: "vinobo.firebaseapp.com",
+
+  databaseURL: "https://vinobo-default-rtdb.europe-west1.firebasedatabase.app",
 
   projectId: "vinobo",
 
@@ -16,4 +19,8 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+
+const database = getDatabase(app);
+const auth = getAuth(app);
+console.log(auth);
+export { auth, database };

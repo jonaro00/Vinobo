@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
+import { auth, database } from "../js/firebase-config";
 import TestPresenter from "../presenters/testPresenter";
 import HeaderPresenter from "../presenters/headerPresenter";
 import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
@@ -10,6 +11,7 @@ import LoginPresenter from "../presenters/loginPresenter";
 import VideoController from "../js/videoController";
 import { Note } from "../js/model";
 import ControlPresenter from "../presenters/controlPresenter";
+import DataPresenter from "../presenters/dataPresenter";
 
 const vidCon = new VideoController();
 
@@ -39,6 +41,7 @@ export default function Home(props) {
         <div className={styles.sidebar}>
           <SidebarPresenter model={props.model} vidCon={vidCon} />
           <LoginPresenter vidCon={vidCon} />
+          <DataPresenter />
         </div>
         <div className={styles.mainContent}>
           <div className={styles.videoAndControlsContainer}>
