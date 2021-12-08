@@ -1,4 +1,4 @@
-import { auth, database } from "../js/firebase-config";
+import { auth, database } from "../js/firebaseSetup";
 import { onAuthStateChanged } from "firebase/auth";
 import React from "react";
 import { set, ref, get, child } from "firebase/database";

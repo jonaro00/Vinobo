@@ -1,6 +1,6 @@
 import React from "react";
 import usePromise from "../js/usePromise";
-import { auth } from "../js/firebase-config";
+import { auth } from "../js/firebaseSetup";
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import LoginView from "../views/loginView";
 

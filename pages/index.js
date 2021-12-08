@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
-import { auth, database } from "../js/firebase-config";
 import TestPresenter from "../presenters/testPresenter";
 import HeaderPresenter from "../presenters/headerPresenter";
 import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
