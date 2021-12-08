@@ -42,9 +42,10 @@ export default function TranscriptPresenter(props) {
 function transcriptTransform(data, query, highlightTime) {
   if (!data) return data;
   const highlightTimeMs = highlightTime * 1000;
-  const words = [query, ...query.split(/\s/)];
+  const words = query.trim().split(/\s/);
+  console.log(query, words);
   return data
-    .filter((row) => words.find((word) => row.searchText.includes(word)))
+    .filter((row) => !query || words.find((word) => row.searchText.includes(word)))
     .map((row) => ({
       ...row,
       highlighted:
@@ -52,7 +53,7 @@ function transcriptTransform(data, query, highlightTime) {
     }));
 }
 
-const punctuationRegex = /[^\w\s]/g;
+const punctuationRegex = /[\.,:;-_<>|'*^´`+?\\!"#%&\/()=@{}[\]]/g;
 const secondRegex = /[\s-]+/g;
 /**
  * Removes punctuation and more.
