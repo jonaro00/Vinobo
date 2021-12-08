@@ -18,7 +18,7 @@ export default function NotesView(props) {
             </div>
             <div className={styles.noteControl}>
               <button>Edit</button>
-              <button>Delete</button>
+              <button onClick={() => props.removeNote(note.id)}>Delete</button>
             </div>
           </div>
         ))}
