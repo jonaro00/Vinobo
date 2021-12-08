@@ -43,7 +43,6 @@ function transcriptTransform(data, query, highlightTime) {
   if (!data) return data;
   const highlightTimeMs = highlightTime * 1000;
   const words = query.trim().split(/\s/);
-  console.log(query, words);
   return data
     .filter((row) => !query || words.find((word) => row.searchText.includes(word)))
     .map((row) => ({
