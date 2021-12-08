@@ -4,7 +4,6 @@ import styles from "../styles/NotesView.module.css";
 export default function NotesView(props) {
   return (
     <div className={styles.container}>
-      <h3>Video: {props.currentVideo}</h3>
       <h4>My Cards</h4>
       {props.notes &&
         [...props.notes].map((note) => (

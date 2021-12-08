@@ -4,27 +4,50 @@ const { randomUUID } = import("crypto");
 export default class Model extends Observable {
   constructor() {
     super();
+    this.persistors = [];
+    this.updatePersistors = true;
+
+    this.user = null;
+
     this.currentVideo = null;
     this.videos = [];
+  }
+  setUser(user) {
+    this.user = user;
+    this.notifyObservers();
   }
   setCurrentVideo(id) {
     if (this.currentVideo === id) return;
     this.currentVideo = id;
     this.notifyObservers();
+    this.notifyPersistors();
   }
   getVideo() {
     for (const vid of this.videos) if (vid.id === this.currentVideo) return { ...vid };
     return {};
+  }
+  setVideos(videos) {
+    this.videos = [...videos].map((v) => {
+      v.notes = v.notes || [];
+      return v;
+    });
+    this.notifyObservers();
+    this.notifyPersistors();
   }
   addVideo(videoObj) {
     // Only add if video is not already in list
     if (this.videos.map((obj) => obj.id).includes(videoObj.id)) return;
     this.videos = [...this.videos, videoObj];
     this.notifyObservers();
+    this.notifyPersistors();
   }
   removeVideo(id) {
-    this.videos = this.videos.filter((vid) => vid.id !== id);
-    this.notifyObservers();
+    let changed = false;
+    this.videos = this.videos.filter((vid) => vid.id !== id && (changed = true));
+    if (changed) {
+      this.notifyObservers();
+      this.notifyPersistors();
+    }
   }
   getNotes() {
     for (const vid of this.videos) if (vid.id === this.currentVideo) return [...vid.notes];
@@ -40,16 +63,42 @@ export default class Model extends Observable {
       return vid;
     });
     this.notifyObservers();
+    this.notifyPersistors();
   }
   removeNote(noteId) {
     let changed = false;
     this.videos = this.videos.map((vid) => {
       if (this.currentVideo === vid.id)
         // remove note
-        vid.notes = vid.notes.filter((note) => note.id !== noteId && ((changed = false) || true));
+        vid.notes = vid.notes.filter((note) => note.id !== noteId && (changed = true));
       return vid;
     });
-    if (changed) this.notifyObservers();
+    if (changed) {
+      this.notifyObservers();
+      this.notifyPersistors();
+    }
+  }
+  clear() {
+    // fired at sign out
+    this.currentVideo = null;
+    this.videos = [];
+    this.notifyObservers();
+  }
+  addPersistor(callback) {
+    this.persistors = [...this.persistors, callback];
+  }
+  removePersistor(callback) {
+    this.persistors = this.persistors.filter((ob) => ob !== callback);
+  }
+  notifyPersistors() {
+    if (!this.updatePersistors) return;
+    this.persistors.forEach((cb) => {
+      try {
+        cb();
+      } catch (error) {
+        // prevent one observer error from stopping the other callbacks to happen
+      }
+    });
   }
 }
 

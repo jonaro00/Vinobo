@@ -26,7 +26,7 @@ export default function SidebarView(props) {
                   >
                     <div>{video.title}</div>
                     <div className={styles.videoDetails}>
-                      <div>{video.notes.length} notes</div>
+                      <div>{video.notes?.length || 0} notes</div>
                       <div>{formatTimestamp(video.length * 1000)}</div>
                     </div>
                   </a>

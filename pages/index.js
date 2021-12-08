@@ -9,48 +9,44 @@ import NotesPresenter from "../presenters/notesPresenter";
 import LoginPresenter from "../presenters/loginPresenter";
 import VideoController from "../js/videoController";
 import ControlPresenter from "../presenters/controlPresenter";
-import DataPresenter from "../presenters/dataPresenter";
 
 const vidCon = new VideoController();
 
-export default function Home(props) {
+export default function Home({ model, auth }) {
   React.useEffect(() => {
     window.vidCon = vidCon; // for debugging video
     const obs = () => {
-      vidCon.setVideoID(props.model.currentVideo);
+      vidCon.setVideoID(model.currentVideo);
     };
-    props.model.addObserver(obs);
-    // TEST VIDEO LOAD
-    props.model.setCurrentVideo("-rmlJzh_K6o");
+    model.addObserver(obs);
   });
 
   return (
     <>
-      <HeaderPresenter />
+      <HeaderPresenter model={model} auth={auth} />
       <div className={styles.pageContent}>
         <div className={styles.sidebar}>
-          <SidebarPresenter model={props.model} vidCon={vidCon} />
-          <LoginPresenter vidCon={vidCon} />
-          <DataPresenter />
+          <SidebarPresenter model={model} vidCon={vidCon} />
+          <LoginPresenter model={model} auth={auth} />
         </div>
         <div className={styles.mainContent}>
           <div className={styles.videoAndControlsContainer}>
-            <VideoPlayerPresenter model={props.model} vidCon={vidCon} />
+            <VideoPlayerPresenter model={model} vidCon={vidCon} />
             <div className={styles.transcriptAndControls}>
               <div className={styles.transcriptView}>
-                <TranscriptPresenter model={props.model} vidCon={vidCon} />
+                <TranscriptPresenter model={model} vidCon={vidCon} />
               </div>
               <div className={styles.controlView}>
-                <ControlPresenter model={props.model} vidCon={vidCon} />
+                <ControlPresenter model={model} vidCon={vidCon} />
               </div>
             </div>
           </div>
           <div className={styles.notesContainer}>
-            <NotesPresenter model={props.model} />
+            <NotesPresenter model={model} />
           </div>
         </div>
       </div>
-      <TestPresenter model={props.model} vidCon={vidCon} />
+      <TestPresenter model={model} vidCon={vidCon} />
     </>
   );
 }

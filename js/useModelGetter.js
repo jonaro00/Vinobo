@@ -1,14 +1,14 @@
 import React from "react";
 
 /**
- * Custom hook that registers a model attribute that the View is question is dependent on.
- * Registers an observer to recieve updates of the model attribute, and only re-renders
+ * Custom hook that registers a model getter that the View is dependent on.
+ * Registers an observer to recieve updates of the model getter, and only re-renders
  * when this attribute changed.
  * @param {*} model An observable object.
- * @param {*} getterName Attribute name in the model.
+ * @param {*} getterName Method name in the model.
  * @returns The value of the model attribute (stateful).
  */
-export default function useModelProperty(model, getterName) {
+export default function useModelGetter(model, getterName) {
   // Use a state in the component
   const [value, setValue] = React.useState(model[getterName]());
   React.useEffect(
