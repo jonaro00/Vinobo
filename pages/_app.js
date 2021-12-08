@@ -2,8 +2,10 @@ import Head from "next/head";
 import React from "react";
 import "../styles/globals.css";
 import Model, { Video, Note } from "../js/model";
+import persistModel from "../js/persistModel";
 
 const model = new Model(); // user login, users' notes for every video?
+persistModel(model);
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
