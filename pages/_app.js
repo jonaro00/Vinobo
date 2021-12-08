@@ -2,11 +2,12 @@ import Head from "next/head";
 import React from "react";
 import "../styles/globals.css";
 import Model, { Video, Note } from "../js/model";
-import usePromise from "../js/usePromise";
 import { auth } from "../js/firebaseSetup";
 import { onAuthStateChanged } from "@firebase/auth";
+import persistModel from "../js/persistModel";
 
-const model = new Model();
+const model = new Model(); // user login, users' notes for every video?
+persistModel(model);
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
@@ -15,9 +16,6 @@ function MyApp({ Component, pageProps }) {
     window.Note = Note;
   }); // for debugging model
 
-  // const [loginPromise, setLoginPromise] = React.useState(null);
-  // const [loginData, loginError] = usePromise(loginPromise);
-  // const [user, setUser] = React.useState(null);
   const [loadingUser, setLoadingUser] = React.useState(false);
 
   React.useEffect(() => {
@@ -26,7 +24,6 @@ function MyApp({ Component, pageProps }) {
       auth,
       (user) => {
         // user is `User` object or `null`
-        // setUser(user);
         model.setUser(user ? user.email : "");
         setLoadingUser(false);
         if (user) {
