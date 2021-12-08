@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * Custom hook that registers a model attribute that the View is question is dependent on.
+ * Custom hook that registers a model attribute that the View is dependent on.
  * Registers an observer to recieve updates of the model attribute, and only re-renders
  * when this attribute changed.
  * @param {*} model An observable object.
