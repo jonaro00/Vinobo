@@ -24,7 +24,7 @@ export default function Home({ model, auth }) {
 
   return (
     <>
-      <HeaderPresenter model={model} />
+      <HeaderPresenter model={model} auth={auth} />
       <div className={styles.pageContent}>
         <div className={styles.sidebar}>
           <SidebarPresenter model={model} vidCon={vidCon} />

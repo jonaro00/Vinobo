@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/HeaderView.module.css";
 
-export default function HeaderView({ user }) {
+export default function HeaderView({ user, signOut }) {
   return (
     <div className={styles.container}>
       <div>
@@ -25,8 +25,8 @@ export default function HeaderView({ user }) {
         {user ? (
           <>
             <p>Signed in as: {user}</p>
-            <Link href="#">
-              <a>Sign Out</a>
+            <Link href="">
+              <a onClick={signOut}>Sign Out</a>
             </Link>
           </>
         ) : (
