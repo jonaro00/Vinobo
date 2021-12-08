@@ -4,10 +4,10 @@ export default function usePromise(promise) {
   const [data, setData] = React.useState(null);
   const [error, setError] = React.useState(null);
   React.useEffect(() => {
+    // at promise change, reset data and error from previous promise results
     setData(null);
     setError(null);
     let cancelled = false;
-    // at promise change, reset data and error from promise results
     if (promise)
       promise
         .then((dt) => {

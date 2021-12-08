@@ -4,8 +4,13 @@ const { randomUUID } = import("crypto");
 export default class Model extends Observable {
   constructor() {
     super();
+    this.user = null;
     this.currentVideo = null;
     this.videos = [];
+  }
+  setUser(user) {
+    this.user = user;
+    this.notifyObservers();
   }
   setCurrentVideo(id) {
     if (this.currentVideo === id) return;

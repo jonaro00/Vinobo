@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/HeaderView.module.css";
 
-export default function HeaderView(props) {
+export default function HeaderView({ user }) {
   return (
     <div className={styles.container}>
       <div>
@@ -22,9 +22,20 @@ export default function HeaderView(props) {
         </Link>
       </div>
       <div>
-        <Link href="#">
-          <a>Sign In</a>
-        </Link>
+        {user ? (
+          <>
+            <p>Signed in as: {user}</p>
+            <Link href="#">
+              <a>Sign Out</a>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="#">
+              <a>Sign In</a>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
