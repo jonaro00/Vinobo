@@ -43,7 +43,13 @@ export default class Model extends Observable {
   }
   removeVideo(id) {
     let changed = false;
-    this.videos = this.videos.filter((vid) => vid.id !== id && (changed = true));
+    this.videos = this.videos.filter((vid) => {
+      if (vid.id !== id) {
+        return true;
+      } else {
+        changed = true;
+      }
+    });
     if (changed) {
       this.notifyObservers();
       this.notifyPersistors();
@@ -70,7 +76,13 @@ export default class Model extends Observable {
     this.videos = this.videos.map((vid) => {
       if (this.currentVideo === vid.id)
         // remove note
-        vid.notes = vid.notes.filter((note) => note.id !== noteId && (changed = true));
+        vid.notes = vid.notes.filter((note) => {
+          if (note.id !== noteId) {
+            return true;
+          } else {
+            changed = true;
+          }
+        });
       return vid;
     });
     if (changed) {
