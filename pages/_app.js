@@ -6,14 +6,14 @@ import { auth } from "../js/firebaseSetup";
 import { onAuthStateChanged } from "@firebase/auth";
 import persistModel from "../js/persistModel";
 
-const model = new Model(); // user login, users' notes for every video?
-persistModel(model);
+const model = new Model();
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
     window.model = model;
     window.Video = Video;
     window.Note = Note;
+    window.auth = auth;
   }); // for debugging model
 
   const [loadingUser, setLoadingUser] = React.useState(false);
@@ -28,9 +28,10 @@ function MyApp({ Component, pageProps }) {
         setLoadingUser(false);
         if (user) {
           console.log("User signed in:", user.email);
-          // TODO persist model
+          persistModel(model);
         } else {
           console.log("No user is signed in");
+          model.clear();
         }
       },
       (error) => {
