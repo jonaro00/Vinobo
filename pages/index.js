@@ -9,7 +9,6 @@ import SidebarPresenter from "../presenters/sidebarPresenter";
 import NotesPresenter from "../presenters/notesPresenter";
 import LoginPresenter from "../presenters/loginPresenter";
 import VideoController from "../js/videoController";
-import { Note } from "../js/model";
 import ControlPresenter from "../presenters/controlPresenter";
 import DataPresenter from "../presenters/dataPresenter";
 
@@ -24,14 +23,6 @@ export default function Home(props) {
     props.model.addObserver(obs);
     // TEST VIDEO LOAD
     props.model.setCurrentVideo("-rmlJzh_K6o");
-    // TEST NOTE
-    props.model.addNote(
-      new Note(
-        3663,
-        "JSX",
-        "Scripts with the attribute text/jsx will not be executed by the browser. The attribute is a signal for Babel to take over and translate the JSX snippets to JavaScript. Babel will then add a SCRIPT to the DOM, which is in JavaScript and will be executed by the browser."
-      )
-    );
   });
 
   return (
