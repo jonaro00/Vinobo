@@ -46,7 +46,7 @@ export default class Model extends Observable {
     this.videos = this.videos.map((vid) => {
       if (this.currentVideo === vid.id)
         // remove note
-        vid.notes = vid.notes.filter((note) => note.id !== noteId && ((changed = false) || true));
+        vid.notes = vid.notes.filter((note) => note.id !== noteId && (changed = true));
       return vid;
     });
     if (changed) this.notifyObservers();
