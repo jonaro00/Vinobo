@@ -1,4 +1,5 @@
 import Observable from "./observable";
+const { randomUUID } = import("crypto");
 
 export default class Model extends Observable {
   constructor() {
@@ -64,7 +65,7 @@ export class Video {
 
 export class Note {
   constructor(offset, title, content) {
-    this.id = crypto.randomUUID ? crypto.randomUUID() : "0";
+    this.id = randomUUID ? randomUUID() : crypto.randomUUID ? crypto.randomUUID() : "0";
     this.offset = offset;
     this.title = title;
     this.content = content;
