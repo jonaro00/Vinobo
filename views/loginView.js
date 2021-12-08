@@ -15,8 +15,11 @@ export default function LoginView(props) {
         <button onClick={props.login}>Log in!</button>
         <button onClick={props.logout}>Log out!</button>
       </div>
-      {props.user ? <div>Current user: {props.user.email}</div> : <div>No user logged in</div>}
-      {props.error ? <div>{props.error.message}</div> : <div></div>}
+      {props.error ? (
+        <div>There was an error: {props.error.message}</div>
+      ) : (
+        <div>Current user: {props.currentUser}</div>
+      )}
     </div>
   );
 }

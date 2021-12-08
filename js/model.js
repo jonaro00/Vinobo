@@ -64,7 +64,7 @@ export class Video {
 
 export class Note {
   constructor(offset, title, content) {
-    this.id = crypto.randomUUID() || "0";
+    this.id = crypto.randomUUID ? crypto.randomUUID() : "0";
     this.offset = offset;
     this.title = title;
     this.content = content;
