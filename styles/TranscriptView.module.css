@@ -23,6 +23,7 @@
   overflow-y: auto;
   font-size: 15px;
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .transcripts > div {
