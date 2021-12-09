@@ -10,9 +10,13 @@ export default function ControlView(props) {
           addNoteForm.reset();
         }}
         onKeyDown={(e) => {
-          if (e.ctrlKey && e.keyCode == 13 && addNoteForm["note"].value) {
-            props.addNote(e);
-            addNoteForm.reset();
+          if (e.ctrlKey && e.keyCode == 13) {
+            if (addNoteForm["note"].value) {
+              props.addNote(e);
+              addNoteForm.reset();
+            } else {
+              addNoteForm["note"].select();
+            }
           }
         }}
       >
