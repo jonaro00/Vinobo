@@ -19,3 +19,7 @@
 .cards > * {
   margin-bottom: 10px;
 }
+
+.noteTitle {
+  font-weight: bold;
+}

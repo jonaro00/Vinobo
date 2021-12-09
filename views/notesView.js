@@ -16,11 +16,11 @@ export default function NotesView(props) {
           [...props.notes].map((note) => (
             <NoteCard
               key={note.id}
-              padding={"8px"}
-              titleElement={<div>{note.title}</div>}
+              extraStyle={{ padding: "8px" }}
+              titleElement={<div className={styles.noteTitle}>{note.title}</div>}
               timeElement={<div>{formatTimestamp(note.offset * 1000)}</div>}
               content={<p>{note.content}</p>}
-              buttons={
+              buttonsRight={
                 <>
                   <button>Edit</button>
                   <button onClick={() => props.removeNote(note.id)}>Delete</button>
