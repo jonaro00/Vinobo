@@ -1,0 +1,35 @@
+.noteCard {
+  /* border: 1px solid black; */
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  /* padding: 5px; */
+}
+
+.noteInfo {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.noteInfo div:first-child {
+  flex: 1 0;
+  margin-right: 5px;
+  background-color: white;
+  padding: 5px;
+}
+
+.noteInfo div:last-child {
+  flex: 0 0 auto;
+  background-color: white;
+  padding: 5px;
+}
+
+.content {
+  margin-bottom: 5px;
+  background-color: white;
+  padding: 5px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}

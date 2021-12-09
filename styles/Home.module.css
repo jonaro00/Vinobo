@@ -22,8 +22,8 @@
 
 .notesContainer {
   flex: 3 0;
-  border: 1px solid;
   margin-left: 10px;
+  background-color: #eaffea;
 }
 
 .sidebar {

@@ -1,46 +1,21 @@
 .container {
+}
+
+.header {
   display: flex;
-  flex-direction: column;
-  background-color: transparent;
-}
-.noteCard {
-  border: 1px solid black;
-  background-color: rgb(233, 233, 233);
-  margin-top: 15px;
-  margin: 5px;
+  align-items: center;
 }
 
-.noteInfo {
-  margin: 5px;
+.collapseButton {
+  padding: 10px;
 }
 
-.noteInfo div:first-child {
-  overflow: hidden;
-  margin-right: 5px;
-  background-color: white;
-  float: left;
-  width: 85%;
-  padding: 2px;
-  padding-left: 10px;
-  font-style: bold;
+.title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 0.5em;
 }
 
-.noteInfo div:last-child {
-  overflow: hidden;
-  background-color: white;
-  text-align: center;
-  padding: 2px;
-}
-
-.notes {
-  background-color: white;
-  margin: 5px;
-  padding: 1px;
-  padding-left: 10px;
-}
-
-.noteControl {
-  float: right;
-  margin-bottom: 5px;
-  margin-right: 5px;
+.cards > * {
+  margin-bottom: 10px;
 }
