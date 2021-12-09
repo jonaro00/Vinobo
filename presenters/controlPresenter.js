@@ -1,7 +1,7 @@
 import React from "react";
 import ControlView from "../views/controlView";
 import useModelProperty from "../js/useModelProperty";
-import { formatTimestamp } from "../js/transcript";
+import { formatTimestamp, parseTimestamp } from "../js/transcript";
 
 export default function ControlPresenter(props) {
   const videoTime = useModelProperty(props.vidCon, "currentTime");
@@ -13,7 +13,11 @@ export default function ControlPresenter(props) {
       currentTime={formatTimestamp(videoTime * 1000)}
       addNote={(ref) => {
         ref.preventDefault();
-        props.model.addNote({ title: title, offset: offset || videoTime, content: content });
+        props.model.addNote({
+          title: title,
+          offset: parseTimestamp(offset) || videoTime,
+          content: content,
+        });
         console.log(props.model.notes);
       }}
       setTitle={(ref) => {

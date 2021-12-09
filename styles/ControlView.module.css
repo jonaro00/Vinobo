@@ -1,7 +1,7 @@
 .controlView {
   margin-left: 5px;
   padding: 5px;
-  width: 340px;
+  width: auto;
 }
 
 .controlTimeStamp {
