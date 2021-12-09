@@ -16,6 +16,10 @@ export default class VideoController extends Observable {
     this.queue = [];
   }
 
+  /**
+   * Loads a new `Player` in the `this.elementId` element.
+   * @param {String} id Optional video ID to load the player with.
+   */
   loadPlayer(id) {
     try {
       this.player = new window.YT.Player(this.elementId, {
@@ -26,17 +30,18 @@ export default class VideoController extends Observable {
           rel: 0, // show less random suggested videos
         },
         events: {
-          onReady: (event) => vidCon.onPlayerReady(event),
-          onStateChange: (event) => vidCon.onPlayerStateChange(event),
+          onReady: (event) => this.onPlayerReady(event),
+          onStateChange: (event) => this.onPlayerStateChange(event),
           onError: (error) => {
             console.log(error);
-            vidCon.onPlayerError(error);
+            this.onPlayerError(error);
           },
         },
       });
       window.player = player; // for debugging video
     } catch (error) {
-      console.log("nah dat failed", error);
+      console.log("Player failed to load. Tell jonaro00 about this.");
+      console.log(error);
     }
   }
 
@@ -75,7 +80,7 @@ export default class VideoController extends Observable {
   }
 
   /**
-   * The Iframe API will call this function when the video player is ready.
+   * The player will call this function when it is ready.
    */
   onPlayerReady(event) {
     this.initialize(event.target);
@@ -89,7 +94,7 @@ export default class VideoController extends Observable {
     }
   }
   /**
-   * The API calls this function when the player's state changes.
+   * The player calls this function when the it's state changes.
    */
   onPlayerStateChange(event) {
     // The first time the player state is reported as cued,
@@ -104,6 +109,9 @@ export default class VideoController extends Observable {
     }
     //this.notifyObservers();
   }
+  /**
+   * The player (should) call this function when there was an error.
+   */
   onPlayerError(error) {
     console.log("player error:", error);
     switch (error.data) {

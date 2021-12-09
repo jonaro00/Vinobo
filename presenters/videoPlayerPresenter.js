@@ -22,7 +22,7 @@ export default function VideoPlayerPresenter({ model, vidCon }) {
       console.log("DESTROYING PLAYER ⚠");
       vidCon.destroy();
     };
-  }, [vidCon]);
+  }, [model, vidCon]);
 
   return (
     <>
