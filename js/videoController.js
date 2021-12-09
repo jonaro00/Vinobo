@@ -1,8 +1,9 @@
 import Observable from "./observable";
 
 export default class VideoController extends Observable {
-  constructor() {
+  constructor(elementId) {
     super();
+    this.elementId = elementId;
     this.player = null;
     this.currentTime = 0;
 
@@ -13,6 +14,30 @@ export default class VideoController extends Observable {
     this.prioQueue = [];
     this.fullyInitialized = false;
     this.queue = [];
+  }
+
+  loadPlayer(id) {
+    try {
+      this.player = new window.YT.Player(this.elementId, {
+        videoId: id,
+        playerVars: {
+          playsinline: 1,
+          modestbranding: 1, // hide YT logo in bottom right
+          rel: 0, // show less random suggested videos
+        },
+        events: {
+          onReady: (event) => vidCon.onPlayerReady(event),
+          onStateChange: (event) => vidCon.onPlayerStateChange(event),
+          onError: (error) => {
+            console.log(error);
+            vidCon.onPlayerError(error);
+          },
+        },
+      });
+      window.player = player; // for debugging video
+    } catch (error) {
+      console.log("nah dat failed", error);
+    }
   }
 
   /**
@@ -79,6 +104,24 @@ export default class VideoController extends Observable {
     }
     //this.notifyObservers();
   }
+  onPlayerError(error) {
+    console.log("player error:", error);
+    switch (error.data) {
+      case 2:
+        // invalid ID
+        break;
+      case 100:
+        // not found (removed or private)
+        break;
+      case 101:
+      case 105:
+        // The owner of the requested video does not allow it to be played in embedded players.
+        break;
+      default:
+        // unknown error
+        break;
+    }
+  }
 
   /**
    * Changes the video in player.
@@ -128,7 +171,11 @@ export default class VideoController extends Observable {
   getVideoInfo() {
     return new Promise((resolve, reject) => {
       this.execute(() => {
-        resolve({ ...this.player.getVideoData(), length: this.player.getDuration() });
+        try {
+          resolve({ ...this.player.getVideoData(), length: this.player.getDuration() });
+        } catch (error) {
+          reject(error);
+        }
       });
     });
   }
@@ -139,7 +186,11 @@ export default class VideoController extends Observable {
   pollTime() {
     this.execute(() => {
       const prevTime = this.currentTime;
-      this.currentTime = this.player.getCurrentTime ? this.player.getCurrentTime() | 0 : 0; // bitwise OR with 0 rounds down to integer
+      try {
+        this.currentTime = this.player.getCurrentTime() | 0; // bitwise OR with 0 rounds down to integer
+      } catch (error) {
+        this.currentTime = 0;
+      }
       if (prevTime !== this.currentTime) {
         // has the current second changed?
         this.notifyObservers();

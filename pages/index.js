@@ -9,17 +9,9 @@ import NotesPresenter from "../presenters/notesPresenter";
 import VideoController from "../js/videoController";
 import ControlPresenter from "../presenters/controlPresenter";
 
-const vidCon = new VideoController();
+const vidCon = new VideoController("player");
 
 export default function Home({ model, auth }) {
-  React.useEffect(() => {
-    window.vidCon = vidCon; // for debugging video
-    const obs = () => {
-      vidCon.setVideoID(model.currentVideo);
-    };
-    model.addObserver(obs);
-  });
-
   return (
     <>
       <HeaderPresenter model={model} vidCon={vidCon} auth={auth} />
