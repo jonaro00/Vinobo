@@ -1,0 +1,18 @@
+.signinViewBox {
+  margin: 10px 10px;
+}
+
+.signinView {
+  text-align: center;
+}
+
+.headerText {
+  margin: 5px 0px;
+}
+
+.email,
+.password,
+.emailLabel,
+.passwordLabel {
+  margin: 5px 0px;
+}
