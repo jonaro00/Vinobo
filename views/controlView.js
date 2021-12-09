@@ -1,5 +1,5 @@
 import NoteCard from "../components/noteCard";
-// import styles from "../styles/ControlView.module.css";
+import styles from "../styles/ControlView.module.css";
 
 export default function ControlView(props) {
   return (
@@ -11,8 +11,12 @@ export default function ControlView(props) {
       }}
       onKeyDown={(e) => {
         if (e.ctrlKey && e.keyCode == 13) {
-          props.addNote(e);
-          addNoteForm.reset();
+          if (!addNoteForm["note"].value) {
+            addNoteForm["note"].select();
+          } else {
+            props.addNote(e);
+            addNoteForm.reset();
+          }
         }
       }}
     >
@@ -20,6 +24,7 @@ export default function ControlView(props) {
         extraStyle={{ padding: "10px" }}
         titleElement={
           <input
+            className={styles.controlTitle}
             onChange={(ref) => props.setTitle(ref)}
             name="title"
             type="input"
@@ -29,6 +34,7 @@ export default function ControlView(props) {
         }
         timeElement={
           <input
+            className={styles.controlTime}
             onChange={(ref) => props.setTimestamp(ref)}
             name="timestamp"
             type="appt-time"
@@ -37,6 +43,7 @@ export default function ControlView(props) {
         }
         content={
           <textarea
+            className={styles.controlContent}
             onChange={(ref) => props.setContent(ref)}
             name="note"
             type="textarea"
