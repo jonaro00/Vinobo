@@ -63,8 +63,12 @@ export default function ControlView(props) {
         }}
         onKeyDown={(e) => {
           if (e.ctrlKey && e.keyCode == 13) {
-            props.addNote(e);
-            addNoteForm.reset();
+            if (!addNoteForm["note"].value) {
+              addNoteForm["note"].select();
+            } else {
+              props.addNote(e);
+              addNoteForm.reset();
+            }
           }
         }}
       >
@@ -83,7 +87,6 @@ export default function ControlView(props) {
             name="title"
             type="input"
             placeholder="Title"
-            required
           />
           <input className={styles.controlAddNote} type="submit" value="Add Note" />
           <textarea
