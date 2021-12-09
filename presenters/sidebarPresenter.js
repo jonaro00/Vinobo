@@ -3,6 +3,7 @@ import useModelProperty from "../js/useModelProperty.js";
 import SidebarView from "../views/sidebarView.js";
 import SidebarActiveView from "../views/sidebarActiveView.js";
 import { extractID } from "../js/transcript.js";
+import { Video } from "../js/model.js";
 
 export default function SidebarPresenter(props) {
   const [error, setError] = React.useState(null);
@@ -33,12 +34,7 @@ export default function SidebarPresenter(props) {
           props.vidCon
             .getVideoInfo()
             .then((info) =>
-              props.model.addVideo({
-                id: id,
-                title: info.title,
-                author: info.author,
-                length: info.length,
-              })
+              props.model.addVideo(new Video(id, info.title, info.author, info.length))
             )
             .finally(() => setLoading(false));
         } else {
