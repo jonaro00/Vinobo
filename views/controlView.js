@@ -7,7 +7,7 @@ export default function ControlView(props) {
         name="addNoteForm"
         onSubmit={(ref) => {
           props.addNote(ref);
-          ref.target.reset();
+          addNoteForm.reset();
         }}
         onKeyDown={(e) => {
           if (e.ctrlKey && e.keyCode == 13) {
