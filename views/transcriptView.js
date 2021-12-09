@@ -12,21 +12,25 @@ export default function TranscriptView(props) {
         ></input>
       </div>
       <div className={styles.transcripts}>
-        {props.transcriptError
-          ? "Failed to get transcript"
-          : props.transcript
-          ? [...props.transcript].map((row) => (
-              <div
-                className={row.highlighted ? "bold" : ""}
-                onClick={(e) => {
-                  props.selectTimestamp(row.offset);
-                }}
-                key={row.offset}
-              >
-                {formatTimestamp(row.offset)} {row.text}
-              </div>
-            ))
-          : "loading"}
+        {
+          props.transcriptError
+            ? "Failed to get transcript"
+            : props.transcript
+            ? [...props.transcript].map((row) => (
+                <div
+                  className={row.highlighted ? "bold" : ""}
+                  onClick={(e) => {
+                    props.selectTimestamp(row.offset);
+                  }}
+                  key={row.offset}
+                >
+                  {formatTimestamp(row.offset)} {row.text}
+                </div>
+              ))
+            : props.transcriptPromise
+            ? "Loading..."
+            : "" /* No transcript due to no video selected */
+        }
       </div>
     </div>
   );

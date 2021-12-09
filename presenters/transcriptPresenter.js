@@ -9,7 +9,7 @@ export default function TranscriptPresenter(props) {
   const videoTime = useModelProperty(props.vidCon, "currentTime");
 
   const [promise, setPromise] = React.useState(null);
-  React.useEffect(() => setPromise(getTranscript(id)), [id]);
+  React.useEffect(() => setPromise(id && getTranscript(id)), [id]);
   const [sourceData, error] = usePromise(promise);
 
   const [data, setProcessedData] = React.useState(null);
@@ -24,8 +24,9 @@ export default function TranscriptPresenter(props) {
 
   return (
     <TranscriptView
-      transcriptError={error}
       transcript={error || transcriptTransform(data, makeStringSearchable(query), videoTime)}
+      transcriptError={error}
+      transcriptPromise={promise}
       onText={(text) => setQuery(text)}
       selectTimestamp={(offset) => props.vidCon.seek(offset / 1000)}
     />

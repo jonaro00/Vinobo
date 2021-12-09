@@ -50,6 +50,7 @@ export default class Model extends Observable {
         changed = true;
       }
     });
+    if (id === this.currentVideo) this.setCurrentVideo(null);
     if (changed) {
       this.notifyObservers();
       this.notifyPersistors();

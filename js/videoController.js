@@ -133,11 +133,13 @@ export default class VideoController extends Observable {
 
   /**
    * Changes the video in player.
+   * Setting ID to `null` reloads and empty player.
    * @param {string} id Video ID to play.
    */
   setVideoID(id) {
     this.executePrio(() => {
       if (this.fullyInitialized && this.player.getVideoData().video_id === id) return;
+      if (!id) this.reload();
       this.player.cueVideoById(id);
       this.fullyInitialized = false;
     });
@@ -221,5 +223,13 @@ export default class VideoController extends Observable {
     }
     this.prioQueue = [];
     this.queue = [];
+  }
+  /**
+   * Destroys current player and load a new one.
+   * @param {String} id Optional video ID to load the player with.
+   */
+  reload(id) {
+    this.destroy();
+    this.loadPlayer(id);
   }
 }

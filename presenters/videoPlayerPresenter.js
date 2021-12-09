@@ -3,6 +3,7 @@ import Script from "next/script";
 import VideoPlayerView from "../views/videoPlayerView";
 
 export default function VideoPlayerPresenter({ model, vidCon }) {
+  // Binding VideoController to model
   React.useEffect(() => {
     window.vidCon = vidCon; // for debugging video
     const obs = () => {
@@ -15,11 +16,11 @@ export default function VideoPlayerPresenter({ model, vidCon }) {
   }, [model, vidCon]);
 
   React.useEffect(() => {
+    // Binding YT API to VideoController and loading player
     if (!window.onYouTubeIframeAPIReady)
       window.onYouTubeIframeAPIReady = () => vidCon.loadPlayer(model.currentVideo);
     else vidCon.loadPlayer(model.currentVideo);
     return () => {
-      console.log("DESTROYING PLAYER ⚠");
       vidCon.destroy();
     };
   }, [model, vidCon]);
