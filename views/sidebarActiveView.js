@@ -10,6 +10,7 @@ export default function SidebarView(props) {
         placeholder="Type video URL or ID"
         submitValue="Add"
       ></TextForm>
+      {props.error && <p className="red">{props.error}</p>}
       <div>My videos</div>
       <div>
         {props.loadingVideos

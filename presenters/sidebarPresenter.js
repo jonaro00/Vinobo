@@ -1,9 +1,9 @@
 import React from "react";
-import useModelProperty from "../js/useModelProperty.js";
-import SidebarView from "../views/sidebarView.js";
-import SidebarActiveView from "../views/sidebarActiveView.js";
-import { extractID } from "../js/transcript.js";
-import { Video } from "../js/model.js";
+import useModelProperty from "../js/useModelProperty";
+import SidebarView from "../views/sidebarView";
+import SidebarActiveView from "../views/sidebarActiveView";
+import { extractID } from "../js/transcript";
+import { Video } from "../js/model";
 
 export default function SidebarPresenter(props) {
   const [error, setError] = React.useState(null);
@@ -19,26 +19,27 @@ export default function SidebarPresenter(props) {
       videoChoice={(ref) => {
         const id = extractID(ref);
         if (id) {
-          console.log("User wants to set video to ID ", extractID(ref));
           props.model.setCurrentVideo(id);
+          setError(null);
         } else {
-          setError("Not referring to a valid ID/URL");
+          setError("No valid YouTube URL or ID found.");
         }
       }}
       addVideo={(ref) => {
         const id = extractID(ref);
         if (id) {
-          console.log("User wants to set video to ID ", id);
           props.model.setCurrentVideo(id);
           setLoading(true);
           props.vidCon
             .getVideoInfo()
-            .then((info) =>
-              props.model.addVideo(new Video(id, info.title, info.author, info.length))
-            )
+            .then((info) => {
+              props.model.addVideo(new Video(id, info.title, info.author, info.length));
+              setError(null);
+            })
+            .catch((error) => setError("Failed to add video"))
             .finally(() => setLoading(false));
         } else {
-          setError("Not referring to a valid ID/URL");
+          setError("No valid YouTube URL or ID found.");
         }
       }}
       removeVideo={(id) => props.model.removeVideo(id)}
