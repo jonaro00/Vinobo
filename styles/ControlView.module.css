@@ -1,24 +1,38 @@
 .controlView {
+  width: auto;
   margin-left: 5px;
   padding: 5px;
-  width: auto;
 }
 
 .controlTimeStamp {
+  position: absolute;
   margin: 5px;
-  width: 70%;
+  width: 285px;
 }
 
-.controlAddNote {
-  margin: 5px;
+.controlClear {
   float: right;
+  position: relative;
+  width: 75px;
+  right: -7px;
+  margin: 5px;
 }
 
 .controlNoteElement {
+  position: relative;
+  resize: vertical;
+  top: -22px;
   margin: 5px;
   width: 100%;
   height: 200px;
-  resize: vertical;
+}
+
+.controlAddNote {
+  position: relative;
+  float: right;
+  top: 11px;
+  width: 75px;
+  z-index: 1;
 }
 
 .controlTitleElement {
