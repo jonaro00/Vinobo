@@ -4,9 +4,16 @@ export default function ControlView(props) {
   return (
     <div>
       <form
+        name="addNoteForm"
         onSubmit={(ref) => {
           props.addNote(ref);
           ref.target.reset();
+        }}
+        onKeyDown={(e) => {
+          if (e.ctrlKey && e.keyCode == 13) {
+            props.addNote(e);
+            addNoteForm.reset();
+          }
         }}
       >
         <div className={styles.controlView}>
