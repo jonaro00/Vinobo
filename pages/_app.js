@@ -20,17 +20,22 @@ function MyApp({ Component, pageProps }) {
 
   React.useEffect(() => {
     setLoadingUser(true);
+    let unsubscribePersistor = null;
     onAuthStateChanged(
       auth,
       (user) => {
         // user is `User` object or `null`
-        model.setUser(user ? user.email : "");
+        model.setUser(user ? user.email : null);
         setLoadingUser(false);
         if (user) {
           console.log("User signed in:", user.email);
-          persistModel(model);
+          unsubscribePersistor = persistModel(model);
         } else {
-          console.log("No user is signed in");
+          console.log("No user is signed in", unsubscribePersistor);
+          if (unsubscribePersistor) {
+            unsubscribePersistor();
+            unsubscribePersistor = null;
+          }
           model.clear();
         }
       },

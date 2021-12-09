@@ -4,7 +4,7 @@ import { set, ref, onValue } from "firebase/database";
 export default function persistModel(model) {
   let loadingFromFirebase = false;
   let writingToFirebase = false;
-  model.addPersistor(() => {
+  const modelObserver = () => {
     // save the model into the cloud
     if (loadingFromFirebase) return; // flag that tells observer to NOT save to cloud
     console.log("Writing to database");
@@ -14,8 +14,9 @@ export default function persistModel(model) {
       currentVideo: model.currentVideo,
     });
     writingToFirebase = false;
-  });
-  onValue(
+  };
+  model.addPersistor(modelObserver);
+  const unsubscribeFirebase = onValue(
     ref(database, "users/" + auth.currentUser?.uid),
     (snapshot) => {
       // load data from cloud into model if there is data
@@ -39,4 +40,8 @@ export default function persistModel(model) {
       console.log(error);
     }
   );
+  return () => {
+    model.removePersistor(modelObserver);
+    unsubscribeFirebase();
+  };
 }
