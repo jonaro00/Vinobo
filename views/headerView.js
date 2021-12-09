@@ -25,9 +25,9 @@ export default function HeaderView({ user, signOut }) {
         {user ? (
           <>
             <p>Signed in as: {user}</p>
-            <Link href="">
-              <a onClick={signOut}>Sign Out</a>
-            </Link>
+            <a className={"btn"} onClick={signOut}>
+              Sign Out
+            </a>
           </>
         ) : (
           <>

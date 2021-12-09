@@ -29,3 +29,8 @@ a {
 .red {
   color: red;
 }
+
+a.btn {
+  cursor: pointer;
+  padding: 6px 10px;
+}

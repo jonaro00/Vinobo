@@ -6,9 +6,7 @@ export default function NotesView(props) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <a href="" className={styles.collapseButton}>
-          Collapse/Open
-        </a>
+        <a className={`${styles.collapseButton} btn`}>Collapse/Open</a>
         <div className={styles.title}>My Cards</div>
       </div>
       <div className={styles.cards}>
