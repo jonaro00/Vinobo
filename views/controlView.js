@@ -21,7 +21,7 @@ export default function ControlView(props) {
       }}
     >
       <NoteCard
-        padding={"15px"}
+        extraStyle={{ padding: "10px" }}
         titleElement={
           <input
             className={styles.controlTitle}
@@ -51,12 +51,8 @@ export default function ControlView(props) {
             required
           />
         }
-        buttons={
-          <>
-            <input type="reset" value="Clear" />
-            <input type="submit" value="Add Note" />
-          </>
-        }
+        buttonsLeft={<input type="reset" value="Clear" />}
+        buttonsRight={<input type="submit" value="Add Note" />}
       />
     </form>
   );
