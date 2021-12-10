@@ -53,7 +53,7 @@ function transcriptTransform(data, query, highlightTime) {
     }));
 }
 
-const punctuationRegex = /[\.,:;-_<>|'*^´`+?\\!"#%&\/()=@{}[\]]/g;
+const punctuationRegex = /[\.,:;\-_<>|'*^´`+?\\!"#%&\/()=@{}[\]]/g;
 const secondRegex = /[\s-]+/g;
 /**
  * Removes punctuation and more.

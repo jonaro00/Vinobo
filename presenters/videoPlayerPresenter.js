@@ -15,8 +15,8 @@ export default function VideoPlayerPresenter({ model, vidCon }) {
     };
   }, [model, vidCon]);
 
+  // Binding YT API to VideoController and loading player
   React.useEffect(() => {
-    // Binding YT API to VideoController and loading player
     if (!window.onYouTubeIframeAPIReady)
       window.onYouTubeIframeAPIReady = () => vidCon.loadPlayer(model.currentVideo);
     else vidCon.loadPlayer(model.currentVideo);
