@@ -44,7 +44,13 @@ export default function SigninPresenter({ auth, model, register }) {
   return (
     <SigninView
       register={register}
-      errorText={userError ? userErrors[userError.code] : ""}
+      errorText={
+        userError
+          ? userErrors.hasOwnProperty(userError)
+            ? userErrors[userError.code]
+            : userError.code
+          : ""
+      }
       loading={loading}
       onEmail={(email) => setEmail(email)}
       onPassword={(pw) => setPassword(pw)}
