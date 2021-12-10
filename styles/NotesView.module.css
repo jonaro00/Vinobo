@@ -24,6 +24,7 @@
 }
 
 .header :last-child {
+  flex: 1;
   padding: 5px;
   border-radius: 10px;
   border: none;
