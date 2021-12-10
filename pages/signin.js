@@ -10,10 +10,10 @@ export default function Signin({ model, auth }) {
       <HeaderPresenter model={model} auth={auth} />
       <div className={styles.pageContent}>
         <div className={styles.signin}>
-          <SigninPresenter model={model} auth={auth} />
+          <SigninPresenter model={model} auth={auth} register={false} />
         </div>
         <div className={styles.signin}>
-          <RegisterPresenter model={model} auth={auth} />
+          <SigninPresenter model={model} auth={auth} register={true} />
         </div>
       </div>
     </>
