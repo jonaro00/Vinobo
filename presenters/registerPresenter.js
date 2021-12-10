@@ -1,5 +1,5 @@
 import React from "react";
-import { signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import SigninView from "../views/signinView";
 import { useRouter } from "next/router";
 
@@ -28,15 +28,15 @@ export default function SigninPresenter({ auth, model }) {
 
   return (
     <SigninView
-      headerText={"Sign in with your Vinobo account here:"}
+      headerText={"Don't already have an account? Register here:"}
       errorText={userError?.code}
       loadingText={loading}
-      submitText={"Sign in"}
+      submitText={"Register"}
       onEmail={(email) => setEmail(email)}
       onPassword={(pw) => setPassword(pw)}
       signInUser={() => {
         setLoading(true);
-        signInWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
           .then((user) => {
             setLoading(false);
             router.push("/");
