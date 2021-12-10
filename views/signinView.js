@@ -57,7 +57,7 @@ export default function SigninView({
         </div>
       </form>
       <div className={styles.loadingText}>{loading ? "Authenticating..." : ""}</div>
-      <div className={styles.errorText}>{errorText || ""}</div>
+      <div className={styles.errorText}>{errorText}</div>
     </div>
   );
 }
