@@ -11,21 +11,6 @@ export default function SigninPresenter({ auth, model }) {
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
 
-  React.useEffect(() => {
-    setLoading(true);
-    onAuthStateChanged(
-      auth,
-      (user) => {
-        setLoading(false);
-        setUserData(user);
-      },
-      (error) => {
-        setLoading(false);
-        setUserError(error);
-      }
-    );
-  }, []);
-
   return (
     <SigninView
       headerText={"Don't already have an account? Register here:"}
