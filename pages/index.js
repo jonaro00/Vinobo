@@ -36,7 +36,7 @@ export default function Home({ model, auth }) {
           </div>
         </div>
       </div>
-      <TestPresenter model={model} vidCon={vidCon} />
+      {/* <TestPresenter model={model} vidCon={vidCon} /> */}
     </>
   );
 }
