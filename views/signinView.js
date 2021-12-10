@@ -1,13 +1,24 @@
 import styles from "../styles/SigninView.module.css";
 
-export default function SigninView(props) {
+export default function SigninView({
+  register,
+  signInUser,
+  onEmail,
+  onPassword,
+  loading,
+  errorText,
+}) {
   return (
     <div className={styles.signinViewBox}>
-      <h5 className={styles.headerText}>{props.headerText}</h5>
+      <h5 className={styles.headerText}>
+        {register
+          ? "Don't already have an account? Register as Vinobo user here:"
+          : "Sign in with your Vinobo account here:"}
+      </h5>
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          props.signInUser();
+          signInUser();
           event.target.reset();
         }}
       >
@@ -20,7 +31,7 @@ export default function SigninView(props) {
           <div>
             <input
               className={styles.signinEmail}
-              onChange={(event) => props.onEmail(event.target.value)}
+              onChange={(event) => onEmail(event.target.value)}
               name="email"
               type="email"
               placeholder={"E-mail address"}
@@ -35,7 +46,7 @@ export default function SigninView(props) {
           <div>
             <input
               className={styles.signinPassword}
-              onChange={(event) => props.onPassword(event.target.value)}
+              onChange={(event) => onPassword(event.target.value)}
               name="password"
               type="password"
               placeholder={"Password"}
@@ -43,12 +54,12 @@ export default function SigninView(props) {
             />
           </div>
           <div>
-            <input type="submit" value={props.submitText} />
+            <input type="submit" value={register ? "Register" : "Sign in"} />
           </div>
         </div>
       </form>
-      <div className={styles.loadingText}>{props.loadingText ? "Loading user data..." : ""}</div>
-      <div className={styles.errorText}>{props.errorText || ""}</div>
+      <div className={styles.loadingText}>{loading ? "Authenticating..." : ""}</div>
+      <div className={styles.errorText}>{errorText || ""}</div>
     </div>
   );
 }

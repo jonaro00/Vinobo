@@ -27,12 +27,11 @@ function getTranscript(id) {
 }
 
 /**
- * Format timestamp of milliseconds to [hh:]mm:ss. Rounds down to nearest whole second.
- * @param {Number} ms Number of milliseconds.
+ * Format timestamp of seconds to [hh:]mm:ss. Rounds down to nearest whole second.
+ * @param {Number} sec Number of seconds.
  * @returns {string} Formatted timestamp.
  */
-function formatTimestamp(ms) {
-  let sec = Math.floor(ms / 1000);
+function formatTimestamp(sec) {
   let hrs = Math.floor(sec / 3600);
   sec %= 3600;
   let min = Math.floor(sec / 60);
