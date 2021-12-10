@@ -7,7 +7,7 @@ export default function ControlView(props) {
       name="addNoteForm"
       onSubmit={(ref) => {
         props.addNote(ref);
-        addNoteForm.reset();
+        addNoteForm.reset(); // known bug: reset() doesn't trigger onChange in the boxes, making old values remain in the Presenter.
       }}
       onKeyDown={(e) => {
         if (e.ctrlKey && e.keyCode == 13) {

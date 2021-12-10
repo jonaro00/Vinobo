@@ -1,13 +1,15 @@
 import Observable from "./observable";
 
 export default class VideoController extends Observable {
+  POLL_INTERVAL = 300; // ms between time polls to player
+
   constructor(elementId) {
     super();
     this.elementId = elementId;
     this.player = null;
     this.currentTime = 0;
 
-    this.polling = false;
+    this.stopPolling = null;
 
     // dont ask
     this.partiallyInitialized = false;
@@ -21,6 +23,7 @@ export default class VideoController extends Observable {
    * @param {String} id Optional video ID to load the player with.
    */
   loadPlayer(id) {
+    console.log("loading", id);
     try {
       this.player = new window.YT.Player(this.elementId, {
         videoId: id,
@@ -32,10 +35,7 @@ export default class VideoController extends Observable {
         events: {
           onReady: (event) => this.onPlayerReady(event),
           onStateChange: (event) => this.onPlayerStateChange(event),
-          onError: (error) => {
-            console.log(error);
-            this.onPlayerError(error);
-          },
+          onError: (error) => this.onPlayerError(error),
         },
       });
       window.player = player; // for debugging video
@@ -46,44 +46,9 @@ export default class VideoController extends Observable {
   }
 
   /**
-   * Initializes this instance by receiving a player to control. Starts timer to poll video time.
-   * @param {YT.Player} player A YouTube video player object.
-   */
-  initialize(player) {
-    this.player = player;
-
-    this.polling = true;
-    setInterval(() => {
-      if (!this.polling) return;
-      this.pollTime();
-    }, 300); // start polling
-  }
-
-  /**
-   * Ensures callback `cb` is only executed if player is initialized.
-   * Otherwise adds it to the queue to be executed when player is ready.
-   * @param {Function} cb A callback that does something with the VideoController.
-   */
-  execute(cb) {
-    if (!this.fullyInitialized) {
-      this.queue = [...this.queue, cb];
-    } else {
-      cb();
-    }
-  }
-  executePrio(cb) {
-    if (!this.partiallyInitialized) {
-      this.prioQueue = [...this.prioQueue, cb];
-    } else {
-      cb();
-    }
-  }
-
-  /**
    * The player will call this function when it is ready.
    */
   onPlayerReady(event) {
-    this.initialize(event.target);
     if (!this.partiallyInitialized) {
       this.partiallyInitialized = true;
       for (let cb of this.prioQueue) {
@@ -93,6 +58,7 @@ export default class VideoController extends Observable {
       }
     }
   }
+
   /**
    * The player calls this function when the it's state changes.
    */
@@ -106,9 +72,11 @@ export default class VideoController extends Observable {
           cb();
         } catch (error) {}
       }
+      this.startPoller();
     }
     //this.notifyObservers();
   }
+
   /**
    * The player (should) call this function when there was an error.
    */
@@ -132,14 +100,41 @@ export default class VideoController extends Observable {
   }
 
   /**
+   * Ensures callback `cb` is only executed if player is fully loaded.
+   * Otherwise adds it to the queue to be executed when player is ready.
+   * @param {Function} cb A callback that does something with the VideoController.
+   */
+  execute(cb) {
+    if (!this.fullyInitialized) {
+      this.queue = [...this.queue, cb];
+    } else {
+      cb();
+    }
+  }
+  /**
+   * Ensures callback `cb` is only executed if player is initialized.
+   * Otherwise adds it to the queue to be executed when player is ready.
+   * @param {Function} cb A callback that does something with the VideoController.
+   */
+  executePrio(cb) {
+    if (!this.partiallyInitialized) {
+      this.prioQueue = [...this.prioQueue, cb];
+    } else {
+      cb();
+    }
+  }
+
+  /**
    * Changes the video in player.
    * Setting ID to `null` reloads and empty player.
-   * @param {string} id Video ID to play.
+   * @param {String} id Video ID to play.
    */
   setVideoID(id) {
     this.executePrio(() => {
-      if (this.fullyInitialized && this.player.getVideoData().video_id === id) return;
-      if (!id) this.reload();
+      if (this.fullyInitialized) {
+        if (this.player.getVideoData().video_id === id) return;
+        if (!id) this.reload();
+      }
       this.player.cueVideoById(id);
       this.fullyInitialized = false;
     });
@@ -191,6 +186,14 @@ export default class VideoController extends Observable {
   }
 
   /**
+   * Starts polling timer. Sets `this.stopPolling` callback.
+   */
+  startPoller() {
+    const timer = setInterval(() => this.pollTime(), this.POLL_INTERVAL);
+    this.stopPolling = () => clearInterval(timer);
+  }
+
+  /**
    * Checks the current player time and notifies observers if it changed.
    */
   pollTime() {
@@ -214,18 +217,23 @@ export default class VideoController extends Observable {
   }
 
   /**
-   * Used to destroy player when Video player needs to unload.
+   * Destroy player when Video player needs to unload.
    */
   destroy() {
     if (this.player !== null) {
       this.player.destroy();
       this.player = null;
     }
+    if (this.stopPolling) this.stopPolling();
+    this.currentTime = 0;
+    this.partiallyInitialized = false;
     this.prioQueue = [];
+    this.fullyInitialized = false;
     this.queue = [];
   }
+
   /**
-   * Destroys current player and load a new one.
+   * Destroys current player and loads a new one.
    * @param {String} id Optional video ID to load the player with.
    */
   reload(id) {

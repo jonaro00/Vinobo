@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 export default function SigninPresenter({ auth, model, register }) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [userData, setUserData] = React.useState("");
+  // const [userData, setUserData] = React.useState("");
   const [userError, setUserError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
@@ -33,7 +33,8 @@ export default function SigninPresenter({ auth, model, register }) {
     onAuthStateChanged(
       auth,
       (user) => {
-        setUserData(user);
+        // setUserData(user);
+        if (user) router.push("/"); // redirect if a logged in user visits this page. Allowing them to log in once again is buggy.
       },
       (error) => {
         setUserError(error);
@@ -55,12 +56,11 @@ export default function SigninPresenter({ auth, model, register }) {
       onEmail={(email) => setEmail(email)}
       onPassword={(pw) => setPassword(pw)}
       signInUser={() => {
+        console.log("authenticating");
         setLoading(true);
         submitEmailAndPassword(auth, email, password)
           .then((user) => {
-            console.log("authenticating");
             setLoading(false);
-            router.push("/");
           })
           .catch((error) => {
             console.log("failing to authenticate");
