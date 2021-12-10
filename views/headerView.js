@@ -31,7 +31,7 @@ export default function HeaderView({ user, signOut }) {
           </>
         ) : (
           <>
-            <Link href="#">
+            <Link href="/signin">
               <a>Sign In</a>
             </Link>
           </>

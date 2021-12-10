@@ -3,7 +3,7 @@ import styles from "../styles/SigninView.module.css";
 export default function SigninView(props) {
   return (
     <div className={styles.signinViewBox}>
-      <h5 className={styles.headerText}>Sign in with your Vinobo account here:</h5>
+      <h5 className={styles.headerText}>{props.headerText}</h5>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -24,6 +24,7 @@ export default function SigninView(props) {
               name="email"
               type="email"
               placeholder={"E-mail address"}
+              autoComplete="new-password"
             />
           </div>
           <div>
@@ -38,14 +39,16 @@ export default function SigninView(props) {
               name="password"
               type="password"
               placeholder={"Password"}
+              autoComplete="new-password"
             />
           </div>
           <div>
-            <input type="submit" value="Sign in" />
+            <input type="submit" value={props.submitText} />
           </div>
         </div>
       </form>
-      <p>User signed in: {props.currentUser}</p>
+      <div className={styles.loadingText}>{props.loadingText ? "Loading user data..." : ""}</div>
+      <div className={styles.errorText}>{props.errorText || ""}</div>
     </div>
   );
 }

@@ -2,12 +2,13 @@
   margin: 10px 10px;
 }
 
-.signinView {
-  text-align: center;
-}
-
 .headerText {
   margin: 5px 0px;
+}
+
+.errorText {
+  color: red;
+  font-size: small;
 }
 
 .email,
