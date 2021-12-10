@@ -8,7 +8,7 @@ export default function NotesView(props) {
       <div className={styles.header}>
         <a className={`${styles.collapseButton} btn`}>></a>
         <div className={styles.title}>My Cards</div>
-        <input placeholder="search notes"></input>
+        <input placeholder="search in notes"></input>
       </div>
       <div className={styles.cards}>
         {props.notes &&

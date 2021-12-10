@@ -1,8 +1,9 @@
 .container {
   display: flex;
   justify-content: space-between;
-  max-height: 50px;
-  background-color: #7ec762;
+  max-height: 42px;
+  background-color: rgb(228, 228, 228);
+  margin-bottom: 5px;
 }
 
 .container > div {

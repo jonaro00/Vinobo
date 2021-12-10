@@ -11,6 +11,14 @@
   flex: 1 0;
 }
 
+.transcriptView {
+  margin-right: 5px;
+}
+
+.controlView {
+  margin-left: 5px;
+}
+
 .videoAndControlsContainer {
   flex: 5 0;
 }
@@ -31,6 +39,9 @@
 
 .sidebar {
   flex: 0 0 260px;
-  border: 1px solid;
+  border: none;
   margin-right: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 4px 0px #00000080;
+  background-color: #ffffff;
 }
