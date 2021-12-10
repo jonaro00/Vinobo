@@ -6,8 +6,9 @@ export default function NotesView(props) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <a className={`${styles.collapseButton} btn`}>Collapse/Open</a>
+        <a className={`${styles.collapseButton} btn`}>></a>
         <div className={styles.title}>My Cards</div>
+        <input placeholder="search notes"></input>
       </div>
       <div className={styles.cards}>
         {props.notes &&
@@ -20,7 +21,6 @@ export default function NotesView(props) {
               content={<p>{note.content}</p>}
               buttonsRight={
                 <>
-                  <button>Edit</button>
                   <button onClick={() => props.removeNote(note.id)}>Delete</button>
                 </>
               }

@@ -11,7 +11,7 @@
 }
 
 .title {
-  font-size: 1.5em;
+  font-size: 1.1em;
   margin: 0.5em;
 }
 
@@ -21,4 +21,13 @@
 
 .noteTitle {
   font-weight: bold;
+}
+
+.header :last-child {
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  width: 460px;
+  box-shadow: 0px 1px 3px 0px #00000080;
+  margin: 10px;
 }
