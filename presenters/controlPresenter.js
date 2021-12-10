@@ -11,10 +11,10 @@ export default function ControlPresenter(props) {
   const [content, setContent] = React.useState("");
   return (
     <ControlView
-      currentTime={formatTimestamp(videoTime * 1000)}
+      currentTime={formatTimestamp(videoTime | 0)}
       addNote={(ref) => {
         ref.preventDefault();
-        props.model.addNote(new Note(parseTimestamp(offset) || videoTime, title, content));
+        props.model.addNote(new Note(parseTimestamp(offset) || videoTime | 0, title, content));
         console.log(props.model.notes);
       }}
       setTitle={(ref) => {

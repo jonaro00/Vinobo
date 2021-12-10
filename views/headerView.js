@@ -9,7 +9,7 @@ export default function HeaderView({ user, signOut }) {
         <Link href="/">
           <a>
             <div className={styles.logo}>
-              <Image src={"/logo2.png"} width={42} height={42} alt="Logo" />
+              <Image src={"/logo.png"} width={42} height={42} alt="Logo" />
             </div>
             <div className={styles.siteNameContainer}>
               <div className={styles.siteName}>Vinobo</div>
