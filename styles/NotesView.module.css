@@ -15,8 +15,10 @@
   margin: 0.5em;
 }
 
-.cards > * {
-  margin-bottom: 10px;
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .noteTitle {

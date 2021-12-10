@@ -19,21 +19,19 @@ export default function Home({ model, auth }) {
         <div className={styles.sidebar}>
           <SidebarPresenter model={model} vidCon={vidCon} />
         </div>
-        <div className={styles.mainContent}>
-          <div className={styles.videoAndControlsContainer}>
-            <VideoPlayerPresenter model={model} vidCon={vidCon} />
-            <div className={styles.transcriptAndControls}>
-              <div className={styles.transcriptView}>
-                <TranscriptPresenter model={model} vidCon={vidCon} />
-              </div>
-              <div className={styles.controlView}>
-                <ControlPresenter model={model} vidCon={vidCon} />
-              </div>
+        <div className={styles.videoAndControlsContainer}>
+          <VideoPlayerPresenter model={model} vidCon={vidCon} />
+          <div className={styles.transcriptAndControls}>
+            <div className={styles.transcriptView}>
+              <TranscriptPresenter model={model} vidCon={vidCon} />
+            </div>
+            <div className={styles.controlView}>
+              <ControlPresenter model={model} vidCon={vidCon} />
             </div>
           </div>
-          <div className={styles.notesContainer}>
-            <NotesPresenter model={model} />
-          </div>
+        </div>
+        <div className={styles.notesContainer}>
+          <NotesPresenter model={model} />
         </div>
       </div>
       {/* <TestPresenter model={model} vidCon={vidCon} /> */}

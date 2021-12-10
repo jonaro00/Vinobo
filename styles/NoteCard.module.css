@@ -1,4 +1,7 @@
 .noteCard {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   background-color: #fafafa;
   border-radius: 10px;
   padding: 5px;
@@ -7,7 +10,7 @@
 
 .noteInfo {
   display: flex;
-  margin-bottom: 5px;
+  gap: 5px;
 }
 
 .noteInfo > * {
@@ -18,7 +21,6 @@
 
 .noteInfo > *:not(:last-child) {
   flex: 1 0;
-  margin-right: 5px;
 }
 
 .noteInfo > *:last-child {
@@ -26,7 +28,6 @@
 }
 
 .content {
-  margin-bottom: 5px;
   background-color: white;
   padding: 5px;
   word-break: break-all;

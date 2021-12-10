@@ -24,7 +24,7 @@ export default function HeaderView({ user, signOut }) {
       <div>
         {user ? (
           <>
-            <p>Signed in as: {user}</p>
+            <p className={styles.signedInUser}>Signed in as: {user}</p>
             <a className={"btn"} onClick={signOut}>
               Sign Out
             </a>
@@ -32,7 +32,7 @@ export default function HeaderView({ user, signOut }) {
         ) : (
           <>
             <Link href="/signin">
-              <a>Sign In</a>
+              <a className={"btn"}>Sign In</a>
             </Link>
           </>
         )}

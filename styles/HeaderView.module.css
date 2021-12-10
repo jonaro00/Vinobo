@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   padding: 0 6px;
+  gap: 15px;
 }
 
 .container > div > * {
@@ -17,11 +18,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-right: 15px;
-}
-.container > div:last-child > * {
-  margin-right: 0;
-  margin-left: 15px;
 }
 
 .logo {
@@ -41,4 +37,8 @@
   font-size: 0.7em;
   font-style: italic;
   color: #444;
+}
+
+.signedInUser {
+  font-size: 0.94em;
 }

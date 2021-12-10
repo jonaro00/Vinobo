@@ -4,7 +4,7 @@ import { formatTimestamp } from "../js/transcript.js";
 
 export default function SidebarView(props) {
   return (
-    <div>
+    <>
       <TextForm
         onSubmit={(ref) => props.addVideo(ref)}
         placeholder="Type video URL or ID"
@@ -12,32 +12,30 @@ export default function SidebarView(props) {
       ></TextForm>
       {props.error && <p className="red">{props.error}</p>}
       <div>My videos</div>
-      <div>
+      <div className={styles.videos}>
         {props.loadingVideos
           ? "Loading..."
           : [...props.videos].map((video) => (
               <div key={video.id} className={styles.videoCard}>
-                <div className={styles.videoInfo}>
-                  <a
-                    href=""
-                    onClick={(event) => {
-                      event.preventDefault();
-                      props.videoChoice(video.id);
-                    }}
-                  >
-                    <div>{video.title}</div>
-                    <div className={styles.videoDetails}>
-                      <div>{video.notes?.length || 0} notes</div>
-                      <div>{formatTimestamp(video.length)}</div>
-                    </div>
-                  </a>
-                </div>
+                <a
+                  className={"btn " + styles.videoInfo}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    props.videoChoice(video.id);
+                  }}
+                >
+                  <div>{video.title.length ? video.title : <i>[unknown]</i>}</div>
+                  <div className={styles.videoDetails}>
+                    <div>{video.notes?.length || 0} notes</div>
+                    <div>{formatTimestamp(video.length)}</div>
+                  </div>
+                </a>
                 <div>
                   <button onClick={() => props.removeVideo(video.id)}>x</button>
                 </div>
               </div>
             ))}
       </div>
-    </div>
+    </>
   );
 }
