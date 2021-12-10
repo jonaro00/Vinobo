@@ -1,7 +1,7 @@
 .container {
   display: flex;
   justify-content: space-between;
-  max-height: 42px;
+  max-height: 50px;
   background-color: rgb(228, 228, 228);
   margin-bottom: 5px;
 }
@@ -24,6 +24,10 @@
   margin-left: 15px;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
 .logo img {
   border-radius: 50%;
 }
