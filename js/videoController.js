@@ -1,7 +1,7 @@
 import Observable from "./observable";
 
 export default class VideoController extends Observable {
-  POLL_INTERVAL = 300; // ms between time polls to player
+  POLL_INTERVAL = 1000 / 3; // ms between time polls to player
 
   constructor(elementId) {
     super();
