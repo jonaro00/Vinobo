@@ -29,6 +29,7 @@ export default function TranscriptPresenter(props) {
       transcriptPromise={promise}
       onText={(text) => setQuery(text)}
       selectTimestamp={(offset) => props.vidCon.seek(offset / 1000)}
+      videoTime={videoTime}
     />
   );
 }
