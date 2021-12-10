@@ -9,7 +9,7 @@ export default function HeaderPresenter({ model, auth, vidCon }) {
       user={user}
       signOut={(e) => {
         e.preventDefault();
-        vidCon.reload();
+        vidCon?.reload();
         signOut(auth);
       }}
     />

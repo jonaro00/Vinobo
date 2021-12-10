@@ -34,8 +34,7 @@ export default function SigninView({
               onChange={(event) => onEmail(event.target.value)}
               name="email"
               type="email"
-              placeholder={"E-mail address"}
-              autoComplete="new-password"
+              autoComplete="email"
             />
           </div>
           <div>
@@ -49,8 +48,7 @@ export default function SigninView({
               onChange={(event) => onPassword(event.target.value)}
               name="password"
               type="password"
-              placeholder={"Password"}
-              autoComplete="new-password"
+              autoComplete={register ? "new-password" : "current-password"}
             />
           </div>
           <div>
