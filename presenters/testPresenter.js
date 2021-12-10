@@ -14,7 +14,7 @@ function TestPresenter(props) {
   return (
     <TestView
       id={id}
-      time={videoTime}
+      time={videoTime | 0}
       title={error ? "ERROR!" : data ? data.title : "loading..."}
     />
   );

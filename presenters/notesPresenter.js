@@ -7,5 +7,13 @@ export default function NotesPresenter(props) {
   const id = useModelProperty(props.model, "currentVideo");
   const notes = useModelGetter(props.model, "getNotes");
 
-  return <NotesView notes={notes} removeNote={(noteId) => props.model.removeNote(noteId)} />;
+  const [query, setQuery] = React.useState("");
+
+  return (
+    <NotesView
+      notes={notes}
+      removeNote={(noteId) => props.model.removeNote(noteId)}
+      onText={setQuery}
+    />
+  );
 }

@@ -197,7 +197,7 @@ export default class VideoController extends Observable {
     this.execute(() => {
       const prevTime = this.currentTime;
       try {
-        this.currentTime = this.player.getCurrentTime() | 0; // bitwise OR with 0 rounds down to integer
+        this.currentTime = this.player.getCurrentTime();
       } catch (error) {
         this.currentTime = 0;
       }

@@ -24,7 +24,7 @@ export default function TranscriptView(props) {
                   }}
                   key={row.offset}
                 >
-                  {formatTimestamp(row.offset)} {row.text}
+                  {formatTimestamp(Math.round(row.offset / 1000))} {row.text}
                 </div>
               ))
             : props.transcriptPromise

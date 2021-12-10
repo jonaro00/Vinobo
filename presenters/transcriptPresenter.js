@@ -48,8 +48,7 @@ function transcriptTransform(data, query, highlightTime) {
     .filter((row) => !query || words.find((word) => row.searchText.includes(word)))
     .map((row) => ({
       ...row,
-      highlighted:
-        highlightTimeMs >= row.offset && highlightTimeMs <= row.offset + row.duration * 0.5,
+      highlighted: highlightTimeMs >= row.offset && highlightTimeMs <= row.offset + row.duration,
     }));
 }
 
