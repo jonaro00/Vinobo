@@ -18,6 +18,12 @@ export default function SigninPresenter({ auth, model, register }) {
     ? createUserWithEmailAndPassword
     : signInWithEmailAndPassword;
 
+  const userErrors = {
+    "auth/wrong-password":
+      "You have entered an unknown e-mail/password combination. Please try again.",
+    "auth/email-already-in-use": "There is already an account with this email and password in use.",
+  };
+
   React.useEffect(() => {
     // At loading stage reset any old errors
     if (loading) setUserError(null);
@@ -38,7 +44,7 @@ export default function SigninPresenter({ auth, model, register }) {
   return (
     <SigninView
       register={register}
-      errorText={userError?.code}
+      errorText={userError ? userErrors[userError.code] : ""}
       loading={loading}
       onEmail={(email) => setEmail(email)}
       onPassword={(pw) => setPassword(pw)}
@@ -52,6 +58,7 @@ export default function SigninPresenter({ auth, model, register }) {
           })
           .catch((error) => {
             console.log("failing to authenticate");
+            console.log(error);
             setLoading(false);
             setUserError(error);
           });

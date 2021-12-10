@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/Signin.module.css";
 import HeaderPresenter from "../presenters/headerPresenter";
 import SigninPresenter from "../presenters/signinPresenter";
-import RegisterPresenter from "../presenters/registerPresenter";
 
 export default function Signin({ model, auth }) {
   return (
