@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from "next/script";
 import React from "react";
 import "../styles/globals.css";
 import Model, { Video, Note } from "../js/model";
@@ -52,6 +53,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Vinobo</title>
       </Head>
+      <Script src="https://kit.fontawesome.com/067013981a.js" crossorigin="anonymous" />
       <Component {...pageProps} model={model} auth={auth} loadingUser={loadingUser} />
     </div>
   );

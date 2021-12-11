@@ -17,21 +17,31 @@ export default function HeaderView({ user, signOut }) {
           </a>
         </Link>
         <Link href="/about">
-          <a>About</a>
+          <a>
+            About
+            <i className={"fas fa-info-circle"} />
+          </a>
         </Link>
       </div>
       <div>
         {user ? (
           <>
-            <p className={styles.signedInUser}>{user}</p>
+            <p className={styles.signedInUser}>
+              {user}
+              <i className={"fas fa-user-circle"} />
+            </p>
             <a className={"btn"} onClick={signOut}>
               Sign Out
+              <i className={"fas fa-sign-out-alt"} />
             </a>
           </>
         ) : (
           <>
             <Link href="/signin">
-              <a className={"btn"}>Sign In</a>
+              <a className={"btn"}>
+                Sign In
+                <i className={"fas fa-sign-in-alt"} />
+              </a>
             </Link>
           </>
         )}

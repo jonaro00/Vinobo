@@ -1,7 +1,7 @@
 .playerContainer {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%;
+  padding-bottom: clamp(200px, 56.25%, calc((100vh - 45px) * 0.7));
   background-color: black;
 }
 .player {

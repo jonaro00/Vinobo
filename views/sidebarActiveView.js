@@ -31,7 +31,9 @@ export default function SidebarView(props) {
                   </div>
                 </a>
                 <div>
-                  <button onClick={() => props.removeVideo(video.id)}>x</button>
+                  <button onClick={() => props.removeVideo(video.id)}>
+                    <i className={"fas fa-trash-alt"} />
+                  </button>
                 </div>
               </div>
             ))}

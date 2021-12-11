@@ -15,7 +15,7 @@ export default function TranscriptView(props) {
         <input
           type="search"
           onInput={(e) => props.onText(e.target.value)}
-          placeholder="search in transcript..."
+          placeholder="Search transcript..."
         ></input>
       </div>
       <div ref={scrollBox} className={styles.transcripts}>

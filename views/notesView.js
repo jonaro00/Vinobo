@@ -17,7 +17,7 @@ export default function NotesView(props) {
           }}
           className={`${styles.collapseButton} btn`}
         >
-          {collapsed ? "<" : ">"}
+          {<i className={"fas " + (collapsed ? "fa-chevron-left" : "fa-chevron-right")} />}
         </a>
         {collapsed || (
           <>
@@ -49,7 +49,9 @@ export default function NotesView(props) {
                 content={<div>{note.content}</div>}
                 buttonsRight={
                   <>
-                    <button onClick={() => props.removeNote(note.id)}>Delete</button>
+                    <button onClick={() => props.removeNote(note.id)}>
+                      <i className={"fas fa-trash-alt"} /> Delete
+                    </button>
                   </>
                 }
               />
