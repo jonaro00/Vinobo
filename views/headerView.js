@@ -11,16 +11,13 @@ export default function HeaderView({ user, signOut }) {
             <div className={styles.logo}>
               <Image src={"/logo.png"} width={37} height={37} alt="Logo" />
             </div>
-            <div className={styles.siteNameContainer}>
-              <div className={styles.siteName}></div>
-              <div className={styles.siteSubTitle}></div>
+            <div className={styles.titleLogo}>
+              <Image src={"/titleLogo.png"} width={112} height={36} alt="Logo" />
             </div>
           </a>
         </Link>
         <Link href="/about">
-          <a>
-            <Image src={"/titleLogo.png"} width={140} height={42} alt="Logo" />
-          </a>
+          <a>About</a>
         </Link>
       </div>
       <div>
@@ -28,7 +25,7 @@ export default function HeaderView({ user, signOut }) {
           <>
             <p className={styles.signedInUser}>{user}</p>
             <a className={"btn"} onClick={signOut}>
-              <button>Sign Out</button>
+              Sign Out
             </a>
           </>
         ) : (

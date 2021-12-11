@@ -11,7 +11,7 @@ export default function SidebarView(props) {
         submitValue="Add"
       ></TextForm>
       {props.error && <p className="red">{props.error}</p>}
-      <div>Saved Videos</div>
+      {(props.loadingVideos || props.videos) && <div className={styles.title}>Saved Videos</div>}
       <div className={styles.videos}>
         {props.loadingVideos
           ? "Loading..."

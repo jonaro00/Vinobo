@@ -1,30 +1,25 @@
 import React from "react";
 import styles from "../styles/TextForm.module.css";
 
-export default class TextForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: "" };
-  }
-  render() {
-    return (
-      <form
-        className={styles.textForm}
-        onSubmit={(event) => {
-          event.preventDefault();
-          this.setState({ value: "" });
-          this.props.onSubmit(this.state.value);
-        }}
-      >
-        <input
-          className={styles.textInput}
-          type="text"
-          value={this.state.value}
-          onChange={(event) => this.setState({ value: event.target.value })}
-          placeholder={this.props.placeholder}
-        />
-        <input type="submit" value={this.props.submitValue} />
-      </form>
-    );
-  }
+export default function TextForm({ placeholder, submitValue, onSubmit }) {
+  const [value, setValue] = React.useState("");
+  return (
+    <form
+      className={styles.textForm}
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(value);
+        setValue("");
+      }}
+    >
+      <input
+        className={styles.textInput}
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder={placeholder}
+      />
+      <input className={styles.submitButton} type="submit" value={submitValue} />
+    </form>
+  );
 }

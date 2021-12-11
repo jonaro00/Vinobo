@@ -11,16 +11,17 @@ export default function NotesView(props) {
       <div className={styles.header}>
         <a
           onClick={() => {
-            setCollapsed(!collapsed);
-            props.parentRef?.current.classList.toggle(pageStyles.collapsed, collapsed);
+            const c = !collapsed;
+            setCollapsed(c);
+            props.parentRef?.current.classList.toggle(pageStyles.collapsed, c);
           }}
           className={`${styles.collapseButton} btn`}
         >
-          {collapsed ? ">" : "<"}
+          {collapsed ? "<" : ">"}
         </a>
-        {!collapsed || (
+        {collapsed || (
           <>
-            <div className={styles.title}>My Cards</div>
+            <div className={styles.title}>My Notes</div>
             <input
               type="search"
               onInput={(e) => props.onText(e.target.value)}
@@ -29,7 +30,7 @@ export default function NotesView(props) {
           </>
         )}
       </div>
-      {!collapsed || (
+      {collapsed || (
         <div className={styles.cards}>
           {props.notes &&
             [...props.notes].map((note) => (
@@ -45,7 +46,7 @@ export default function NotesView(props) {
                     {formatTimestamp(note.offset)}
                   </div>
                 }
-                content={<p>{note.content}</p>}
+                content={<div>{note.content}</div>}
                 buttonsRight={
                   <>
                     <button onClick={() => props.removeNote(note.id)}>Delete</button>
