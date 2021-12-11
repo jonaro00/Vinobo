@@ -12,10 +12,18 @@
 }
 
 .videoCard {
-  background-color: #ecf7f7;
-  padding: 4px;
+  background-color: #ecebeb;
+  padding: 5px;
   border-radius: 4px;
   margin: 0 4px 4px 4px;
+  font-size: 14px;
+}
+
+.videoCard button {
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 1px 1px 0px #75757580;
 }
 
 .videoCard.highlighted {
