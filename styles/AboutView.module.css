@@ -1,0 +1,13 @@
+.container {
+  text-align: center;
+  display: inline-block;
+  width: 300px;
+}
+
+.header {
+  font-size: 16pt;
+}
+
+.body {
+  font-size: 11pt;
+}
