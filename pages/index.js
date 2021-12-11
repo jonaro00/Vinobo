@@ -12,6 +12,7 @@ import ControlPresenter from "../presenters/controlPresenter";
 const vidCon = new VideoController("player");
 
 export default function Home({ model, auth }) {
+  const notesContRef = React.useRef(null);
   return (
     <>
       <HeaderPresenter model={model} vidCon={vidCon} auth={auth} />
@@ -30,8 +31,8 @@ export default function Home({ model, auth }) {
             </div>
           </div>
         </div>
-        <div className={styles.notesContainer}>
-          <NotesPresenter model={model} vidCon={vidCon} />
+        <div ref={notesContRef} className={styles.notesContainer}>
+          <NotesPresenter model={model} vidCon={vidCon} parentRef={notesContRef} />
         </div>
       </div>
       {/* <TestPresenter model={model} vidCon={vidCon} /> */}
