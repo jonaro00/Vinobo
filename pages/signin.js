@@ -1,13 +1,9 @@
 import React from "react";
-import { signOut } from "firebase/auth";
 import styles from "../styles/Signin.module.css";
 import HeaderPresenter from "../presenters/headerPresenter";
 import SigninPresenter from "../presenters/signinPresenter";
 
 export default function Signin({ model, auth }) {
-  React.useEffect(() => {
-    signOut(auth);
-  }, []);
   return (
     <>
       <HeaderPresenter model={model} auth={auth} />
