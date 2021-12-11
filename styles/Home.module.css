@@ -36,9 +36,10 @@
 .notesContainer {
   flex: 1 0;
   background-color: #f8f8f8;
-  padding: 0 6px;
+  padding: 0 6px 6px 6px;
   border-radius: 10px 0 0 10px;
   box-shadow: 0px 1px 4px 0px #00000080;
+  overflow-y: auto;
 }
 
 .sidebar {
@@ -46,6 +47,7 @@
   border-radius: 0 10px 10px 0;
   box-shadow: 0px 1px 4px 0px #00000080;
   background-color: #ffffff;
+  overflow-y: auto;
 }
 
 .sidebar.collapsed,
