@@ -8,9 +8,6 @@ export default function HeaderView({ user, signOut }) {
       <div>
         <Link href="/">
           <a>
-            <div className={styles.logo}>
-              <Image src={"/logo.png"} width={37} height={37} alt="Logo" />
-            </div>
             <div className={styles.titleLogo}>
               <Image src={"/titleLogo.png"} width={112} height={36} alt="Logo" />
             </div>
