@@ -9,24 +9,26 @@ export default function HeaderView({ user, signOut }) {
         <Link href="/">
           <a>
             <div className={styles.logo}>
-              <Image src={"/logo.png"} width={42} height={42} alt="Logo" />
+              <Image src={"/logo.png"} width={37} height={37} alt="Logo" />
             </div>
             <div className={styles.siteNameContainer}>
-              <div className={styles.siteName}>Vinobo</div>
-              <div className={styles.siteSubTitle}>Video Notebook</div>
+              <div className={styles.siteName}></div>
+              <div className={styles.siteSubTitle}></div>
             </div>
           </a>
         </Link>
         <Link href="/about">
-          <a>About</a>
+          <a>
+            <Image src={"/titleLogo.png"} width={140} height={42} alt="Logo" />
+          </a>
         </Link>
       </div>
       <div>
         {user ? (
           <>
-            <p className={styles.signedInUser}>Signed in as: {user}</p>
+            <p className={styles.signedInUser}>{user}</p>
             <a className={"btn"} onClick={signOut}>
-              Sign Out
+              <button>Sign Out</button>
             </a>
           </>
         ) : (

@@ -21,6 +21,8 @@ export default function SigninPresenter({ auth, model, register }) {
   const userErrors = {
     "auth/wrong-password":
       "You have entered an unknown e-mail/password combination. Please try again.",
+    "auth/wrong-password":
+      "You have entered an unknown e-mail/password combination. Please try again.",
     "auth/email-already-in-use": "There is already an account with this email and password in use.",
   };
 
@@ -47,7 +49,7 @@ export default function SigninPresenter({ auth, model, register }) {
       register={register}
       errorText={
         userError
-          ? userErrors.hasOwnProperty(userError)
+          ? Object.keys(userErrors).includes(userError.code)
             ? userErrors[userError.code]
             : userError.code
           : ""

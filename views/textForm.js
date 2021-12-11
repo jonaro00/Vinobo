@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/TextForm.module.css";
 
 export default class TextForm extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ export default class TextForm extends React.Component {
   render() {
     return (
       <form
+        className={styles.textForm}
         onSubmit={(event) => {
           event.preventDefault();
           this.setState({ value: "" });
@@ -15,6 +17,7 @@ export default class TextForm extends React.Component {
         }}
       >
         <input
+          className={styles.textInput}
           type="text"
           value={this.state.value}
           onChange={(event) => this.setState({ value: event.target.value })}
