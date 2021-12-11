@@ -3,7 +3,7 @@
   resize: none;
   border: none;
   width: 100%;
-  height: clamp(200px, 100%, 500px);
+  height: clamp(300px, 100%, 500px);
 }
 
 .controlView {
