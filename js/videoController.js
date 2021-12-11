@@ -23,7 +23,6 @@ export default class VideoController extends Observable {
    * @param {String} id Optional video ID to load the player with.
    */
   loadPlayer(id) {
-    console.log("loading", id);
     try {
       this.player = new window.YT.Player(this.elementId, {
         videoId: id,

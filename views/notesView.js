@@ -13,11 +13,11 @@ export default function NotesView(props) {
         {props.collapsed || (
           <>
             <div className={styles.title}>My Notes</div>
-            <input
+            {/* <input
               type="search"
               onInput={(e) => props.onText(e.target.value)}
               placeholder="Filter notes..."
-            ></input>
+            ></input> */}
           </>
         )}
       </div>

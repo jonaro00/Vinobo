@@ -23,7 +23,12 @@ export default function SidebarActiveView(props) {
             {props.loadingVideos
               ? "Loading..."
               : [...props.videos].map((video) => (
-                  <div key={video.id} className={styles.videoCard}>
+                  <div
+                    key={video.id}
+                    className={`${styles.videoCard} ${
+                      props.currentVideo === video.id ? styles.highlighted : ""
+                    }`}
+                  >
                     <a
                       className={"btn " + styles.videoInfo}
                       onClick={(event) => {

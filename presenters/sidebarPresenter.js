@@ -19,6 +19,7 @@ export default function SidebarPresenter(props) {
     <SidebarActiveView
       loadingVideos={loading}
       videos={videos}
+      currentVideo={model_id}
       videoChoice={(ref) => {
         const id = extractID(ref);
         if (id) {
@@ -65,7 +66,6 @@ export default function SidebarPresenter(props) {
         videoChoice={(ref) => {
           const id = extractID(ref);
           if (id) {
-            console.log("User wants to set video to ID ", id);
             props.model.setCurrentVideo(id);
           } else {
             setError("Not referring to a valid ID/URL");

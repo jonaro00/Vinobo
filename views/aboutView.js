@@ -18,6 +18,15 @@ export default function AboutView(props) {
           explore the possibilities of Vinobo!
         </p>
         <hr />
+        <h2>How to use</h2>
+        <p>
+          Start by copying the YouTube link of a video that you would like to take notes for. Then,
+          paste it in the left sidebar on the main page and click Add. The video and it{"'"}s
+          transcripts will now load. You can now watch the video, search in the transcript, and take
+          notes. Add a note by typing in the form below the video. The timestamp can be manually set
+          or left empty (empty timestamp uses current video time).
+        </p>
+        <hr />
         <h2>Creators</h2>
         <p>
           This app was created as a group project during the course DH2642 Interaction Programming
