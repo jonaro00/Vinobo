@@ -31,7 +31,7 @@ export default function Home({ model, auth }) {
           </div>
         </div>
         <div className={styles.notesContainer}>
-          <NotesPresenter model={model} />
+          <NotesPresenter model={model} vidCon={vidCon} />
         </div>
       </div>
       {/* <TestPresenter model={model} vidCon={vidCon} /> */}

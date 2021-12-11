@@ -6,12 +6,12 @@ export default function NotesView(props) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <a className={`${styles.collapseButton} btn`}>></a>
+        <a className={`${styles.collapseButton} btn`}>&gt;</a>
         <div className={styles.title}>My Cards</div>
         <input
           type="search"
           onInput={(e) => props.onText(e.target.value)}
-          placeholder="search in notes"
+          placeholder="Filter notes..."
         ></input>
       </div>
       <div className={styles.cards}>
@@ -21,7 +21,11 @@ export default function NotesView(props) {
               key={note.id}
               extraStyle={{ padding: "8px" }}
               titleElement={<div className={styles.noteTitle}>{note.title}</div>}
-              timeElement={<div>{formatTimestamp(note.offset)}</div>}
+              timeElement={
+                <div className={styles.cardTime} onClick={() => props.selectTimestamp(note.offset)}>
+                  {formatTimestamp(note.offset)}
+                </div>
+              }
               content={<p>{note.content}</p>}
               buttonsRight={
                 <>

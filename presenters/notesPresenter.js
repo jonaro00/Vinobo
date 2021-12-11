@@ -14,6 +14,7 @@ export default function NotesPresenter(props) {
       notes={notes}
       removeNote={(noteId) => props.model.removeNote(noteId)}
       onText={setQuery}
+      selectTimestamp={(offset) => props.vidCon.seek(offset)}
     />
   );
 }
