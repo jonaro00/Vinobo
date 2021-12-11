@@ -19,11 +19,9 @@ export default function SigninPresenter({ auth, model, register }) {
     : signInWithEmailAndPassword;
 
   const userErrors = {
-    "auth/wrong-password":
-      "You have entered an unknown e-mail/password combination. Please try again.",
-    "auth/wrong-password":
-      "You have entered an unknown e-mail/password combination. Please try again.",
-    "auth/email-already-in-use": "There is already an account with this email and password in use.",
+    "auth/user-not-found": "No user with that e-mail address was found.",
+    "auth/wrong-password": "Incorrect password.",
+    "auth/email-already-in-use": "There is already an account with this email in use.",
   };
 
   React.useEffect(() => {

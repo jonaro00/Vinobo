@@ -1,13 +1,32 @@
 .container {
+  max-width: 800px;
+  padding: 0.5em;
+}
+
+.h1 {
   text-align: center;
-  display: inline-block;
-  width: 300px;
+  font-size: 1.7em;
+}
+.h1s {
+  font-size: 0.6em;
+  font-weight: normal;
+  font-style: italic;
+  color: #333;
+}
+.h2 {
+  font-size: 1.2em;
 }
 
-.header {
-  font-size: 16pt;
+.creators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
 }
 
-.body {
-  font-size: 11pt;
+.creators > * {
+  flex: 1 1 300px;
+  padding: 1.8em;
+  background-color: #009361;
+  color: white;
+  border-radius: 0.25em;
 }
