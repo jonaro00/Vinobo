@@ -5,13 +5,13 @@ import { formatTimestamp } from "../js/transcript.js";
 export default function SidebarView(props) {
   return (
     <>
+      <div className={styles.title}>My Videos</div>
       <TextForm
         onSubmit={(ref) => props.addVideo(ref)}
         placeholder="Insert YouTube URL or ID"
         submitValue="Add"
       ></TextForm>
-      {props.error && <p className="red">{props.error}</p>}
-      {(props.loadingVideos || props.videos) && <div className={styles.title}>Saved Videos</div>}
+      {props.error && <div className={styles.addError}>{props.error}</div>}
       <div className={styles.videos}>
         {props.loadingVideos
           ? "Loading..."
