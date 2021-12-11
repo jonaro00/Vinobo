@@ -9,6 +9,7 @@ export default class TextForm extends React.Component {
   render() {
     return (
       <form
+        className={styles.textForm}
         onSubmit={(event) => {
           event.preventDefault();
           this.setState({ value: "" });

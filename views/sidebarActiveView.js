@@ -6,13 +6,12 @@ export default function SidebarView(props) {
   return (
     <div>
       <TextForm
-        className={styles.text}
         onSubmit={(ref) => props.addVideo(ref)}
-        placeholder="Insert video URL or ID"
+        placeholder="Insert YouTube URL or ID"
         submitValue="Add"
       ></TextForm>
       {props.error && <p className="red">{props.error}</p>}
-      <div>My videos</div>
+      <h4>Saved Videos</h4>
       <div>
         {props.loadingVideos
           ? "Loading..."
