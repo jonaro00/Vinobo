@@ -63,8 +63,8 @@ const secondRegex = /[\s-]+/g;
 function makeStringSearchable(str) {
   return str
     .trim() // remove leading and trailing whitespace
-    .replaceAll(punctuationRegex, "") // remove punctuation
-    .replaceAll(secondRegex, " ") // replace sequences of whitespace with one space
+    .replace(punctuationRegex, "") // remove punctuation
+    .replace(secondRegex, " ") // replace sequences of whitespace with one space
     .normalize() // unicode normalize
     .toLocaleLowerCase(); // to lower case
 }
