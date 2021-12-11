@@ -39,6 +39,12 @@ export default function HeaderView({ user, signOut }) {
           <>
             <Link href="/signin">
               <a className={"btn"}>
+                Register
+                <i className={"fas fa-user-plus"} />
+              </a>
+            </Link>
+            <Link href="/signin">
+              <a className={"btn"}>
                 Sign In
                 <i className={"fas fa-sign-in-alt"} />
               </a>
