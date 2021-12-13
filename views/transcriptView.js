@@ -16,29 +16,30 @@ export default function TranscriptView(props) {
           type="search"
           onInput={(e) => props.onText(e.target.value)}
           placeholder="Search transcript..."
+          disabled={!!props.transcriptError}
         ></input>
       </div>
       <div ref={scrollBox} className={styles.transcripts}>
-        {
-          props.transcriptError
-            ? "Failed to get transcript"
-            : props.transcript
-            ? [...props.transcript].map((row) => (
-                <div
-                  ref={row.highlighted ? activeRow : null}
-                  className={row.highlighted ? "bold" : ""}
-                  onClick={(e) => {
-                    props.selectTimestamp(row.offset);
-                  }}
-                  key={row.offset}
-                >
-                  {formatTimestamp(Math.round(row.offset / 1000))} {row.text}
-                </div>
-              ))
-            : props.transcriptPromise
-            ? "Loading..."
-            : "" /* No transcript due to no video selected */
-        }
+        {props.transcriptError ? (
+          <div>Failed to get transcript</div>
+        ) : props.transcript ? (
+          [...props.transcript].map((row) => (
+            <div
+              ref={row.highlighted ? activeRow : null}
+              className={row.highlighted ? "bold" : ""}
+              onClick={(e) => {
+                props.selectTimestamp(row.offset);
+              }}
+              key={row.offset}
+            >
+              {formatTimestamp(Math.round(row.offset / 1000))} {row.text}
+            </div>
+          ))
+        ) : props.transcriptPromise ? (
+          "Loading..."
+        ) : (
+          false /* No transcript due to no video selected */
+        )}
       </div>
     </div>
   );
