@@ -13,12 +13,13 @@ const vidCon = new VideoController("player");
 
 export default function Home({ model, auth }) {
   const notesContRef = React.useRef(null);
+  const sidebarRef = React.useRef(null);
   return (
     <>
       <HeaderPresenter model={model} vidCon={vidCon} auth={auth} />
       <div className={styles.pageContent}>
-        <div className={styles.sidebar}>
-          <SidebarPresenter model={model} vidCon={vidCon} />
+        <div ref={sidebarRef} className={styles.sidebar}>
+          <SidebarPresenter model={model} vidCon={vidCon} parentRef={sidebarRef} />
         </div>
         <div className={styles.videoAndControlsContainer}>
           <VideoPlayerPresenter model={model} vidCon={vidCon} />

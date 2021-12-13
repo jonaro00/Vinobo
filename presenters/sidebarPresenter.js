@@ -4,6 +4,7 @@ import SidebarView from "../views/sidebarView";
 import SidebarActiveView from "../views/sidebarActiveView";
 import { extractID } from "../js/transcript";
 import { Video } from "../js/model";
+import pageStyles from "../styles/Home.module.css";
 
 export default function SidebarPresenter(props) {
   const [error, setError] = React.useState(null);
@@ -11,11 +12,14 @@ export default function SidebarPresenter(props) {
   const model_id = useModelProperty(props.model, "currentVideo"); // TODO: highlight the active video
   const [loading, setLoading] = React.useState(false);
 
+  const [collapsed, setCollapsed] = React.useState(false);
+
   return (
     //<>
     <SidebarActiveView
       loadingVideos={loading}
       videos={videos}
+      currentVideo={model_id}
       videoChoice={(ref) => {
         const id = extractID(ref);
         if (id) {
@@ -44,6 +48,12 @@ export default function SidebarPresenter(props) {
       }}
       removeVideo={(id) => props.model.removeVideo(id)}
       error={error}
+      onCollapse={() => {
+        const c = !collapsed;
+        setCollapsed(c);
+        props.parentRef?.current.classList.toggle(pageStyles.collapsed, c);
+      }}
+      collapsed={collapsed}
     />
     /*
       <div style={{ padding: "50px 0" }}>
@@ -56,7 +66,6 @@ export default function SidebarPresenter(props) {
         videoChoice={(ref) => {
           const id = extractID(ref);
           if (id) {
-            console.log("User wants to set video to ID ", id);
             props.model.setCurrentVideo(id);
           } else {
             setError("Not referring to a valid ID/URL");

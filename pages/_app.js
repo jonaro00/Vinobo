@@ -29,10 +29,8 @@ function MyApp({ Component, pageProps }) {
         model.setUser(user ? user.email : null);
         setLoadingUser(false);
         if (user) {
-          console.log("User signed in:", user.email);
           unsubscribePersistor = persistModel(model);
         } else {
-          console.log("No user is signed in");
           if (unsubscribePersistor) {
             unsubscribePersistor();
             unsubscribePersistor = null;

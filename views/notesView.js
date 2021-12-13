@@ -2,35 +2,26 @@ import React from "react";
 import NoteCard from "../components/noteCard";
 import { formatTimestamp } from "../js/transcript";
 import styles from "../styles/NotesView.module.css";
-import pageStyles from "../styles/Home.module.css";
 
 export default function NotesView(props) {
-  const [collapsed, setCollapsed] = React.useState(false);
   return (
     <>
       <div className={styles.header}>
-        <a
-          onClick={() => {
-            const c = !collapsed;
-            setCollapsed(c);
-            props.parentRef?.current.classList.toggle(pageStyles.collapsed, c);
-          }}
-          className={`${styles.collapseButton} btn`}
-        >
-          {<i className={"fas " + (collapsed ? "fa-chevron-left" : "fa-chevron-right")} />}
+        <a onClick={props.onCollapse} className={"btn"}>
+          {<i className={"fas " + (props.collapsed ? "fa-chevron-left" : "fa-chevron-right")} />}
         </a>
-        {collapsed || (
+        {props.collapsed || (
           <>
             <div className={styles.title}>My Notes</div>
-            <input
+            {/* <input
               type="search"
               onInput={(e) => props.onText(e.target.value)}
               placeholder="Filter notes..."
-            ></input>
+            ></input> */}
           </>
         )}
       </div>
-      {collapsed || (
+      {props.collapsed || (
         <div className={styles.cards}>
           {props.notes &&
             [...props.notes].map((note) => (

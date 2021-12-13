@@ -56,15 +56,12 @@ export default function SigninPresenter({ auth, model, register }) {
       onEmail={(email) => setEmail(email)}
       onPassword={(pw) => setPassword(pw)}
       signInUser={() => {
-        console.log("authenticating");
         setLoading(true);
         submitEmailAndPassword(auth, email, password)
           .then((user) => {
             setLoading(false);
           })
           .catch((error) => {
-            console.log("failing to authenticate");
-            console.log(error);
             setLoading(false);
             setUserError(error);
           });

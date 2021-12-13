@@ -8,18 +8,9 @@ export default function HeaderView({ user, signOut }) {
       <div>
         <Link href="/">
           <a>
-            <div className={styles.logo}>
-              <Image src={"/logo.png"} width={37} height={37} alt="Logo" />
-            </div>
             <div className={styles.titleLogo}>
               <Image src={"/titleLogo.png"} width={112} height={36} alt="Logo" />
             </div>
-          </a>
-        </Link>
-        <Link href="/about">
-          <a>
-            About
-            <i className={"fas fa-info-circle"} />
           </a>
         </Link>
       </div>
@@ -37,6 +28,18 @@ export default function HeaderView({ user, signOut }) {
           </>
         ) : (
           <>
+            <Link href="/about">
+              <a>
+                About
+                <i className={"fas fa-info-circle"} />
+              </a>
+            </Link>
+            <Link href="/signin">
+              <a className={"btn"}>
+                Register
+                <i className={"fas fa-user-plus"} />
+              </a>
+            </Link>
             <Link href="/signin">
               <a className={"btn"}>
                 Sign In
