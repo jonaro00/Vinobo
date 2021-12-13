@@ -15,6 +15,12 @@ export default function HeaderView({ user, signOut }) {
         </Link>
       </div>
       <div>
+        <Link href="/about">
+          <a>
+            About
+            <i className={"fas fa-info-circle"} />
+          </a>
+        </Link>
         {user ? (
           <>
             <p className={styles.signedInUser}>
@@ -28,12 +34,6 @@ export default function HeaderView({ user, signOut }) {
           </>
         ) : (
           <>
-            <Link href="/about">
-              <a>
-                About
-                <i className={"fas fa-info-circle"} />
-              </a>
-            </Link>
             <Link href="/signin">
               <a className={"btn"}>
                 Register
