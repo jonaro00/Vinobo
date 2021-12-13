@@ -13,11 +13,11 @@ export default function NotesView(props) {
         {props.collapsed || (
           <>
             <div className={styles.title}>My Notes</div>
-            {/* <input
+            <input
               type="search"
               onInput={(e) => props.onText(e.target.value)}
               placeholder="Filter notes..."
-            ></input> */}
+            ></input>
           </>
         )}
       </div>
@@ -34,10 +34,10 @@ export default function NotesView(props) {
                     className={styles.cardTime}
                     onClick={() => props.selectTimestamp(note.offset)}
                   >
-                    {formatTimestamp(note.offset)}
+                    <div>{formatTimestamp(note.offset)}</div>
                   </div>
                 }
-                content={<div>{note.content}</div>}
+                content={note.content?.trim() ? <div>{note.content}</div> : false}
                 buttonsRight={
                   <>
                     <button onClick={() => props.removeNote(note.id)}>

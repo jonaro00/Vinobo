@@ -31,4 +31,9 @@
 
 .cardTime {
   cursor: pointer;
+  color: #0051ff;
+  border: 1px solid #0051ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

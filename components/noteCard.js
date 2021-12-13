@@ -14,7 +14,7 @@ export default function NoteCard({
         {titleElement}
         {timeElement}
       </div>
-      <div className={styles.content}>{content}</div>
+      {content ? <div className={styles.content}>{content}</div> : false}
       <div className={styles.buttons}>
         <div>{buttonsLeft}</div>
         <div>{buttonsRight}</div>
