@@ -48,7 +48,6 @@ export default function ControlView(props) {
             name="note"
             type="textarea"
             placeholder="Note"
-            required
           />
         }
         buttonsLeft={<input type="reset" value="Clear" />}
