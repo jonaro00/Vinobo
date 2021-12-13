@@ -131,7 +131,7 @@ export default class VideoController extends Observable {
   setVideoID(id) {
     this.executePrio(() => {
       if (this.fullyInitialized) {
-        if (this.player.getVideoData().video_id === id) return;
+        if ((this.player.getVideoData()?.video_id || null) === id) return;
         if (!id) this.reload();
       }
       this.player.cueVideoById(id);

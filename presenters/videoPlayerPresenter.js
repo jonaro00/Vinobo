@@ -1,6 +1,7 @@
 import React from "react";
 import Script from "next/script";
 import VideoPlayerView from "../views/videoPlayerView";
+import useModelProperty from "../js/useModelProperty";
 
 export default function VideoPlayerPresenter({ model, vidCon }) {
   // Binding VideoController to model
@@ -25,10 +26,12 @@ export default function VideoPlayerPresenter({ model, vidCon }) {
     };
   }, [model, vidCon]);
 
+  const id = useModelProperty(model, "currentVideo");
+
   return (
     <>
       <Script src="https://www.youtube.com/iframe_api"></Script>
-      <VideoPlayerView />
+      <VideoPlayerView hidden={id === null} />
     </>
   );
 }
