@@ -27,9 +27,15 @@ The user feedback was given with the app during commit [ab8d2bc](https://gits-15
 - Searching in My Notes feature requested. And perhaps in My Videos too.
 - Suggested a more descriptive header, such as "Vinobo - Video Notebook".
 
-### Tester #3
+### Tester #3 (10 minutes)
 
--
+- At the beginning it was a bit unclear what to do first
+- It would be nice to either have instructions on how to proceed, or highlight what to do first
+- Would be nice to have an image placeholder for the youtube videos, so that the user can easily browse the videos quickly
+- Wasn't sure what the notes view exactly was for, or what the app is supposed to help you with
+- Didn't see the added value of the transcript -> by clicking on it they saw the value of searching the video (not necessarily on keywords)
+- Would be nice to be able to organise the notes in someway (either in folders based on topics, labels)
+- User page would be appreciated with a dashboard (or maybe be able to add general comments or descriptions to videos)
 
 ## Features we improved based on feedback
 
