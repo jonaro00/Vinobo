@@ -58,4 +58,5 @@ button:hover,
 input:hover {
   color: #000000;
   background-color: #ffffff;
+  box-shadow: #b7dcff 0 0 0 2px, transparent 0 0 0 0;
 }
