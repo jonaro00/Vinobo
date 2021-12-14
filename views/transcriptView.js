@@ -12,11 +12,14 @@ export default function TranscriptView(props) {
   return (
     <div className={styles.container}>
       <div className={styles.search}>
-        <input
-          type="search"
-          onInput={(e) => props.onText(e.target.value)}
-          placeholder="Search transcript..."
-        ></input>
+        <form onReset={props.clearSearchInput}>
+          <input
+            type="search"
+            onInput={(e) => props.onText(e.target.value)}
+            placeholder="Search transcript..."
+          ></input>
+          <input type="reset" value="Clear"></input>
+        </form>
       </div>
       <div ref={scrollBox} className={styles.transcripts}>
         {
