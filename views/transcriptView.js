@@ -26,7 +26,7 @@ export default function TranscriptView(props) {
           [...props.transcript].map((row) => (
             <div
               ref={row.highlighted ? activeRow : null}
-              className={row.highlighted ? "bold" : ""}
+              className={row.highlighted ? styles.highlighted : ""}
               onClick={(e) => {
                 props.selectTimestamp(row.offset);
               }}

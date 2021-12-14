@@ -31,9 +31,14 @@
 
 .cardTime {
   cursor: pointer;
-  color: #0051ff;
-  border: 1px solid #0051ff;
+  color: #000000;
+  border: 1px solid #61b2fd;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.cardTime:hover {
+  color: #000000;
+  box-shadow: #61b2fd 0 0 2px 2px, transparent 0 0 0 0;
 }
