@@ -1,6 +1,6 @@
 import TextForm from "./textForm.js";
 import styles from "../styles/SidebarView.module.css";
-import { formatTimestamp } from "../js/transcript.js";
+import { formatTimestamp } from "../js/functions.js";
 
 export default function SidebarActiveView(props) {
   return (

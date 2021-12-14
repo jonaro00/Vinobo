@@ -1,7 +1,7 @@
 import React from "react";
 import useModelProperty from "../js/useModelProperty";
 import SidebarActiveView from "../views/sidebarActiveView";
-import { extractID } from "../js/transcript";
+import { extractID } from "../js/functions";
 import { Video } from "../js/model";
 import pageStyles from "../styles/Home.module.css";
 

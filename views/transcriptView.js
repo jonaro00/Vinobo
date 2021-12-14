@@ -1,5 +1,5 @@
 import React from "react";
-import { formatTimestamp } from "../js/transcript";
+import { formatTimestamp } from "../js/functions";
 import styles from "../styles/TranscriptView.module.css";
 
 export default function TranscriptView(props) {

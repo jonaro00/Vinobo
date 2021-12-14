@@ -1,7 +1,7 @@
 import React from "react";
 import ControlView from "../views/controlView";
 import useModelProperty from "../js/useModelProperty";
-import { formatTimestamp, parseTimestamp } from "../js/transcript";
+import { formatTimestamp, parseTimestamp } from "../js/functions";
 import { Note } from "../js/model";
 
 export default function ControlPresenter(props) {

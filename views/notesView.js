@@ -1,6 +1,6 @@
 import React from "react";
 import NoteCard from "../components/noteCard";
-import { formatTimestamp } from "../js/transcript";
+import { formatTimestamp } from "../js/functions";
 import styles from "../styles/NotesView.module.css";
 
 export default function NotesView(props) {
