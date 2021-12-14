@@ -7,7 +7,7 @@ import {
 import SigninView from "../views/signinView";
 import { useRouter } from "next/router";
 
-export default function SigninPresenter({ auth, model, register }) {
+export default function SigninPresenter({ auth, model, register, href }) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   // const [userData, setUserData] = React.useState("");
@@ -34,7 +34,8 @@ export default function SigninPresenter({ auth, model, register }) {
       auth,
       (user) => {
         // setUserData(user);
-        if (user) router.push("/"); // redirect if a logged in user visits this page. Allowing them to log in once again is buggy.
+        // redirect if a logged in user visits the signin page. Allowing them to log in once again is buggy.
+        if (register && user) router.push("/");
       },
       (error) => {
         setUserError(error);
@@ -45,6 +46,7 @@ export default function SigninPresenter({ auth, model, register }) {
   return (
     <SigninView
       register={register}
+      href={href}
       errorText={
         userError
           ? Object.keys(userErrors).includes(userError.code)
@@ -55,11 +57,12 @@ export default function SigninPresenter({ auth, model, register }) {
       loading={loading}
       onEmail={(email) => setEmail(email)}
       onPassword={(pw) => setPassword(pw)}
-      signInUser={() => {
+      submitHandler={() => {
         setLoading(true);
         submitEmailAndPassword(auth, email, password)
           .then((user) => {
             setLoading(false);
+            router.push(register ? "/registerSuccess" : "/");
           })
           .catch((error) => {
             setLoading(false);
