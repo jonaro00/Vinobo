@@ -1,6 +1,5 @@
 import React from "react";
 import useModelProperty from "../js/useModelProperty";
-import SidebarView from "../views/sidebarView";
 import SidebarActiveView from "../views/sidebarActiveView";
 import { extractID } from "../js/transcript";
 import { Video } from "../js/model";
@@ -15,7 +14,6 @@ export default function SidebarPresenter(props) {
   const [collapsed, setCollapsed] = React.useState(false);
 
   return (
-    //<>
     <SidebarActiveView
       loadingVideos={loading}
       videos={videos}
@@ -55,36 +53,5 @@ export default function SidebarPresenter(props) {
       }}
       collapsed={collapsed}
     />
-    /*
-      <div style={{ padding: "50px 0" }}>
-        SidebarActiveView &uarr;
-        <br />
-        SidebarView &darr;
-      </div>{" "}
-      <SidebarView
-        videos={videos}
-        videoChoice={(ref) => {
-          const id = extractID(ref);
-          if (id) {
-            props.model.setCurrentVideo(id);
-          } else {
-            setError("Not referring to a valid ID/URL");
-          }
-        }}
-        addCurrentVideo={() => {
-          props.vidCon.getVideoInfo().then((info) =>
-            props.model.addVideo({
-              id: model_id,
-              title: info.title,
-              author: info.author,
-              length: info.length,
-            })
-          );
-        }}
-        removeVideo={(id) => props.model.removeVideo(id)}
-        error={error}
-      />
-      */
-    //</>
   );
 }

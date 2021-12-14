@@ -15,7 +15,7 @@ export default function SidebarActiveView(props) {
         <>
           <TextForm
             onSubmit={(ref) => props.addVideo(ref)}
-            placeholder="Insert YouTube URL or ID"
+            placeholder="Paste YouTube URL..."
             submitValue="Add"
           ></TextForm>
           {props.error && <div className={styles.addError}>{props.error}</div>}
