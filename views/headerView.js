@@ -16,7 +16,7 @@ export default function HeaderView({ user, signOut }) {
       </div>
       <div>
         <Link href="/about">
-          <a>
+          <a className={"btn"}>
             About
             <i className={"fas fa-info-circle"} />
           </a>

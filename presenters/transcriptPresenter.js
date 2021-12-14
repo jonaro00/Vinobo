@@ -12,7 +12,7 @@ export default function TranscriptPresenter(props) {
   React.useEffect(() => setPromise(id && getTranscript(id)), [id]);
   const [sourceData, error] = usePromise(promise);
 
-  const [data, setProcessedData] = React.useState(null);
+  const [processedData, setProcessedData] = React.useState(null);
   React.useEffect(() => {
     setProcessedData(
       sourceData &&
@@ -24,7 +24,9 @@ export default function TranscriptPresenter(props) {
 
   return (
     <TranscriptView
-      transcript={error || transcriptTransform(data, makeStringSearchable(query), videoTime)}
+      transcript={
+        error || transcriptTransform(processedData, makeStringSearchable(query), videoTime)
+      }
       transcriptError={error}
       transcriptPromise={promise}
       onText={(text) => setQuery(text)}
