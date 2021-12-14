@@ -8,6 +8,7 @@ import usePromise from "../js/usePromise";
 export default function TranscriptPresenter(props) {
   const id = useModelProperty(props.model, "currentVideo");
   const videoTime = useModelProperty(props.vidCon, "currentTime");
+  const currentVideo = useModelProperty(props.model, "currentVideo");
 
   const [promise, setPromise] = React.useState(null);
   React.useEffect(() => setPromise(id && getTranscript(id)), [id]);
@@ -34,6 +35,7 @@ export default function TranscriptPresenter(props) {
       clearSearchInput={() => setQuery("")}
       selectTimestamp={(offset) => props.vidCon.seek(offset / 1000)}
       videoTime={videoTime}
+      currentVideo={currentVideo}
     />
   );
 }

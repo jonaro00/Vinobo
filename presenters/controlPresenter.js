@@ -6,12 +6,14 @@ import { Note } from "../js/model";
 
 export default function ControlPresenter(props) {
   const videoTime = useModelProperty(props.vidCon, "currentTime");
+  const currentVideo = useModelProperty(props.model, "currentVideo");
   const [title, setTitle] = React.useState("");
   const [offset, setOffset] = React.useState("");
   const [content, setContent] = React.useState("");
   return (
     <ControlView
       currentTime={formatTimestamp(videoTime | 0)}
+      currentVideo={currentVideo}
       addNote={(ref) => {
         ref.preventDefault();
         props.model.addNote(new Note(parseTimestamp(offset) || videoTime | 0, title, content));
