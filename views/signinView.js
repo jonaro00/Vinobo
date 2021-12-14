@@ -2,7 +2,8 @@ import styles from "../styles/SigninView.module.css";
 
 export default function SigninView({
   register,
-  signInUser,
+  href,
+  submitHandler,
   onEmail,
   onPassword,
   loading,
@@ -18,7 +19,7 @@ export default function SigninView({
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          signInUser();
+          submitHandler();
           event.target.reset();
         }}
       >
