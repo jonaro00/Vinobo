@@ -5,6 +5,7 @@
   background-color: black;
 }
 .tooltip {
+  font-size: 115%;
   color: #ddd;
   padding: 1em;
   text-align: center;
