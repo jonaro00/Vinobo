@@ -34,7 +34,7 @@ export default function HeaderView({ user, signOut }) {
           </>
         ) : (
           <>
-            <Link href="/signin">
+            <Link href="/register">
               <a className={"btn"}>
                 Register
                 <i className={"fas fa-user-plus"} />
