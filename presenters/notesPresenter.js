@@ -5,6 +5,7 @@ import useModelProperty from "../js/useModelProperty";
 import pageStyles from "../styles/Home.module.css";
 
 export default function NotesPresenter(props) {
+  const currentVideo = useModelProperty(props.model, "currentVideo");
   const notes = useModelProperty(props.model, "getNotes");
   const [processedNotes, setProcessedNotes] = React.useState(null);
 
@@ -28,6 +29,7 @@ export default function NotesPresenter(props) {
 
   return (
     <NotesView
+      currentVideo={currentVideo}
       notes={filterList(processedNotes, words, "searchTitle")}
       removeNote={(noteId) => props.model.removeNote(noteId)}
       onText={setQuery}

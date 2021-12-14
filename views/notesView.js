@@ -17,6 +17,7 @@ export default function NotesView(props) {
               type="search"
               onInput={(e) => props.onText(e.target.value)}
               placeholder="Filter notes..."
+              disabled={!props.currentVideo}
             ></input>
           </>
         )}
