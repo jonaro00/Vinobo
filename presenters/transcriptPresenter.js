@@ -64,7 +64,7 @@ function transcriptTransform(data, query, highlightTime) {
   if (!data) return data;
   const highlightTimeMs = highlightTime * 1000;
   const words = query.trim().split(/\s/).filter(Boolean);
-  return filterList(data, words, "searchText").map((row) => ({
+  return filterList(data, words, ["searchText"]).map((row) => ({
     ...row,
     highlighted: highlightTimeMs >= row.offset && highlightTimeMs <= row.offset + row.duration,
   }));

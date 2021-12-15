@@ -30,7 +30,7 @@ export default function NotesPresenter(props) {
   return (
     <NotesView
       currentVideo={currentVideo}
-      notes={filterList(processedNotes, words, "searchTitle")}
+      notes={filterList(processedNotes, words, ["searchTitle", "searchContent"])}
       removeNote={(noteId) => props.model.removeNote(noteId)}
       onText={setQuery}
       selectTimestamp={(offset) => props.vidCon.seek(offset)}
