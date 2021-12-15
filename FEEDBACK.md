@@ -37,6 +37,23 @@ The user feedback was given with the app during commit [ab8d2bc](https://gits-15
 - Would be nice to be able to organise the notes in someway (either in folders based on topics, labels)
 - User page would be appreciated with a dashboard (or maybe be able to add general comments or descriptions to videos)
 
+### Tester #4 (20 minutes)
+
+- User realizes she has to paste a youtube URL in the sidebar field
+- User adds video but it takes time to load the video - video is then displayed as unknown
+- Chooses another video, then the video was loaded instantly
+- User realizes she can enter text in the ControlView
+- Presses enter after typing in the box - user expects it to create a note
+- Would be nice if you are not forced to have both title and content for a note
+- Would be nice if you could organize videos into subjects, would make it more usable for a real use case
+- User does not understand the function of changing timestamp - "why would I remember the time of an interesting part of the video?"
+- On the about page the user tries to click on the cards with the creators' names - they look clickable
+- Would be nice if the background was dark to give the video more focus
+- Tries the register functionality - would be good to get some confirmation after signing up
+- Would be good to return to the video position after signing in again
+- User thinks it's weird that the current video stays when you sign out
+- You want to be able to read the transcript while watching a video, without it scrolling for you, since it gives you less control
+
 ## Features we improved based on feedback
 
 > _Clicked the empty YT player expecting something to happen._
@@ -50,3 +67,15 @@ Transcript search bar is only visible when a transcript has loaded.
 > _Confused about what "YouTube ID" means._
 
 Tooltip only says URL.
+
+> _Presses enter after typing in the box - user expects it to create a note_
+
+Pressing ctrl+enter while typing in the note input field will create a note.
+
+> _User thinks it's weird that the current video stays when you sign out_
+
+The video player is fully reset to its neutral state after signing out.
+
+> _Tries the register functionality - would be good to get some confirmation after signing up_
+
+Now a page confirming your registration will be shown after entering your credentials, and from that page you can then navigate to the home screen.
