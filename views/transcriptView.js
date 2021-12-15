@@ -16,7 +16,9 @@ export default function TranscriptView(props) {
         <input
           type="search"
           onInput={(e) => props.onText(e.target.value)}
-          placeholder="Search transcript..."
+          placeholder={
+            props.currentVideo ? "Search transcript..." : "Load video first to show transcript..."
+          }
           disabled={!!(props.transcriptError || !props.transcript)}
         ></input>
       </div>
