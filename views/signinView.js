@@ -3,7 +3,6 @@ import Loader from "react-loader-spinner";
 
 export default function SigninView({
   register,
-  href,
   submitHandler,
   onEmail,
   onPassword,
@@ -59,7 +58,7 @@ export default function SigninView({
         </div>
       </form>
       <div className={styles.loadingText}>
-        {loading ? <Loader type="Circles" color="#00BFFF" height={80} width={80} /> : ""}
+        {loading ? <Loader type="Circles" color="#9fc5e8" height={60} width={60} /> : ""}
       </div>
       <div className={styles.errorText}>{errorText}</div>
     </div>
