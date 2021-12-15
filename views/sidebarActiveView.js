@@ -23,7 +23,7 @@ export default function SidebarActiveView(props) {
           <div className={styles.videos}>
             {props.loadingVideos ? (
               <Loader type="Rings" color="#9fc5e8" height={60} width={60} />
-            ) : props.videos.length > 0 ? (
+            ) : props.videos.length ? (
               [...props.videos].map((video) => (
                 <div
                   key={video.id}
@@ -66,14 +66,16 @@ export default function SidebarActiveView(props) {
                 </div>
               ))
             ) : (
-              !props.signedIn && (
-                <div className={styles.altText}>
-                  You are not signed in, so the videos and notes that you add won{"'"}t be saved.
-                  Still, you are very welcome to try using Vinobo!
-                </div>
-              )
+              false
             )}
           </div>
+          {!props.signedIn && (
+            <div className={styles.altText}>
+              <i className={"fas fa-exclamation-triangle"} /> You are not signed in, so the videos
+              and notes that you add won{"'"}t be saved. Still, you are very welcome to try using
+              Vinobo!
+            </div>
+          )}
         </>
       )}
     </>
