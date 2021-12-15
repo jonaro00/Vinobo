@@ -7,23 +7,22 @@ import {
 import SigninView from "../views/signinView";
 import { useRouter } from "next/router";
 
+const userErrors = {
+  "auth/user-not-found": "No user with that e-mail address was found.",
+  "auth/wrong-password": "Incorrect password.",
+  "auth/email-already-in-use": "There is already an account with this email in use.",
+  "auth/weak-password": "Use a stronger password.",
+};
+
 export default function SigninPresenter({ auth, model, register, href }) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  // const [userData, setUserData] = React.useState("");
   const [userError, setUserError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   const submitEmailAndPassword = register
     ? createUserWithEmailAndPassword
     : signInWithEmailAndPassword;
-
-  const userErrors = {
-    "auth/user-not-found": "No user with that e-mail address was found.",
-    "auth/wrong-password": "Incorrect password.",
-    "auth/email-already-in-use": "There is already an account with this email in use.",
-    "auth/weak-password": "Use a stronger password.",
-  };
 
   React.useEffect(() => {
     // At loading stage reset any old errors
@@ -34,7 +33,6 @@ export default function SigninPresenter({ auth, model, register, href }) {
     onAuthStateChanged(
       auth,
       (user) => {
-        // setUserData(user);
         // redirect if a logged in user visits the signin page. Allowing them to log in once again is buggy.
         if (!register && user) router.push("/");
       },

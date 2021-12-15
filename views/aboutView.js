@@ -21,7 +21,7 @@ export default function AboutView(props) {
         <h2>How to use</h2>
         <p>
           Start by copying the YouTube link of a video that you would like to take notes for. Then,
-          paste it in the left sidebar on the main page and click Add. The video and it{"'"}s
+          paste it in the left sidebar on the main page and click <i>Add</i>. The video and it{"'"}s
           transcripts will now load. You can now watch the video, search in the transcript, and take
           notes. Add a note by typing in the form below the video. The timestamp can be manually set
           or left empty (empty timestamp uses current video time).
@@ -38,6 +38,12 @@ export default function AboutView(props) {
           <div>Bram Albertus Peters</div>
           <div>Simon Falk</div>
         </div>
+        <hr />
+        <h2>Code</h2>
+        <p>
+          Currently only on <a href="https://gits-15.sys.kth.se/jberg8/DH2642-Vinobo">KTH GitHub</a>
+          .
+        </p>
       </main>
     </div>
   );

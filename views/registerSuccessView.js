@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-export default function RegisterSuccessView(props) {
+export default function RegisterSuccessView() {
   return (
     <div>
-      <h5>You have successfully registered a Vinobo account.</h5>
+      <h3>You have successfully registered a Vinobo account.</h3>
       <Link href="/">
-        <a>
-          <u>Continue</u> to Vinobo
+        <a className={"btn"} style={{ fontSize: "1.5em", backgroundColor: "#8af" }}>
+          Start using Vinobo <i className={"fas fa-angle-double-right"} />
         </a>
       </Link>
     </div>
