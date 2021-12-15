@@ -17,6 +17,9 @@ export default function ControlPresenter(props) {
       addNote={(ref) => {
         ref.preventDefault();
         props.model.addNote(new Note(parseTimestamp(offset) || videoTime | 0, title, content));
+        setTitle("");
+        setOffset("");
+        setContent("");
       }}
       setTitle={(ref) => {
         ref.preventDefault();

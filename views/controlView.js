@@ -7,13 +7,17 @@ export default function ControlView(props) {
       <form
         name="addNoteForm"
         onSubmit={(ref) => {
-          props.addNote(ref);
-          addNoteForm.reset(); // known bug: reset() doesn't trigger onChange in the boxes, making old values remain in the Presenter.
+          if (!addNoteForm["title"].value) {
+            addNoteForm["title"].select();
+          } else {
+            props.addNote(ref);
+            addNoteForm.reset();
+          }
         }}
         onKeyDown={(e) => {
           if (e.ctrlKey && e.keyCode == 13) {
-            if (!addNoteForm["note"].value) {
-              addNoteForm["note"].select();
+            if (!addNoteForm["title"].value) {
+              addNoteForm["title"].select();
             } else {
               props.addNote(e);
               addNoteForm.reset();
@@ -30,6 +34,7 @@ export default function ControlView(props) {
               name="title"
               type="input"
               placeholder="Title"
+              required
             />
           }
           timeElement={
