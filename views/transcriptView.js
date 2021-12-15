@@ -24,7 +24,8 @@ export default function TranscriptView(props) {
           <div style={{ textAlign: "center", padding: "6px" }}>
             Failed to get transcript.
             <br />
-            Either the video has no transcript, or it has been disabled.
+            Either the video has no transcript, or it has been disabled, or something went wrong on
+            our end.
           </div>
         ) : props.transcript ? (
           [...props.transcript].map((row) => (

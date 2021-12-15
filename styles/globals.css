@@ -59,3 +59,7 @@ input:hover {
   color: #000000;
   background-color: #ffffff;
 }
+
+.fas {
+  margin-bottom: -0.13em;
+}

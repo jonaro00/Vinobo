@@ -22,6 +22,7 @@ export default function SigninPresenter({ auth, model, register, href }) {
     "auth/user-not-found": "No user with that e-mail address was found.",
     "auth/wrong-password": "Incorrect password.",
     "auth/email-already-in-use": "There is already an account with this email in use.",
+    "auth/weak-password": "Use a stronger password.",
   };
 
   React.useEffect(() => {
