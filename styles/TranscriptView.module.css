@@ -10,6 +10,15 @@
   border-radius: 10px;
 }
 
+.fieldform {
+  border: 0px;
+  padding: 0px;
+}
+
+.fieldform[disabled] {
+  opacity: 0.6;
+}
+
 .search {
   flex: 0 0;
   margin-top: 1px;

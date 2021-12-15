@@ -29,6 +29,15 @@
   background-color: rgb(255, 255, 255);
 }
 
+.fieldform {
+  border: 0px;
+  padding: 0px;
+}
+
+.fieldform[disabled] {
+  opacity: 0.6;
+}
+
 .cardTime {
   cursor: pointer;
   color: #000000;

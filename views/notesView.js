@@ -5,7 +5,7 @@ import styles from "../styles/NotesView.module.css";
 
 export default function NotesView(props) {
   return (
-    <>
+    <fieldset disabled={!props.currentVideo} className={styles.fieldform}>
       <div className={styles.header}>
         <a onClick={props.onCollapse} className={"btn"}>
           {<i className={"fas " + (props.collapsed ? "fa-chevron-left" : "fa-chevron-right")} />}
@@ -55,6 +55,6 @@ export default function NotesView(props) {
           )}
         </div>
       )}
-    </>
+    </fieldset>
   );
 }
