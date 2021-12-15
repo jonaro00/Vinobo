@@ -12,23 +12,7 @@ export default function SidebarPresenter(props) {
   const model_id = useModelProperty(props.model, "currentVideo");
   const [loading, setLoading] = React.useState(false);
   const [collapsed, setCollapsed] = React.useState(false);
-  const [signedIn, setSignedIn] = React.useState(false);
-
-  React.useEffect(() => {
-    onAuthStateChanged(
-      props.auth,
-      (user) => {
-        if (user) {
-          setSignedIn(true);
-        } else {
-          setSignedIn(false);
-        }
-      },
-      (error) => {
-        setSignedIn(false);
-      }
-    );
-  }, []);
+  const user = useModelProperty(props.model, "user");
 
   return (
     <SidebarActiveView
@@ -69,7 +53,7 @@ export default function SidebarPresenter(props) {
         props.parentRef?.current.classList.toggle(pageStyles.collapsed, c);
       }}
       collapsed={collapsed}
-      signedIn={signedIn}
+      signedIn={user !== null}
     />
   );
 }

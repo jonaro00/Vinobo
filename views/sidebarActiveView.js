@@ -54,8 +54,8 @@ export default function SidebarActiveView(props) {
             ) : (
               !props.signedIn && (
                 <div className={styles.altText}>
-                  You are not signed in, so the videos that you add won't be saved. Still, you are
-                  very welcome to try using Vinobo!
+                  You are not signed in, so the videos and notes that you add won{"'"}t be saved.
+                  Still, you are very welcome to try using Vinobo!
                 </div>
               )
             )}
