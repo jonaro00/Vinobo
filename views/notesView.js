@@ -24,7 +24,7 @@ export default function NotesView(props) {
       </div>
       {props.collapsed || (
         <div className={styles.cards}>
-          {props.notes &&
+          {props.notes && props.notes.length > 0 ? (
             [...props.notes].map((note) => (
               <NoteCard
                 key={note.id}
@@ -47,7 +47,14 @@ export default function NotesView(props) {
                   </>
                 }
               />
-            ))}
+            ))
+          ) : (
+            <div className={styles.content}>
+              {
+                "You have no saved notes yet. When you write something in the field below the video it will appear here as a note."
+              }
+            </div>
+          )}
         </div>
       )}
     </>

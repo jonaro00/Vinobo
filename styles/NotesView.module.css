@@ -42,3 +42,9 @@
   color: #000000;
   box-shadow: #61b2fd 0 0 2px 2px, transparent 0 0 0 0;
 }
+
+.content {
+  padding: 5px;
+  color: rgb(135, 135, 135);
+  font-size: 11pt;
+}
