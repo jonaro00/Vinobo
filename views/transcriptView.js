@@ -24,7 +24,7 @@ export default function TranscriptView(props) {
       </div>
       <div ref={scrollBox} className={styles.transcripts}>
         {props.transcriptError ? (
-          <div style={{ textAlign: "center", padding: "6px" }}>
+          <div className={styles.error}>
             Failed to get transcript.
             <br />
             Either the video has no transcript, or it has been disabled, or something went wrong on
@@ -49,7 +49,9 @@ export default function TranscriptView(props) {
             </div>
           ))
         ) : props.transcriptPromise ? (
-          <Loader type="Puff" color="#9fc5e8" height={60} width={60} />
+          <div className={styles.spinner}>
+            <Loader type="Puff" color="#9fc5e8" height={60} width={60} />
+          </div>
         ) : (
           false /* No transcript due to no video selected */
         )}

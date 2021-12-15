@@ -55,3 +55,14 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+}
+
+.error {
+  text-align: center;
+  padding: 6px;
+}
