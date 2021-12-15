@@ -13,14 +13,16 @@ export default function TranscriptView(props) {
   return (
     <div className={styles.container}>
       <div className={styles.search}>
-        <input
-          type="search"
-          onInput={(e) => props.onText(e.target.value)}
-          placeholder={
-            props.currentVideo ? "Search transcript..." : "Load video first to show transcript..."
-          }
-          disabled={!!(props.transcriptError || !props.transcript)}
-        ></input>
+        <fieldset disabled={!props.currentVideo} className={styles.fieldform}>
+          <input
+            type="search"
+            onInput={(e) => props.onText(e.target.value)}
+            placeholder={
+              props.currentVideo ? "Search transcript..." : "Load video first to show transcript..."
+            }
+            disabled={!!(props.transcriptError || !props.transcript)}
+          ></input>
+        </fieldset>
       </div>
       <div ref={scrollBox} className={styles.transcripts}>
         {props.transcriptError ? (
