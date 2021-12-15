@@ -11,20 +11,28 @@ export default function AboutView(props) {
       <main className={styles.body}>
         <h2>About Vinobo</h2>
         <p>
-          Vinobo is a web app that allows users to take personal notes during YouTube videos, as
-          well as to search for content in a video using the video{"'"}s transcript. Our app is
-          intended to help students taking online-based courses, and Vinobo lets you save all your
-          notes and videos until the next time you study. Please sign up by clicking the banner, and
-          explore the possibilities of Vinobo!
+          Vinobo is a web app intended to facilitate for students to study video-based material. Our
+          app does this by allowing users to search for the content within a YouTube video, and
+          attach personal notes to it. The search and notes enables the user to find and annotate
+          points in the video that are of interest to the user. The users can then save their
+          timestamped notes with the corresponding video for future study.
+          <p>Please sign up and explore the possibilities of Vinobo!</p>
         </p>
         <hr />
         <h2>How to use</h2>
         <p>
-          Start by copying the YouTube link of a video that you would like to take notes for. Then,
-          paste it in the left sidebar on the main page and click Add. The video and it{"'"}s
-          transcripts will now load. You can now watch the video, search in the transcript, and take
-          notes. Add a note by typing in the form below the video. The timestamp can be manually set
-          or left empty (empty timestamp uses current video time).
+          <p> - Start by copying the YouTube link of a video that you would like to study.</p>
+          <p>
+            - Paste the video URL in the left sidebar on the main page and click Add. The video and
+            it
+            {"'"}s transcripts will now load into the app.
+          </p>
+          <p>- You can now watch the video, search in the transcript, and take notes.</p>
+          <p>
+            - Add a note by typing in the form below the video. The timestamp can be manually set or
+            left empty for the current video time.
+          </p>
+          <p></p>
         </p>
         <hr />
         <h2>Creators</h2>
