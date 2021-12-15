@@ -1,4 +1,5 @@
 import styles from "../styles/SigninView.module.css";
+import Loader from "react-loader-spinner";
 
 export default function SigninView({
   register,
@@ -57,7 +58,9 @@ export default function SigninView({
           </div>
         </div>
       </form>
-      <div className={styles.loadingText}>{loading ? "Authenticating..." : ""}</div>
+      <div className={styles.loadingText}>
+        {loading ? <Loader type="Circles" color="#00BFFF" height={80} width={80} /> : ""}
+      </div>
       <div className={styles.errorText}>{errorText}</div>
     </div>
   );
