@@ -18,6 +18,7 @@ export default function SidebarActiveView(props) {
             onSubmit={(ref) => props.addVideo(ref)}
             placeholder="Paste YouTube URL..."
             submitValue="Add"
+            autoFocus
           ></TextForm>
           {props.error && <div className={styles.addError}>{props.error}</div>}
           <div className={styles.videos}>
