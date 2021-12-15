@@ -12,6 +12,13 @@
 .addError {
   color: red;
   padding: 8px;
+  font-size: 11pt;
+}
+
+.altText {
+  color: rgb(135, 135, 135);
+  padding: 8px;
+  font-size: 11pt;
 }
 
 .videos {

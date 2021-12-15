@@ -17,7 +17,7 @@ export default function Home({ model, auth }) {
     <>
       <div className={styles.pageContent}>
         <div ref={sidebarRef} className={styles.sidebar}>
-          <SidebarPresenter model={model} vidCon={vidCon} parentRef={sidebarRef} />
+          <SidebarPresenter model={model} vidCon={vidCon} auth={auth} parentRef={sidebarRef} />
         </div>
         <div className={styles.videoAndControlsContainer}>
           <VideoPlayerPresenter model={model} vidCon={vidCon} />

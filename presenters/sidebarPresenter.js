@@ -3,15 +3,32 @@ import useModelProperty from "../js/useModelProperty";
 import SidebarActiveView from "../views/sidebarActiveView";
 import { extractID } from "../js/functions";
 import { Video } from "../js/model";
+import { onAuthStateChanged } from "firebase/auth";
 import pageStyles from "../styles/Home.module.css";
 
 export default function SidebarPresenter(props) {
   const [error, setError] = React.useState(null);
   const videos = useModelProperty(props.model, "videos");
-  const model_id = useModelProperty(props.model, "currentVideo"); // TODO: highlight the active video
+  const model_id = useModelProperty(props.model, "currentVideo");
   const [loading, setLoading] = React.useState(false);
-
   const [collapsed, setCollapsed] = React.useState(false);
+  const [signedIn, setSignedIn] = React.useState(false);
+
+  React.useEffect(() => {
+    onAuthStateChanged(
+      props.auth,
+      (user) => {
+        if (user) {
+          setSignedIn(true);
+        } else {
+          setSignedIn(false);
+        }
+      },
+      (error) => {
+        setSignedIn(false);
+      }
+    );
+  }, []);
 
   return (
     <SidebarActiveView
@@ -52,6 +69,7 @@ export default function SidebarPresenter(props) {
         props.parentRef?.current.classList.toggle(pageStyles.collapsed, c);
       }}
       collapsed={collapsed}
+      signedIn={signedIn}
     />
   );
 }
