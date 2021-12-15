@@ -37,16 +37,11 @@ a.btn {
   text-decoration: none;
 }
 
-a.btn:hover {
-  color: #000000;
-  background-color: #ffffff;
-}
-
 button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"] {
-  background-color: rgb(240, 240, 240);
+  background-color: #f0f0f0;
   padding: 0.35em 0.45em;
   border-radius: 0.35em;
   border: none;
@@ -54,10 +49,17 @@ input[type="reset"] {
   cursor: pointer;
 }
 
+a.btn:hover,
 button:hover,
 input:hover {
-  color: #000000;
-  background-color: #ffffff;
+  color: #000;
+  background-color: #fff;
+}
+
+a.btn.redHover:hover,
+button.redHover:hover,
+input.redHover:hover {
+  background-color: #eb8c8c;
 }
 
 .fas {

@@ -32,20 +32,34 @@ export default function SidebarActiveView(props) {
                   }`}
                 >
                   <a
-                    className={"btn " + styles.videoInfo}
+                    className={"btn " + styles.videoBtn}
                     onClick={(event) => {
                       event.preventDefault();
                       props.videoChoice(video.id);
                     }}
                   >
-                    <div>{video.title.length ? video.title : <i>[unknown]</i>}</div>
-                    <div className={styles.videoDetails}>
-                      <div>{video.notes?.length || 0} notes</div>
-                      <div>{formatTimestamp(video.length)}</div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      className={styles.videoImg}
+                      src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                      alt=""
+                    />
+                    <div className={styles.videoInfo}>
+                      <div className={styles.videoTitle}>
+                        {video.title.length ? video.title : <i>[unknown]</i>}
+                      </div>
+                      <div className={styles.videoDetails}>
+                        <div>
+                          <i className={"far fa-sticky-note"} /> {video.notes?.length || 0} notes
+                        </div>
+                        <div>
+                          {formatTimestamp(video.length)} <i className={"far fa-clock"} />
+                        </div>
+                      </div>
                     </div>
                   </a>
                   <div>
-                    <button onClick={() => props.removeVideo(video.id)}>
+                    <button className={"redHover"} onClick={() => props.removeVideo(video.id)}>
                       <i className={"fas fa-trash-alt"} />
                     </button>
                   </div>
@@ -54,8 +68,8 @@ export default function SidebarActiveView(props) {
             ) : (
               !props.signedIn && (
                 <div className={styles.altText}>
-                  You are not signed in, so the videos that you add won't be saved. Still, you are
-                  very welcome to try using Vinobo!
+                  You are not signed in, so the videos and notes that you add won{"'"}t be saved.
+                  Still, you are very welcome to try using Vinobo!
                 </div>
               )
             )}

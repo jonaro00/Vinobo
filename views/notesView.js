@@ -41,7 +41,7 @@ export default function NotesView(props) {
                 content={note.content?.trim() ? <div>{note.content}</div> : false}
                 buttonsRight={
                   <>
-                    <button onClick={() => props.removeNote(note.id)}>
+                    <button className={"redHover"} onClick={() => props.removeNote(note.id)}>
                       <i className={"fas fa-trash-alt"} /> Delete
                     </button>
                   </>
@@ -50,9 +50,7 @@ export default function NotesView(props) {
             ))
           ) : (
             <div className={styles.content}>
-              {
-                "You have no saved notes yet. When you write something in the field below the video it will appear here as a note."
-              }
+              You have no saved notes yet. Add notes below the video, and they will appear here.
             </div>
           )}
         </div>
