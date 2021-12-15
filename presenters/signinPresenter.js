@@ -36,7 +36,7 @@ export default function SigninPresenter({ auth, model, register, href }) {
       (user) => {
         // setUserData(user);
         // redirect if a logged in user visits the signin page. Allowing them to log in once again is buggy.
-        if (register && user) router.push("/");
+        if (!register && user) router.push("/");
       },
       (error) => {
         setUserError(error);
