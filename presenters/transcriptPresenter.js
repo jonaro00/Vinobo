@@ -16,10 +16,23 @@ export default function TranscriptPresenter(props) {
 
   const [processedData, setProcessedData] = React.useState(null);
   React.useEffect(() => {
-    setProcessedData(
-      sourceData &&
-        sourceData.map((row) => ({ ...row, searchText: makeStringSearchable(row.text) }))
-    );
+    if (!sourceData) {
+      setProcessedData(sourceData);
+      return;
+    }
+    let data = sourceData.map((row) => ({ ...row, searchText: makeStringSearchable(row.text) }));
+    data.reverse();
+    let next = null;
+    data = data.map((row) => {
+      let duration = row.duration;
+      if (next) {
+        duration = Math.min(row.duration, next.offset - row.offset - 1);
+      }
+      next = row;
+      return { ...row, duration };
+    });
+    data.reverse();
+    setProcessedData(data);
   }, [sourceData]);
 
   const [query, setQuery] = React.useState("");
