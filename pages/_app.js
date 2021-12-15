@@ -6,16 +6,18 @@ import Model, { Video, Note } from "../js/model";
 import { auth } from "../js/firebaseSetup";
 import { onAuthStateChanged } from "@firebase/auth";
 import persistModel from "../js/persistModel";
+import Layout from "../components/layout";
 
 const model = new Model();
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
+    // for debugging
     window.model = model;
     window.Video = Video;
     window.Note = Note;
     window.auth = auth;
-  }); // for debugging model
+  }, []);
 
   const [loadingUser, setLoadingUser] = React.useState(false);
 
@@ -52,7 +54,9 @@ function MyApp({ Component, pageProps }) {
         <title>Vinobo</title>
       </Head>
       <Script src="https://kit.fontawesome.com/067013981a.js" crossorigin="anonymous" />
-      <Component {...pageProps} model={model} auth={auth} loadingUser={loadingUser} />
+      <Layout model={model} auth={auth}>
+        <Component {...pageProps} model={model} auth={auth} loadingUser={loadingUser} />
+      </Layout>
     </div>
   );
 }

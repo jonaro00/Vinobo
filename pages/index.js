@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
 import TestPresenter from "../presenters/testPresenter";
-import HeaderPresenter from "../presenters/headerPresenter";
 import VideoPlayerPresenter from "../presenters/videoPlayerPresenter";
 import TranscriptPresenter from "../presenters/transcriptPresenter";
 import SidebarPresenter from "../presenters/sidebarPresenter";
@@ -16,7 +15,6 @@ export default function Home({ model, auth }) {
   const sidebarRef = React.useRef(null);
   return (
     <>
-      <HeaderPresenter model={model} vidCon={vidCon} auth={auth} />
       <div className={styles.pageContent}>
         <div ref={sidebarRef} className={styles.sidebar}>
           <SidebarPresenter model={model} vidCon={vidCon} parentRef={sidebarRef} />
