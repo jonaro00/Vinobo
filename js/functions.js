@@ -13,20 +13,6 @@ function extractID(URL_or_ID) {
 }
 
 /**
- * Fetches the YT transcript for the given video ID.
- * @param {string} id A valid YT video ID.
- * @returns A promise yielding the JSON response.
- */
-function getTranscript(id) {
-  return fetch(`/api/get_transcript?id=${id}`)
-    .then((res) => {
-      if (!res.ok) throw new Error(res.statusText);
-      return res;
-    })
-    .then((res) => res.json());
-}
-
-/**
  * Format timestamp of seconds to [hh:]mm:ss. Rounds down to nearest whole second.
  * @param {Number} sec Number of seconds.
  * @returns {string} Formatted timestamp.
@@ -60,4 +46,4 @@ function parseTimestamp(timestamp) {
   return Number((hours * 3600 || 0) + minutes * 60 + seconds * 1);
 }
 
-export { ytRegex, extractID, getTranscript, formatTimestamp, timestampRegex, parseTimestamp };
+export { ytRegex, extractID, formatTimestamp, timestampRegex, parseTimestamp };

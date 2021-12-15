@@ -1,6 +1,6 @@
 import React from "react";
 import NoteCard from "../components/noteCard";
-import { formatTimestamp } from "../js/transcript";
+import { formatTimestamp } from "../js/functions";
 import styles from "../styles/NotesView.module.css";
 
 export default function NotesView(props) {
@@ -17,6 +17,7 @@ export default function NotesView(props) {
               type="search"
               onInput={(e) => props.onText(e.target.value)}
               placeholder="Filter notes..."
+              disabled={!props.currentVideo}
             ></input>
           </>
         )}

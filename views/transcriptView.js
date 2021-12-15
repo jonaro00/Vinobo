@@ -1,5 +1,5 @@
 import React from "react";
-import { formatTimestamp } from "../js/transcript";
+import { formatTimestamp } from "../js/functions";
 import styles from "../styles/TranscriptView.module.css";
 
 export default function TranscriptView(props) {
@@ -29,7 +29,10 @@ export default function TranscriptView(props) {
           </div>
         ) : props.transcript ? (
           [...props.transcript].map((row) => (
-            <div key={row.offset} className={styles.transcriptRow + (row.highlighted ? " " : "")}>
+            <div
+              key={row.offset}
+              className={styles.transcriptRow + (row.highlighted ? " " + styles.highlighted : "")}
+            >
               <div
                 ref={row.highlighted ? activeRow : null}
                 className={styles.transcriptTime}

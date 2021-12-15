@@ -40,6 +40,11 @@
   cursor: pointer;
 }
 
+.highlighted {
+  font-weight: bold;
+  background-color: #61b2fd4d;
+}
+
 .transcriptRow:hover {
   background-color: #f7f7f7;
 }

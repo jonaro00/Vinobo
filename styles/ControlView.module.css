@@ -18,3 +18,7 @@
   width: 75px;
   padding: 5px;
 }
+
+.disabled {
+  border: 0px;
+}
