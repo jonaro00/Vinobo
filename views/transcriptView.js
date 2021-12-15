@@ -1,6 +1,7 @@
 import React from "react";
 import { formatTimestamp } from "../js/functions";
 import styles from "../styles/TranscriptView.module.css";
+import Loader from "react-loader-spinner";
 
 export default function TranscriptView(props) {
   const scrollBox = React.useRef(null);
@@ -46,7 +47,7 @@ export default function TranscriptView(props) {
             </div>
           ))
         ) : props.transcriptPromise ? (
-          "Loading..."
+          <Loader type="Puff" color="#9fc5e8" height={60} width={60} />
         ) : (
           false /* No transcript due to no video selected */
         )}
