@@ -56,7 +56,7 @@ The user feedback was given with the app during commit [ab8d2bc](https://gits-15
 
 ## Features we improved based on feedback
 
-> _Clicked the empty YT player expecting something to happen._
+> _Clicked the empty YT player expecting something to happen._ _At the beginning it was a bit unclear what to do first_
 
 Empty YouTube player is hidden and replaced by a tooltip pointing the user to paste a link.
 
@@ -79,3 +79,23 @@ The video player is fully reset to its neutral state after signing out.
 > _Tries the register functionality - would be good to get some confirmation after signing up_
 
 Now a page confirming your registration will be shown after entering your credentials, and from that page you can then navigate to the home screen.
+
+> _Transcript autoscrolls while playing video. Making this optional would help._ _You want to be able to read the transcript while watching a video, without it scrolling for you, since it gives you less control_
+
+Transcript scrolling is now optional. The user disables it by scrolling manually and enables it by clicking a button.
+
+> _The note timestamps being clickable was discovered by accident (not obvious)._
+
+They are now more visibly clickable.
+
+> _Searching in My Notes feature requested._
+
+We added it.
+
+> _Would be nice to have an image placeholder for the youtube videos, so that the user can easily browse the videos quickly_
+
+Thumbnails now show up in the sidebar.
+
+> _Would be nice if you are not forced to have both title and content for a note_
+
+Content is now optional.
