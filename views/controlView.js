@@ -3,7 +3,7 @@ import styles from "../styles/ControlView.module.css";
 
 export default function ControlView(props) {
   return (
-    <fieldset disabled={!props.currentVideo} className={styles.disabled}>
+    <fieldset disabled={!props.currentVideo} className={styles.fieldform}>
       <form
         name="addNoteForm"
         onSubmit={(ref) => {
