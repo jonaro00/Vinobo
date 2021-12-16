@@ -3,7 +3,6 @@ import useModelProperty from "../js/useModelProperty";
 import SidebarActiveView from "../views/sidebarActiveView";
 import { extractID } from "../js/functions";
 import { Video } from "../js/model";
-import { onAuthStateChanged } from "firebase/auth";
 import pageStyles from "../styles/Home.module.css";
 
 export default function SidebarPresenter(props) {
@@ -39,7 +38,7 @@ export default function SidebarPresenter(props) {
               props.model.addVideo(new Video(id, info.title, info.author, info.length));
               setError(null);
             })
-            .catch((error) => setError("Failed to add video"))
+            .catch((error) => setError("Failed to add video."))
             .finally(() => setLoading(false));
         } else {
           setError("No valid YouTube URL or ID found.");

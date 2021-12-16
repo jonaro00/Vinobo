@@ -16,24 +16,22 @@ export default function AboutView(props) {
           attach personal notes to it. The search and notes enables the user to find and annotate
           points in the video that are of interest to the user. The users can then save their
           timestamped notes with the corresponding video for future study.
-          <p>Please sign up and explore the possibilities of Vinobo!</p>
         </p>
+        <p>Please sign up and explore the possibilities of Vinobo!</p>
         <hr />
         <h2>How to use</h2>
-        <p>
-          <ul>
-            <li>Start by copying the YouTube link of a video that you would like to study.</li>
-            <li>
-              Paste the video URL in the left sidebar on the main page and click <i>Add</i>. The
-              video and it{"'"}s transcripts will now load into the app.
-            </li>
-            <li>You can now watch the video, search in the transcript, and take notes.</li>
-            <li>
-              Add a note by typing in the form below the video. The timestamp can be manually set or
-              left empty for the current video time.
-            </li>
-          </ul>
-        </p>
+        <ul>
+          <li>Start by copying the YouTube link of a video that you would like to study.</li>
+          <li>
+            Paste the video URL in the left sidebar on the main page and click <i>Add</i>. The video
+            and it{"'"}s transcripts will now load into the app.
+          </li>
+          <li>You can now watch the video, search in the transcript, and take notes.</li>
+          <li>
+            Add a note by typing in the form below the video. The timestamp can be manually set or
+            left empty for the current video time.
+          </li>
+        </ul>
         <hr />
         <h2>Creators</h2>
         <p>

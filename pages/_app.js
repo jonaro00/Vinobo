@@ -10,7 +10,7 @@ import Layout from "../components/layout";
 
 const model = new Model();
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   React.useEffect(() => {
     // for debugging
     window.model = model;
@@ -19,32 +19,31 @@ function MyApp({ Component, pageProps }) {
     window.auth = auth;
   }, []);
 
-  const [loadingUser, setLoadingUser] = React.useState(false);
-
   React.useEffect(() => {
-    setLoadingUser(true);
     let unsubscribePersistor = null;
-    onAuthStateChanged(
+    return onAuthStateChanged(
       auth,
       (user) => {
-        // user is `User` object or `null`
-        model.setUser(user ? user.email : null);
-        setLoadingUser(false);
-        if (user) {
-          unsubscribePersistor = persistModel(model);
-        } else {
+        // user is a `User` object or `null`
+        if (!user || (user && model.user)) {
+          // user logged out OR user changed, unsubscribe persistor and clear model
           if (unsubscribePersistor) {
             unsubscribePersistor();
             unsubscribePersistor = null;
           }
           model.clear();
         }
+        model.setUser(user ? user.email : null);
+        if (user) {
+          // user logged in, initiate persistor
+          unsubscribePersistor = persistModel(model);
+        }
       },
-      (error) => {
-        setLoadingUser(false);
-        console.log(error);
-      },
-      (completed) => {}
+      (error) => {},
+      (completed) => {
+        // teardown if App ever changes
+        if (unsubscribePersistor) unsubscribePersistor();
+      }
     );
   }, []);
 
@@ -55,10 +54,8 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Script src="https://kit.fontawesome.com/067013981a.js" crossorigin="anonymous" />
       <Layout model={model} auth={auth}>
-        <Component {...pageProps} model={model} auth={auth} loadingUser={loadingUser} />
+        <Component {...pageProps} model={model} auth={auth} />
       </Layout>
     </div>
   );
 }
-
-export default MyApp;

@@ -6,7 +6,7 @@ export default function Signin({ model, auth }) {
   return (
     <div className={styles.pageContent}>
       <div className={styles.signin}>
-        <SigninPresenter model={model} auth={auth} register={false} href={"/"} />
+        <SigninPresenter model={model} auth={auth} register={false} />
       </div>
     </div>
   );

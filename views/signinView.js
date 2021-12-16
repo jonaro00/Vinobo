@@ -11,11 +11,11 @@ export default function SigninView({
 }) {
   return (
     <div className={styles.signinViewBox}>
-      <h5 className={styles.headerText}>
+      <h3 className={styles.headerText}>
         {register
           ? "Don't already have an account? Register as Vinobo user here:"
           : "Sign in with your Vinobo account here:"}
-      </h5>
+      </h3>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -26,7 +26,7 @@ export default function SigninView({
         <div className={styles.signinView}>
           <div>
             <label className={styles.emailLabel} htmlFor="email">
-              E-mail address:
+              Email address:
             </label>
           </div>
           <div>

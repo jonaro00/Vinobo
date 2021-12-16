@@ -6,7 +6,7 @@ export default function Register({ model, auth }) {
   return (
     <div className={styles.pageContent}>
       <div className={styles.signin}>
-        <SigninPresenter model={model} auth={auth} register={true} href={"/registerSuccess"} />
+        <SigninPresenter model={model} auth={auth} register={true} />
       </div>
     </div>
   );

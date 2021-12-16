@@ -25,7 +25,7 @@ export default class VideoController extends Observable {
   loadPlayer(id) {
     try {
       this.player = new window.YT.Player(this.elementId, {
-        videoId: id,
+        videoId: id !== null ? id : undefined,
         playerVars: {
           playsinline: 1,
           modestbranding: 1, // hide YT logo in bottom right
@@ -134,7 +134,7 @@ export default class VideoController extends Observable {
         if ((this.player.getVideoData()?.video_id || null) === id) return;
         if (!id) this.reload();
       }
-      this.player.cueVideoById(id);
+      id !== null && this.player.cueVideoById(id);
       this.fullyInitialized = false;
     });
   }
