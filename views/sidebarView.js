@@ -3,7 +3,7 @@ import styles from "../styles/SidebarView.module.css";
 import { formatTimestamp } from "../js/functions.js";
 import Loader from "react-loader-spinner";
 
-export default function SidebarActiveView(props) {
+export default function SidebarView(props) {
   return (
     <>
       <div className={styles.header}>

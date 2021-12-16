@@ -8,16 +8,17 @@ import SigninView from "../views/signinView";
 import { useRouter } from "next/router";
 import useModelProperty from "../js/useModelProperty";
 
+// Errors from the firebase auth API that are translated to user-friendly messages.
 const userErrors = {
   "auth/user-not-found": "No user with that email address was found.",
   "auth/wrong-password": "Incorrect password.",
   "auth/email-already-in-use": "There is already an account with this email in use.",
   "auth/weak-password": "Use a stronger password.",
   "auth/invalid-email": "Invalid email address.",
-  "auth/invalid-password" : "Use a password with at least 6 characters.",
-  "auth/internal-error" : "There was an unexpected error occuring on our server. Please try to sign in again."
+  "auth/invalid-password": "Use a password with at least 6 characters.",
+  "auth/internal-error":
+    "There was an unexpected error occuring on our server. Please try to sign in again.",
   "vinobo/already-logged-in": "A user is already logged in",
-
 };
 
 export default function SigninPresenter({ auth, model, register }) {
@@ -26,6 +27,10 @@ export default function SigninPresenter({ auth, model, register }) {
   const [userError, setUserError] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
+
+  // Method to invoke with submit button.
+  // register is a boolean that is true if the component is used for registering
+  // and false if the form is used for signing in.
   const submitEmailAndPassword = register
     ? createUserWithEmailAndPassword
     : signInWithEmailAndPassword;

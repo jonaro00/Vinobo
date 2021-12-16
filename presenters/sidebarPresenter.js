@@ -1,6 +1,6 @@
 import React from "react";
 import useModelProperty from "../js/useModelProperty";
-import SidebarActiveView from "../views/sidebarActiveView";
+import SidebarView from "../views/sidebarView";
 import { extractID } from "../js/functions";
 import { Video } from "../js/model";
 import pageStyles from "../styles/Home.module.css";
@@ -14,7 +14,7 @@ export default function SidebarPresenter(props) {
   const user = useModelProperty(props.model, "user");
 
   return (
-    <SidebarActiveView
+    <SidebarView
       loadingVideos={loading}
       videos={videos}
       currentVideo={model_id}
