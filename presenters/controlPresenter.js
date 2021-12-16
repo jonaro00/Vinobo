@@ -10,13 +10,23 @@ export default function ControlPresenter(props) {
   const [title, setTitle] = React.useState("");
   const [offset, setOffset] = React.useState("");
   const [content, setContent] = React.useState("");
+  const [timePlaceholder, setTimeplaceholder] = React.useState("");
+  React.useEffect(
+    function () {
+      if (!title && !content) {
+        setTimeplaceholder(videoTime | 0);
+      }
+    },
+    [videoTime]
+  );
+
   return (
     <ControlView
-      currentTime={formatTimestamp(videoTime | 0)}
+      currentTime={formatTimestamp(timePlaceholder)}
       currentVideo={currentVideo}
       addNote={(ref) => {
         ref.preventDefault();
-        props.model.addNote(new Note(parseTimestamp(offset) || videoTime | 0, title, content));
+        props.model.addNote(new Note(parseTimestamp(offset) || timePlaceholder, title, content));
         setTitle("");
         setOffset("");
         setContent("");
@@ -32,6 +42,11 @@ export default function ControlPresenter(props) {
       setContent={(ref) => {
         ref.preventDefault();
         setContent(ref.target.value);
+      }}
+      onClear={(ref) => {
+        setTitle("");
+        setOffset("");
+        setContent("");
       }}
     />
   );
