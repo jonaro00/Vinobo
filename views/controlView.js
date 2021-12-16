@@ -6,19 +6,18 @@ export default function ControlView(props) {
     <fieldset disabled={!props.currentVideo} className={styles.fieldform}>
       <form
         name="addNoteForm"
-        onSubmit={(ref) => {
+        onSubmit={(e) => {
+          e.preventDefault();
           if (!addNoteForm["title"].value) {
             addNoteForm["title"].select();
           } else {
-            props.addNote(ref);
+            props.addNote();
             addNoteForm.reset();
           }
         }}
-        onReset={(ref) => {
-          props.onClear(ref);
-        }}
+        onReset={props.onReset}
         onKeyDown={(e) => {
-          if (e.ctrlKey && e.keyCode == 13) {
+          if (e.ctrlKey && e.key === "Enter") {
             if (!addNoteForm["title"].value) {
               addNoteForm["title"].select();
             } else {
@@ -33,9 +32,9 @@ export default function ControlView(props) {
           titleElement={
             <input
               className={styles.controlTitle}
-              onChange={(ref) => props.setTitle(ref)}
+              onChange={(e) => props.setTitle(e.target.value)}
               name="title"
-              type="input"
+              type="text"
               placeholder="Title"
               required
             />
@@ -43,18 +42,17 @@ export default function ControlView(props) {
           timeElement={
             <input
               className={styles.controlTime}
-              onChange={(ref) => props.setTimestamp(ref)}
+              onChange={(e) => props.setTimestamp(e.target.value)}
               name="timestamp"
-              type="appt-time"
+              type="text"
               placeholder={props.currentTime}
             />
           }
           content={
             <textarea
               className={styles.controlContent}
-              onChange={(ref) => props.setContent(ref)}
+              onChange={(e) => props.setContent(e.target.value)}
               name="note"
-              type="textarea"
               placeholder="Note"
             />
           }

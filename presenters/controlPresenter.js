@@ -8,46 +8,33 @@ export default function ControlPresenter(props) {
   const videoTime = useModelProperty(props.vidCon, "currentTime");
   const currentVideo = useModelProperty(props.model, "currentVideo");
   const [title, setTitle] = React.useState("");
-  const [offset, setOffset] = React.useState("");
+  const [timestamp, setTimestamp] = React.useState("");
   const [content, setContent] = React.useState("");
   const [timePlaceholder, setTimeplaceholder] = React.useState("");
-  React.useEffect(
-    function () {
-      if (!title && !content) {
-        setTimeplaceholder(videoTime | 0);
-      }
-    },
-    [videoTime]
-  );
+
+  // Update placeholder while the user hasn't typed anything
+  React.useEffect(() => {
+    if (!title && !content) setTimeplaceholder(videoTime | 0);
+  }, [videoTime]);
+
+  function formReset() {
+    setTitle("");
+    setTimestamp("");
+    setContent("");
+  }
 
   return (
     <ControlView
       currentTime={formatTimestamp(timePlaceholder)}
       currentVideo={currentVideo}
-      addNote={(ref) => {
-        ref.preventDefault();
-        props.model.addNote(new Note(parseTimestamp(offset) || timePlaceholder, title, content));
-        setTitle("");
-        setOffset("");
-        setContent("");
+      addNote={() => {
+        props.model.addNote(new Note(parseTimestamp(timestamp) || timePlaceholder, title, content));
+        formReset();
       }}
-      setTitle={(ref) => {
-        ref.preventDefault();
-        setTitle(ref.target.value);
-      }}
-      setTimestamp={(ref) => {
-        ref.preventDefault();
-        setOffset(ref.target.value);
-      }}
-      setContent={(ref) => {
-        ref.preventDefault();
-        setContent(ref.target.value);
-      }}
-      onClear={(ref) => {
-        setTitle("");
-        setOffset("");
-        setContent("");
-      }}
+      setTitle={setTitle}
+      setTimestamp={setTimestamp}
+      setContent={setContent}
+      onReset={formReset}
     />
   );
 }
