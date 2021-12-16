@@ -24,35 +24,33 @@ export default function SigninView({
         }}
       >
         <div className={styles.signinView}>
-          <div>
-            <label className={styles.emailLabel} htmlFor="email">
-              Email address:
-            </label>
+          <div className={styles.emailBox}>
+            <div>
+              <label htmlFor="email">Email address:</label>
+            </div>
+            <div>
+              <input
+                onChange={(event) => onEmail(event.target.value)}
+                name="email"
+                type="email"
+                autoComplete="email"
+              />
+            </div>
           </div>
-          <div>
-            <input
-              className={styles.signinEmail}
-              onChange={(event) => onEmail(event.target.value)}
-              name="email"
-              type="email"
-              autoComplete="email"
-            />
+          <div className={styles.passwordBox}>
+            <div>
+              <label htmlFor="password">Password:</label>
+            </div>
+            <div>
+              <input
+                onChange={(event) => onPassword(event.target.value)}
+                name="password"
+                type="password"
+                autoComplete={register ? "new-password" : "current-password"}
+              />
+            </div>
           </div>
-          <div>
-            <label className={styles.passwordLabel} htmlFor="password">
-              Password:
-            </label>
-          </div>
-          <div>
-            <input
-              className={styles.signinPassword}
-              onChange={(event) => onPassword(event.target.value)}
-              name="password"
-              type="password"
-              autoComplete={register ? "new-password" : "current-password"}
-            />
-          </div>
-          <div>
+          <div className={styles.submitButton}>
             <input type="submit" value={register ? "Register" : "Sign in"} />
           </div>
         </div>

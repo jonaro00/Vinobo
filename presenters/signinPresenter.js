@@ -14,7 +14,10 @@ const userErrors = {
   "auth/email-already-in-use": "There is already an account with this email in use.",
   "auth/weak-password": "Use a stronger password.",
   "auth/invalid-email": "Invalid email address.",
+  "auth/invalid-password" : "Use a password with at least 6 characters.",
+  "auth/internal-error" : "There was an unexpected error occuring on our server. Please try to sign in again."
   "vinobo/already-logged-in": "A user is already logged in",
+
 };
 
 export default function SigninPresenter({ auth, model, register }) {
@@ -46,6 +49,7 @@ export default function SigninPresenter({ auth, model, register }) {
       (error) => {
         // not sure if this is needed anymore, as the catch clause below probably handles all errors
         setUserError(error);
+        console.log(error.message);
       }
     );
   }, [auth]);

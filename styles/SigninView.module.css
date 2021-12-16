@@ -11,9 +11,8 @@
   font-size: small;
 }
 
-.email,
-.password,
-.emailLabel,
-.passwordLabel {
-  margin: 5px 0px;
+.emailBox,
+.passwordBox,
+.submitButton {
+  margin: 8px 0px;
 }
