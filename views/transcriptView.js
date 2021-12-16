@@ -74,13 +74,11 @@ export default function TranscriptView(props) {
               <div
                 key={row.offset}
                 className={styles.transcriptRow + (row.highlighted ? " " + styles.highlighted : "")}
+                onClick={() => props.selectTimestamp(row.offset)}
               >
                 <div
                   ref={row.highlighted ? activeRow : null}
                   className={styles.transcriptTime}
-                  onClick={(e) => {
-                    props.selectTimestamp(row.offset);
-                  }}
                   title={`Go to ${formatTimestamp((row.offset / 1000) | 0)} in video`}
                 >
                   <div>{formatTimestamp((row.offset / 1000) | 0)}</div>
